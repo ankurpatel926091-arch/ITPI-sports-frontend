@@ -69,73 +69,78 @@ export default function SportsGridSection() {
           </div>
         </div>
 
-        {/* Minimal Sports Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 lg:gap-5">
+        {/* Championship Sports Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
           {filteredSports.map((sport) => (
             <div
               key={sport.id}
-              className="group relative p-3.5 sm:p-4 rounded-xl bg-slate-100 border border-slate-300/80 shadow-xs hover:shadow-xl hover:border-[#DC2626]/60 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+              className="group bg-white rounded-2xl border border-slate-200/90 shadow-xs hover:shadow-xl hover:border-[#DC2626]/40 transition-all duration-300 flex flex-col overflow-hidden"
             >
-              {/* Relatable Sport Background Image - Clearly Visible */}
-              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              {/* 1. Cinematic Sport Visual Header Banner */}
+              <div className="relative h-36 sm:h-40 w-full overflow-hidden bg-slate-900">
                 <img
                   src={SPORT_IMAGES[sport.id]}
                   alt={sport.name}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
+                  className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
                   loading="lazy"
                 />
-                {/* Translucent overlay: Light top for vibrant photo visibility, balanced bottom for crisp text */}
-                <div className="absolute inset-0 bg-gradient-to-b from-white/35 via-white/70 to-white/92 group-hover:from-white/20 group-hover:via-white/60 group-hover:to-white/88 transition-colors duration-300" />
-              </div>
+                {/* Subtle dark vignette on image for pristine contrast */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-black/45 pointer-events-none" />
 
-              <div className="relative z-10 space-y-2 sm:space-y-2.5">
-                {/* Header */}
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#0F3D8C] bg-white/90 backdrop-blur-xs px-2 py-0.5 rounded-md border border-slate-200/80 shadow-2xs">
+                {/* Floating Badges */}
+                <div className="absolute top-2.5 inset-x-2.5 flex items-center justify-between pointer-events-none">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/20 shadow-md">
                     {sport.category}
                   </span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-50/95 text-[#DC2626] border border-red-200 shadow-2xs backdrop-blur-xs">
+                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#DC2626] text-white shadow-md border border-red-400/30">
                     {sport.badge}
                   </span>
                 </div>
 
-                {/* Name */}
-                <h3 className="text-lg sm:text-xl font-black text-slate-950 leading-tight drop-shadow-[0_1px_3px_rgba(255,255,255,0.9)]">
-                  {sport.name}
-                </h3>
-
-                {/* Format */}
-                <p className="text-xs text-red-700 font-bold leading-snug drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]">
-                  {sport.format}
-                </p>
-
-                {/* Squad & Age */}
-                <div className="p-2 sm:p-2.5 rounded-lg bg-white/90 backdrop-blur-md border border-slate-200/90 space-y-1 text-[11px] text-slate-800 leading-relaxed shadow-xs">
-                  <div>
-                    <span className="font-bold text-slate-950">Squad:</span> {sport.squad}
-                  </div>
-                  <div>
-                    <span className="font-bold text-slate-950">Age Rules:</span> {sport.ageCategories}
-                  </div>
-                </div>
-
-                {/* Highlight */}
-                <div className="flex items-start gap-1.5 text-[11px] text-slate-800 font-semibold bg-white/80 backdrop-blur-xs px-2 py-1 rounded-md border border-slate-200/70 shadow-2xs">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#0F3D8C] shrink-0 mt-0.5" />
-                  <span className="leading-tight">{sport.highlight}</span>
+                {/* Sport Name on Banner */}
+                <div className="absolute bottom-2.5 left-3 right-3 pointer-events-none">
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] tracking-tight">
+                    {sport.name}
+                  </h3>
                 </div>
               </div>
 
-              {/* Bottom Schedule Pill */}
-              <div className="relative z-10 mt-2.5 pt-2 sm:pt-2.5 border-t border-slate-300/80 bg-white/85 backdrop-blur-xs -mx-3.5 -mb-3.5 sm:-mx-4 sm:-mb-4 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-b-xl flex items-center justify-between text-[11px]">
-                <span className="font-mono font-bold text-slate-800">{sport.days}</span>
-                <a
-                  href="#register"
-                  className="font-bold text-[#DC2626] hover:text-red-800 flex items-center gap-0.5"
-                >
-                  <span>Nominate</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </a>
+              {/* 2. Structured Clean Content Body */}
+              <div className="p-3.5 sm:p-4 flex flex-col justify-between flex-1 space-y-2.5 sm:space-y-3">
+                <div className="space-y-2 sm:space-y-2.5">
+                  {/* Format Subtitle */}
+                  <p className="text-xs text-[#DC2626] font-semibold leading-snug">
+                    {sport.format}
+                  </p>
+
+                  {/* Squad & Age Rules Box */}
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 space-y-1 text-[11px] text-slate-600 leading-relaxed">
+                    <div>
+                      <span className="font-semibold text-slate-800">Squad:</span> {sport.squad}
+                    </div>
+                    <div>
+                      <span className="font-semibold text-slate-800">Age Rules:</span> {sport.ageCategories}
+                    </div>
+                  </div>
+
+                  {/* Highlight */}
+                  <div className="flex items-start gap-1.5 text-[11px] text-slate-500">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#0F3D8C] shrink-0 mt-0.5" />
+                    <span className="leading-tight">{sport.highlight}</span>
+                  </div>
+                </div>
+
+                {/* 3. Bottom Schedule & Nomination Bar */}
+                <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                  <span className="font-mono font-semibold text-slate-600">{sport.days}</span>
+                  <a
+                    href="#register"
+                    className="font-bold text-[#DC2626] hover:text-red-800 flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform"
+                  >
+                    <span>Nominate</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
               </div>
             </div>
           ))}
