@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Calendar, MapPin, FileText } from 'lucide-react';
-import heroBg from '../../assets/images/Hero_background.png';
+import heroBg from '../../assets/images/Hero_background_v2.jpg';
 import { LUCKNOW_MAP_URL } from '../../constants/contactLinks';
 
 export default function HeroSection() {
