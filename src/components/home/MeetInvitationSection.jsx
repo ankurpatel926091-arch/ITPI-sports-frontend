@@ -81,7 +81,7 @@ export default function MeetInvitationSection() {
           <div className="lg:col-span-7 space-y-4 sm:space-y-6">
             
             <div className="space-y-2 sm:space-y-3">
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight font-serif">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight">
                 Invitation to State Contingents
               </h2>
               {/* Dual Red & Blue Accent Bar */}
@@ -102,7 +102,7 @@ export default function MeetInvitationSection() {
             {/* Red & Blue Highlight Box */}
             <div className="bg-gradient-to-r from-red-50/50 to-blue-50/50 border-l-4 border-[#DC2626] border-y border-r border-slate-200 rounded-r-xl p-5 sm:p-6 space-y-3 shadow-xs">
               <div className="flex items-center justify-between">
-                <h4 className="text-xl sm:text-2xl font-light text-[#DC2626] tracking-wide font-serif">
+                <h4 className="text-xl sm:text-2xl font-light text-[#DC2626] tracking-wide">
                   "Muskuraiye, Aap Lucknow Mein Hain!"
                 </h4>
                 <span className="text-xs font-bold text-[#0F3D8C] bg-blue-100/80 px-2.5 py-0.5 rounded-full border border-blue-200">

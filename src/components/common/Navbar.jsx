@@ -95,7 +95,7 @@ export default function Navbar() {
               </div>
               <div className="flex flex-col">
                 <div className="flex items-center gap-2">
-                  <span className="font-black text-[#0F3D8C] tracking-tight leading-tight uppercase text-base sm:text-xl font-serif">
+                  <span className="font-black text-[#0F3D8C] tracking-tight leading-tight uppercase text-base sm:text-xl">
                     ITPI SPORTS MEET <span className="text-[#DC2626]">2027</span>
                   </span>
                   <span className="hidden sm:inline-block text-[9px] bg-red-50 text-[#DC2626] font-extrabold px-2 py-0.5 rounded-full border border-red-200">

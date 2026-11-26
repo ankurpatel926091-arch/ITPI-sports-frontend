@@ -76,7 +76,7 @@ export default function RegistrationSection() {
             <Sparkles className="w-3.5 h-3.5 text-[#0F3D8C]" />
             Official Registration Portal
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 font-serif">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900">
             Register for ITPI Sports Meet 2027
           </h2>
           <div className="h-1.5 w-24 bg-gradient-to-r from-[#DC2626] to-[#0F3D8C] rounded-full mx-auto" />
@@ -129,7 +129,7 @@ export default function RegistrationSection() {
               <CheckCircle className="w-8 h-8" />
             </div>
             <div className="space-y-2">
-              <h3 className="text-2xl font-extrabold text-slate-900 font-serif">
+              <h3 className="text-2xl font-extrabold text-slate-900">
                 {regType === 'chapter' ? 'State Chapter Nomination Submitted!' : 'Delegate Registration Completed!'}
               </h3>
               <p className="text-sm text-slate-600 max-w-lg mx-auto">

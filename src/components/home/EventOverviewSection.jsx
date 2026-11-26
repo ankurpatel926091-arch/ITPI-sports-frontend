@@ -37,7 +37,7 @@ export default function EventOverviewSection() {
             <span>Event at a Glance</span>
           </div>
 
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 font-serif">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900">
             {EVENT_DETAILS.title}
           </h2>
 
@@ -56,25 +56,25 @@ export default function EventOverviewSection() {
         {/* Key Event Metrics / Highlights Strip */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 mb-6 sm:mb-8">
           <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-blue-300 transition-all">
-            <span className="block text-xl sm:text-3xl font-black text-[#0F3D8C] font-serif">16+</span>
+            <span className="block text-xl sm:text-3xl font-black text-[#0F3D8C]">16+</span>
             <span className="text-[11px] sm:text-xs font-bold text-slate-800">State Chapters</span>
             <span className="block text-[10px] text-slate-500 mt-0.5">Across India</span>
           </div>
 
           <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-red-300 transition-all">
-            <span className="block text-xl sm:text-3xl font-black text-[#DC2626] font-serif">9</span>
+            <span className="block text-xl sm:text-3xl font-black text-[#DC2626]">9</span>
             <span className="text-[11px] sm:text-xs font-bold text-slate-800">Sports & Games</span>
             <span className="block text-[10px] text-slate-500 mt-0.5">Formal & Informal</span>
           </div>
 
           <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-blue-300 transition-all">
-            <span className="block text-xl sm:text-3xl font-black text-[#0F3D8C] font-serif">3 Days</span>
+            <span className="block text-xl sm:text-3xl font-black text-[#0F3D8C]">3 Days</span>
             <span className="text-[11px] sm:text-xs font-bold text-slate-800">Sports & Culture</span>
             <span className="block text-[10px] text-slate-500 mt-0.5">8th – 10th Jan 2027</span>
           </div>
 
           <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-red-300 transition-all">
-            <span className="block text-xl sm:text-3xl font-black text-[#DC2626] font-serif">Pan-India</span>
+            <span className="block text-xl sm:text-3xl font-black text-[#DC2626]">Pan-India</span>
             <span className="text-[11px] sm:text-xs font-bold text-slate-800">Town Planners</span>
             <span className="block text-[10px] text-slate-500 mt-0.5">Fellowship & Unity</span>
           </div>

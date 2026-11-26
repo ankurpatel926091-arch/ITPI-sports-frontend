@@ -14,7 +14,7 @@ export default function ContingentsCounterSection() {
               <Sparkles className="w-3.5 h-3.5 text-[#DC2626]" />
               Pan-India Participation
             </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 font-serif">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900">
               16 State Contingents
             </h2>
             <div className="h-1.5 w-24 bg-gradient-to-r from-[#DC2626] to-[#0F3D8C] rounded-full" />

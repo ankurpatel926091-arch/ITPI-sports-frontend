@@ -57,7 +57,7 @@ export default function AboutMeetSection() {
         {/* Famous Slogan Quote Banner */}
         <div className="relative rounded-2xl overflow-hidden p-8 sm:p-10 bg-gradient-to-r from-blue-950 via-slate-950 to-red-950 border border-slate-800 text-center">
           <div className="max-w-2xl mx-auto space-y-3">
-            <p className="text-2xl sm:text-3xl font-extrabold text-amber-300 font-heading">
+            <p className="text-2xl sm:text-3xl font-extrabold text-amber-300">
               "Muskuraiye, Aap Lucknow Mein Hain!"
             </p>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">

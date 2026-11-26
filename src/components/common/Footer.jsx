@@ -18,7 +18,7 @@ export default function Footer() {
                 <Trophy className="w-5 h-5 text-white" />
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold text-white tracking-tight uppercase text-lg font-serif">
+                <span className="font-extrabold text-white tracking-tight uppercase text-lg">
                   ITPI SPORTS MEET 2027
                 </span>
                 <span className="text-[10px] text-blue-200 font-bold uppercase tracking-wider">

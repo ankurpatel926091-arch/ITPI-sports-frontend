@@ -24,7 +24,7 @@ export default function ChampionshipGuidelinesSection() {
             <span>Championship Guidelines & Fees</span>
           </div>
 
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 font-serif">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900">
             Participation Fees & Official Guidelines
           </h2>
 
@@ -47,7 +47,7 @@ export default function ChampionshipGuidelinesSection() {
                   Registration Fee
                 </span>
                 <div className="flex items-baseline gap-1 sm:gap-2">
-                  <span className="text-xl sm:text-3xl font-black text-slate-900 font-serif">
+                  <span className="text-xl sm:text-3xl font-black text-slate-900">
                     {fees.registrationPerPerson}
                   </span>
                   <span className="text-[10px] sm:text-xs text-slate-500">/ person</span>
@@ -62,7 +62,7 @@ export default function ChampionshipGuidelinesSection() {
                   Hotel Stay
                 </span>
                 <div className="flex items-baseline gap-1 sm:gap-2">
-                  <span className="text-xl sm:text-3xl font-black text-slate-900 font-serif">
+                  <span className="text-xl sm:text-3xl font-black text-slate-900">
                     {fees.hotelAccommodation}
                   </span>
                   <span className="text-[10px] sm:text-xs text-slate-500">/ day</span>

@@ -64,7 +64,7 @@ export default function MascotPlanveerSection() {
                 </div>
 
                 <div className="mt-3 p-3 rounded-xl bg-gradient-to-r from-slate-50 to-blue-50/50 border border-slate-200 text-center">
-                  <p className="text-xs sm:text-sm font-black text-[#0F3D8C] uppercase tracking-wider font-serif">
+                  <p className="text-xs sm:text-sm font-black text-[#0F3D8C] uppercase tracking-wider">
                     {mascot.name} <span className="text-slate-400 mx-1">•</span> {mascot.title}
                   </p>
                   <p className="text-[11px] text-[#DC2626] font-semibold italic mt-1">
@@ -84,7 +84,7 @@ export default function MascotPlanveerSection() {
                 <span>Meet The Mascot</span>
               </div>
 
-              <h2 className="text-2xl sm:text-4xl lg:text-[2.6rem] font-extrabold text-slate-900 font-serif leading-tight">
+              <h2 className="text-2xl sm:text-4xl lg:text-[2.6rem] font-extrabold text-slate-900 leading-tight">
                 Meet <span className="text-[#0F3D8C]">“Planveer”</span>{' '}
                 <span className="block sm:inline text-sm sm:text-xl font-normal text-slate-500 sm:ml-2">
                   ({mascot.title})

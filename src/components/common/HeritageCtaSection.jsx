@@ -21,7 +21,7 @@ export default function HeritageCtaSection() {
             </div>
 
             {/* Main Heading (Single Line on Desktop/Laptop) */}
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-black text-white tracking-tight leading-snug font-serif whitespace-normal lg:whitespace-nowrap">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-black text-white tracking-tight leading-snug whitespace-normal lg:whitespace-nowrap">
               Are You Representing an ITPI State Chapter?
             </h2>
 

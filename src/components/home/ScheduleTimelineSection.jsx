@@ -18,7 +18,7 @@ export default function ScheduleTimelineSection() {
             <span>Itinerary</span>
           </div>
 
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 font-serif">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900">
             Proposed 3-Day Program
           </h2>
 
@@ -57,7 +57,7 @@ export default function ScheduleTimelineSection() {
               <span className="text-xs font-bold uppercase tracking-wider text-[#DC2626]">
                 {currentProgram.day} • {currentProgram.date}
               </span>
-              <h3 className="text-lg font-bold text-slate-900 font-serif mt-0.5">
+              <h3 className="text-lg font-bold text-slate-900 mt-0.5">
                 {currentProgram.tagline}
               </h3>
             </div>

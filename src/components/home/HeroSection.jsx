@@ -49,7 +49,7 @@ export default function HeroSection() {
         </span>
 
         {/* Main Hero Headline (Spacious Line Gap) */}
-        <h1 className="font-serif tracking-tight leading-[1.2] sm:leading-[1.18] text-white max-w-5xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] px-1">
+        <h1 className="tracking-tight leading-[1.2] sm:leading-[1.18] text-white max-w-5xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] px-1">
           <span className="block text-[22px] xs:text-2xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[60px] font-black sm:whitespace-nowrap">
             Uniting Urban Planners Across India,
           </span>

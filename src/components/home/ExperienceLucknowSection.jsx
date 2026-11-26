@@ -25,7 +25,7 @@ export default function ExperienceLucknowSection() {
             <Sparkles className="w-3.5 h-3.5 text-[#0F3D8C]" />
             Nawabi Culture & Hospitality
           </div>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 font-serif">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900">
             Experience Lucknow
           </h2>
           <div className="h-1.5 w-24 bg-gradient-to-r from-[#DC2626] to-[#0F3D8C] rounded-full mx-auto" />

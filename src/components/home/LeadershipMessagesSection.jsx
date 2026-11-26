@@ -34,7 +34,7 @@ export default function LeadershipMessagesSection() {
             <span>Leadership Desk</span>
           </div>
 
-          <h2 className="text-2xl sm:text-4xl lg:text-[2.6rem] font-extrabold text-slate-900 font-serif leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-[2.6rem] font-extrabold text-slate-900 leading-tight">
             Messages from the{' '}
             <span className="text-[#0F3D8C]">Leadership</span>
           </h2>
@@ -91,7 +91,7 @@ export default function LeadershipMessagesSection() {
 
                     {/* Highlight Quote */}
                     <div className="relative pl-4 border-l-2" style={{ borderColor: accentColor }}>
-                      <p className="text-slate-800 text-sm sm:text-base leading-relaxed italic font-serif">
+                      <p className="text-slate-800 text-sm sm:text-base leading-relaxed italic">
                         “{msg.quote}”
                       </p>
                     </div>
@@ -123,7 +123,7 @@ export default function LeadershipMessagesSection() {
                   {/* Author Info */}
                   <div className="pt-5 mt-5 border-t border-slate-200 flex items-center justify-between">
                     <div>
-                      <h4 className="text-sm sm:text-base font-bold text-slate-900 font-serif">
+                      <h4 className="text-sm sm:text-base font-bold text-slate-900">
                         {msg.name}
                       </h4>
                       <p className="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5">

@@ -20,7 +20,7 @@ export default function SportsGridSection() {
               <Sparkles className="w-3.5 h-3.5 text-[#DC2626]" />
               <span>Championship Events</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 font-serif">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900">
               Sports & Competitions
             </h2>
             <div className="h-1.5 w-20 bg-gradient-to-r from-[#DC2626] to-[#0F3D8C] rounded-full" />
@@ -66,7 +66,7 @@ export default function SportsGridSection() {
                 </div>
 
                 {/* Name */}
-                <h3 className="text-xl font-bold text-slate-900 font-serif">
+                <h3 className="text-xl font-bold text-slate-900">
                   {sport.name}
                 </h3>
 
