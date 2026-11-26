@@ -1,6 +1,7 @@
 import React from 'react';
 import { COMMITTEE_MEMBERS } from '../data/eventData';
 import { Users, Mail, Phone, MapPin, Award } from 'lucide-react';
+import { ITPI_OFFICE_MAP_URL, ITPI_PHONE_LINK } from '../constants/contactLinks';
 
 export default function CommitteePage() {
   return (
@@ -47,13 +48,19 @@ export default function CommitteePage() {
 
         {/* Office Contact Info */}
         <div className="p-8 rounded-2xl bg-slate-900 border border-slate-800 grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
-          <div className="flex items-center gap-3 justify-center md:justify-start">
+          <a
+            href={ITPI_OFFICE_MAP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 justify-center md:justify-start hover:text-amber-300 hover:underline underline-offset-2 transition-colors"
+            aria-label="View ITPI UP Regional Chapter on Google Maps"
+          >
             <MapPin className="w-8 h-8 text-red-500 shrink-0" />
             <div>
               <p className="text-xs text-slate-400 font-semibold">Headquarters</p>
               <p className="text-sm font-bold text-white">ITPI UP Regional Chapter, Lucknow</p>
             </div>
-          </div>
+          </a>
           <div className="flex items-center gap-3 justify-center md:justify-start">
             <Mail className="w-8 h-8 text-blue-500 shrink-0" />
             <div>
@@ -61,13 +68,13 @@ export default function CommitteePage() {
               <p className="text-sm font-bold text-white font-mono">sports@itpi-up.org</p>
             </div>
           </div>
-          <div className="flex items-center gap-3 justify-center md:justify-start">
+          <a href={ITPI_PHONE_LINK} className="flex items-center gap-3 justify-center md:justify-start hover:text-amber-300 hover:underline underline-offset-2 transition-colors">
             <Phone className="w-8 h-8 text-emerald-500 shrink-0" />
             <div>
               <p className="text-xs text-slate-400 font-semibold">Secretariat Phone</p>
               <p className="text-sm font-bold text-white font-mono">+91 94150 00000</p>
             </div>
-          </div>
+          </a>
         </div>
 
       </div>

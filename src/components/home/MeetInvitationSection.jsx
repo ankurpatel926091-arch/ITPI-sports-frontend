@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, MapPin, Download, ArrowRight, CheckCircle2, FileText, Printer } from 'lucide-react';
 import invitationLetterImg from '../../assets/images/invitation_letter.jpg';
+import { LUCKNOW_MAP_URL } from '../../constants/contactLinks';
 
 export default function MeetInvitationSection() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -128,10 +129,15 @@ export default function MeetInvitationSection() {
             </div>
 
             <div className="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-slate-600">
-              <span className="flex items-center gap-1.5">
+              <a
+                href={LUCKNOW_MAP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 hover:text-[#DC2626] transition-colors"
+              >
                 <MapPin className="w-4 h-4 text-[#DC2626]" />
                 Lucknow, Uttar Pradesh
-              </span>
+              </a>
               <span>•</span>
               <span className="flex items-center gap-1.5">
                 <Calendar className="w-4 h-4 text-[#0F3D8C]" />

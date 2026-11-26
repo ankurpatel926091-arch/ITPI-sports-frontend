@@ -9,6 +9,7 @@ import {
   Menu,
   X,
 } from 'lucide-react';
+import { LUCKNOW_MAP_URL } from '../../constants/contactLinks';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -41,12 +42,18 @@ export default function Navbar() {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14 flex flex-col md:flex-row items-stretch justify-between text-xs">
           {/* Left info items */}
           <div className="flex flex-wrap items-center gap-3 sm:gap-6 py-1.5 text-slate-700 text-xs font-medium">
-            <div className="flex items-center gap-1.5">
+            <a
+              href={LUCKNOW_MAP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-[#DC2626] hover:underline underline-offset-2 transition-colors"
+              aria-label="View Lucknow, Uttar Pradesh on Google Maps"
+            >
               <MapPin className="w-3.5 h-3.5 text-[#DC2626] shrink-0" />
               <span className="font-semibold text-slate-900">
                 Lucknow, Uttar Pradesh
               </span>
-            </div>
+            </a>
 
             <div className="hidden sm:flex items-center gap-1.5">
               <Calendar className="w-3.5 h-3.5 text-[#0F3D8C] shrink-0" />

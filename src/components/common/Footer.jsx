@@ -1,6 +1,7 @@
 import React from 'react';
 import { Trophy, Mail, Phone, MapPin, Calendar, Heart, ArrowRight } from 'lucide-react';
 import codeCrafterLogo from '../../assets/images/CodeCrafterLogo.png';
+import { ITPI_OFFICE_MAP_URL, ITPI_PHONE_LINK } from '../../constants/contactLinks';
 
 export default function Footer() {
   return (
@@ -77,17 +78,23 @@ export default function Footer() {
             </h4>
 
             <div className="space-y-3 text-sm text-slate-300">
-              <div className="flex items-start gap-2.5">
+              <a
+                href={ITPI_OFFICE_MAP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2.5 hover:text-amber-300 hover:underline underline-offset-2 transition-colors"
+                aria-label="View ITPI Uttar Pradesh Regional Chapter on Google Maps"
+              >
                 <MapPin className="w-4.5 h-4.5 text-[#DC2626] shrink-0 mt-0.5" />
                 <p className="leading-relaxed text-xs">
                   Institute of Town Planners, India – Uttar Pradesh Regional Chapter, Lucknow – 226001, Uttar Pradesh, India
                 </p>
-              </div>
+              </a>
 
-              <div className="flex items-center gap-2.5">
+              <a href={ITPI_PHONE_LINK} className="flex items-center gap-2.5 hover:text-amber-300 hover:underline underline-offset-2 transition-colors">
                 <Phone className="w-4.5 h-4.5 text-blue-400 shrink-0" />
                 <span className="text-white font-semibold text-xs">+91 94150 00000</span>
-              </div>
+              </a>
 
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4.5 h-4.5 text-blue-400 shrink-0" />

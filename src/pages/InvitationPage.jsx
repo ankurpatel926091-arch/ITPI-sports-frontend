@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FileDown, Calendar, MapPin, Printer, ArrowRight, CheckCircle2 } from 'lucide-react';
 import invitationLetterImg from '../assets/images/invitation_letter.jpg';
+import { LUCKNOW_MAP_URL } from '../constants/contactLinks';
 
 export default function InvitationPage() {
   return (
@@ -28,9 +29,14 @@ export default function InvitationPage() {
               <Calendar className="w-4 h-4" /> 8th - 10th January 2027
             </span>
             <span className="hidden sm:inline text-slate-600">|</span>
-            <span className="flex items-center gap-1.5 text-slate-200">
+            <a
+              href={LUCKNOW_MAP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-slate-200 hover:text-amber-300 transition-colors"
+            >
               <MapPin className="w-4 h-4 text-red-400" /> Lucknow, Uttar Pradesh
-            </span>
+            </a>
           </div>
 
           <div className="flex items-center gap-3">

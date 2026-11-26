@@ -4,6 +4,11 @@ import { Landmark, Utensils, Hotel, Plane, Train, ThermometerSun, MapPin, Compas
 import kathakImg from '../assets/images/lucknow_kathak.webp';
 import monumentsImg from '../assets/images/lucknow_monuments.webp';
 import chikankariImg from '../assets/images/lucknow_chikankari.webp';
+import {
+  CHARBAGH_STATION_MAP_URL,
+  ITPI_PHONE_LINK,
+  LUCKNOW_AIRPORT_MAP_URL,
+} from '../constants/contactLinks';
 
 export default function LucknowGuidePage() {
   return (
@@ -56,7 +61,14 @@ export default function LucknowGuidePage() {
               <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center">
                 <Plane className="w-5 h-5" />
               </div>
-              <h4 className="text-base font-bold text-white">Chaudhary Charan Singh Airport (LKO)</h4>
+              <a
+                href={LUCKNOW_AIRPORT_MAP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-base font-bold text-white hover:text-amber-300 transition-colors"
+              >
+                Chaudhary Charan Singh Airport (LKO)
+              </a>
               <p className="text-xs text-slate-400 leading-relaxed">
                 Located in Amausi, connected to all major Indian metro airports with frequent direct flights. Pre-paid taxis and Lucknow Metro available directly to city venues.
               </p>
@@ -66,7 +78,14 @@ export default function LucknowGuidePage() {
               <div className="w-10 h-10 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center">
                 <Train className="w-5 h-5" />
               </div>
-              <h4 className="text-base font-bold text-white">Charbagh Railway Station</h4>
+              <a
+                href={CHARBAGH_STATION_MAP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-base font-bold text-white hover:text-amber-300 transition-colors"
+              >
+                Charbagh Railway Station
+              </a>
               <p className="text-xs text-slate-400 leading-relaxed">
                 Architectural masterpiece railway junction connecting all Northern, Southern, and Eastern express trains with 24/7 transport and metro connectivity.
               </p>
@@ -92,7 +111,14 @@ export default function LucknowGuidePage() {
             The ITPI UP Chapter Hospitality Desk has reserved block bookings at discounted official delegate tariffs in prominent hotels near the sporting venues and Hazratganj.
           </p>
           <p className="text-xs text-amber-400 font-mono">
-            Hospitality Helpline: +91 94150 00000 • Email: hospitality@itpi-up.org
+            Hospitality Helpline:{' '}
+            <a href={ITPI_PHONE_LINK} className="hover:text-white underline underline-offset-2">
+              +91 94150 00000
+            </a>
+            {' • Email: '}
+            <a href="mailto:hospitality@itpi-up.org" className="hover:text-white underline underline-offset-2">
+              hospitality@itpi-up.org
+            </a>
           </p>
         </div>
 
