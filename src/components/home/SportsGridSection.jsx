@@ -2,6 +2,29 @@ import React, { useState } from 'react';
 import { Trophy, CheckCircle2, ChevronRight } from 'lucide-react';
 import { SPORTS_LIST } from '../../data/eventData';
 
+// Authentic sport background images
+import sportCricket from '../../assets/images/sport_cricket.jpg';
+import sportBadminton from '../../assets/images/sport_badminton.jpg';
+import sportTableTennis from '../../assets/images/sport_table_tennis.jpg';
+import sportChess from '../../assets/images/sport_chess.jpg';
+import sportCarrom from '../../assets/images/sport_carrom.jpg';
+import sportGolf from '../../assets/images/sport_golf.jpg';
+import sportTugOfWar from '../../assets/images/sport_tug_of_war.jpg';
+import sportSudoku from '../../assets/images/sport_sudoku.jpg';
+import sportMarathon from '../../assets/images/sport_marathon.jpg';
+
+const SPORT_IMAGES = {
+  cricket: sportCricket,
+  badminton: sportBadminton,
+  'table-tennis': sportTableTennis,
+  chess: sportChess,
+  carrom: sportCarrom,
+  golf: sportGolf,
+  'tug-of-war': sportTugOfWar,
+  sudoku: sportSudoku,
+  marathon: sportMarathon,
+};
+
 export default function SportsGridSection() {
   const [filter, setFilter] = useState('All');
 
@@ -51,15 +74,27 @@ export default function SportsGridSection() {
           {filteredSports.map((sport) => (
             <div
               key={sport.id}
-              className="p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200 shadow-xs hover:shadow-lg hover:border-[#DC2626]/40 transition-all flex flex-col justify-between"
+              className="group relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:shadow-xl hover:border-[#DC2626]/50 transition-all duration-300 flex flex-col justify-between overflow-hidden"
             >
-              <div className="space-y-2 sm:space-y-2.5">
+              {/* Relatable Sport Background Image with Elegant Overlay */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <img
+                  src={SPORT_IMAGES[sport.id]}
+                  alt={sport.name}
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108 opacity-25 group-hover:opacity-35"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-white/90" />
+                <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent" />
+              </div>
+
+              <div className="relative z-10 space-y-2 sm:space-y-2.5">
                 {/* Header */}
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-[#0F3D8C]">
                     {sport.category}
                   </span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-50 text-[#DC2626] border border-red-200">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-50/95 text-[#DC2626] border border-red-200/80 shadow-2xs backdrop-blur-xs">
                     {sport.badge}
                   </span>
                 </div>
@@ -75,25 +110,25 @@ export default function SportsGridSection() {
                 </p>
 
                 {/* Squad & Age */}
-                <div className="p-2 sm:p-2.5 rounded-lg bg-slate-50 border border-slate-100 space-y-1 text-[11px] text-slate-600 leading-relaxed">
+                <div className="p-2 sm:p-2.5 rounded-lg bg-slate-50/85 backdrop-blur-xs border border-slate-200/70 space-y-1 text-[11px] text-slate-700 leading-relaxed shadow-2xs">
                   <div>
-                    <span className="font-semibold text-slate-800">Squad:</span> {sport.squad}
+                    <span className="font-semibold text-slate-900">Squad:</span> {sport.squad}
                   </div>
                   <div>
-                    <span className="font-semibold text-slate-800">Age Rules:</span> {sport.ageCategories}
+                    <span className="font-semibold text-slate-900">Age Rules:</span> {sport.ageCategories}
                   </div>
                 </div>
 
                 {/* Highlight */}
-                <div className="flex items-start gap-1.5 text-[11px] text-slate-500">
+                <div className="flex items-start gap-1.5 text-[11px] text-slate-600 font-medium">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#0F3D8C] shrink-0 mt-0.5" />
                   <span className="leading-tight">{sport.highlight}</span>
                 </div>
               </div>
 
               {/* Bottom Schedule Pill */}
-              <div className="mt-2.5 pt-2 sm:pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                <span className="font-mono font-semibold text-slate-600">{sport.days}</span>
+              <div className="relative z-10 mt-2.5 pt-2 sm:pt-2.5 border-t border-slate-200/80 flex items-center justify-between text-[11px]">
+                <span className="font-mono font-semibold text-slate-700">{sport.days}</span>
                 <a
                   href="#register"
                   className="font-bold text-[#DC2626] hover:text-red-800 flex items-center gap-0.5"
