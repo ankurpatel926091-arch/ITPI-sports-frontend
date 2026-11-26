@@ -47,35 +47,35 @@ export default function SportsGridSection() {
         </div>
 
         {/* Minimal Sports Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 lg:gap-5">
           {filteredSports.map((sport) => (
             <div
               key={sport.id}
-              className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-xl hover:border-[#DC2626]/40 transition-all flex flex-col justify-between"
+              className="p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200 shadow-xs hover:shadow-lg hover:border-[#DC2626]/40 transition-all flex flex-col justify-between"
             >
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-2.5">
                 {/* Header */}
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-[#0F3D8C]">
                     {sport.category}
                   </span>
-                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-red-50 text-[#DC2626] border border-red-200">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-50 text-[#DC2626] border border-red-200">
                     {sport.badge}
                   </span>
                 </div>
 
                 {/* Name */}
-                <h3 className="text-xl font-bold text-slate-900">
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-tight">
                   {sport.name}
                 </h3>
 
                 {/* Format */}
-                <p className="text-xs text-[#DC2626] font-semibold">
+                <p className="text-xs text-[#DC2626] font-semibold leading-snug">
                   {sport.format}
                 </p>
 
                 {/* Squad & Age */}
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 space-y-1.5 text-[11px] text-slate-600">
+                <div className="p-2 sm:p-2.5 rounded-lg bg-slate-50 border border-slate-100 space-y-1 text-[11px] text-slate-600 leading-relaxed">
                   <div>
                     <span className="font-semibold text-slate-800">Squad:</span> {sport.squad}
                   </div>
@@ -85,14 +85,14 @@ export default function SportsGridSection() {
                 </div>
 
                 {/* Highlight */}
-                <div className="flex items-start gap-1.5 text-xs text-slate-500 pt-1">
+                <div className="flex items-start gap-1.5 text-[11px] text-slate-500">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#0F3D8C] shrink-0 mt-0.5" />
-                  <span>{sport.highlight}</span>
+                  <span className="leading-tight">{sport.highlight}</span>
                 </div>
               </div>
 
               {/* Bottom Schedule Pill */}
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+              <div className="mt-2.5 pt-2 sm:pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
                 <span className="font-mono font-semibold text-slate-600">{sport.days}</span>
                 <a
                   href="#register"
