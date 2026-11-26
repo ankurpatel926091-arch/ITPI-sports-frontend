@@ -32,7 +32,7 @@ export default function LeadershipMessagesSection() {
         </div>
 
         {/* 2 Clean Cards Side by Side */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
           {LEADERSHIP_MESSAGES.map((msg, idx) => {
             const isRed = idx === 0;
             const isExpanded = expanded[idx];
@@ -40,22 +40,22 @@ export default function LeadershipMessagesSection() {
             return (
               <div
                 key={idx}
-                className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between hover:shadow-xl transition-all"
+                className="p-4 sm:p-8 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between hover:shadow-xl transition-all"
               >
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   
                   {/* Top Badge & Quote Icon */}
                   <div className="flex items-center justify-between">
-                    <span className={`text-[11px] font-extrabold px-3 py-0.5 rounded-full border uppercase tracking-wider ${
+                    <span className={`text-[10px] sm:text-[11px] font-extrabold px-2.5 sm:px-3 py-0.5 rounded-full border uppercase tracking-wider ${
                       isRed ? 'bg-red-50 text-[#DC2626] border-red-200' : 'bg-blue-50 text-[#0F3D8C] border-blue-200'
                     }`}>
                       {msg.badge}
                     </span>
-                    <Quote className={`w-6 h-6 opacity-30 ${isRed ? 'text-[#DC2626]' : 'text-[#0F3D8C]'}`} />
+                    <Quote className={`w-5 h-5 sm:w-6 sm:h-6 opacity-30 ${isRed ? 'text-[#DC2626]' : 'text-[#0F3D8C]'}`} />
                   </div>
 
                   {/* Short Highlight Quote */}
-                  <p className="text-slate-800 text-sm sm:text-base leading-relaxed italic font-serif">
+                  <p className="text-slate-800 text-xs sm:text-base leading-relaxed italic font-serif">
                     "{msg.quote}"
                   </p>
 
@@ -68,7 +68,7 @@ export default function LeadershipMessagesSection() {
 
                   <button
                     onClick={() => toggleExpand(idx)}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-[#0F3D8C] hover:text-[#DC2626] transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold text-[#0F3D8C] hover:text-[#DC2626] transition-colors cursor-pointer"
                   >
                     <span>{isExpanded ? 'Show Less' : 'Read Full Note'}</span>
                     {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
@@ -77,19 +77,19 @@ export default function LeadershipMessagesSection() {
                 </div>
 
                 {/* Author Info */}
-                <div className="pt-6 mt-6 border-t border-slate-200 flex items-center justify-between">
+                <div className="pt-4 mt-4 sm:pt-6 sm:mt-6 border-t border-slate-200 flex items-center justify-between">
                   <div>
-                    <h4 className="text-base font-bold text-slate-900 font-serif">
+                    <h4 className="text-sm sm:text-base font-bold text-slate-900 font-serif">
                       {msg.name}
                     </h4>
-                    <p className="text-xs text-slate-500 font-medium">
+                    <p className="text-[11px] sm:text-xs text-slate-500 font-medium">
                       {msg.role}
                     </p>
                   </div>
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs ${
+                  <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs ${
                     isRed ? 'bg-red-100 text-[#DC2626]' : 'bg-blue-100 text-[#0F3D8C]'
                   }`}>
-                    <UserCheck className="w-5 h-5" />
+                    <UserCheck className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                 </div>
 

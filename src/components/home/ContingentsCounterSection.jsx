@@ -32,25 +32,25 @@ export default function ContingentsCounterSection() {
           </a>
         </div>
 
-        {/* 16 Chapters Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* 16 Chapters Grid (2 columns on mobile, 4 on desktop) */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
           {CONTINGENTS_LIST.map((state) => (
             <div
               key={state.id}
-              className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs hover:shadow-md hover:border-[#0F3D8C]/50 transition-all flex items-center justify-between"
+              className="p-2.5 sm:p-4 rounded-xl bg-white border border-slate-200 shadow-xs hover:shadow-md hover:border-[#0F3D8C]/50 transition-all flex items-center justify-between"
             >
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-[#0F3D8C] text-white flex items-center justify-center font-bold text-xs font-mono shrink-0 shadow-sm">
+              <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg bg-[#0F3D8C] text-white flex items-center justify-center font-bold text-[11px] sm:text-xs font-mono shrink-0 shadow-sm">
                   {state.id}
                 </div>
-                <div>
-                  <h4 className="text-xs font-bold text-slate-900 truncate max-w-[150px]">
+                <div className="min-w-0">
+                  <h4 className="text-[11px] sm:text-xs font-bold text-slate-900 truncate">
                     {state.name}
                   </h4>
-                  <p className="text-[10px] text-slate-500 font-mono">{state.code}</p>
+                  <p className="text-[9px] sm:text-[10px] text-slate-500 font-mono">{state.code}</p>
                 </div>
               </div>
-              <span className="text-[11px] font-bold text-[#DC2626] bg-red-50 px-2 py-0.5 rounded border border-red-200">
+              <span className="text-[9px] sm:text-[11px] font-bold text-[#DC2626] bg-red-50 px-1.5 sm:px-2 py-0.5 rounded border border-red-200 shrink-0 ml-1">
                 {state.athletes} Pls
               </span>
             </div>
@@ -58,23 +58,23 @@ export default function ContingentsCounterSection() {
         </div>
 
         {/* Chapter Manager Callout Box */}
-        <div className="mt-10 p-6 sm:p-8 rounded-2xl bg-white border-2 border-[#0F3D8C]/20 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4 text-center sm:text-left">
-            <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-200 text-[#0F3D8C] flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-6 h-6 text-[#DC2626]" />
+        <div className="mt-8 sm:mt-10 p-4 sm:p-8 rounded-xl sm:rounded-2xl bg-white border-2 border-[#0F3D8C]/20 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+          <div className="flex items-center gap-3 sm:gap-4 text-center sm:text-left">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-50 border border-blue-200 text-[#0F3D8C] flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-[#DC2626]" />
             </div>
             <div>
-              <h4 className="text-base font-bold text-slate-900">
+              <h4 className="text-sm sm:text-base font-bold text-slate-900">
                 Are you an ITPI Regional Chapter Secretary or Manager?
               </h4>
-              <p className="text-xs text-slate-600 mt-0.5">
+              <p className="text-[11px] sm:text-xs text-slate-600 mt-0.5">
                 Nominate your state sports delegation, submit participant athlete rosters and reserve chapter accommodation.
               </p>
             </div>
           </div>
           <a
             href="#register"
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-xs uppercase tracking-wider shrink-0 shadow-md transition"
+            className="w-full sm:w-auto text-center px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-xs uppercase tracking-wider shrink-0 shadow-md transition"
           >
             Submit Contingent Roster
           </a>

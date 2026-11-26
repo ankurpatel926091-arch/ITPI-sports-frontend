@@ -102,8 +102,9 @@ export default function Navbar() {
                     UP Chapter Host
                   </span>
                 </div>
-                <span className="text-[10px] sm:text-[11px] font-semibold text-slate-500 tracking-wider uppercase leading-none">
-                  Second National Sports Meet for Urban Planners of India
+                <span className="text-[9px] sm:text-[11px] font-semibold text-slate-500 tracking-wider uppercase leading-none truncate max-w-[210px] xs:max-w-xs sm:max-w-none">
+                  <span className="hidden sm:inline">Second National Sports Meet for Urban Planners of India</span>
+                  <span className="sm:hidden">2nd National Meet • Planners of India</span>
                 </span>
               </div>
             </a>

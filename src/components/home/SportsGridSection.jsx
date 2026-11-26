@@ -29,13 +29,13 @@ export default function SportsGridSection() {
             </p>
           </div>
 
-          {/* Filter Pills */}
-          <div className="flex items-center gap-2 bg-white p-1 rounded-xl border border-slate-200 shadow-xs self-start md:self-auto">
+          {/* Filter Pills (Scrollable on mobile) */}
+          <div className="flex items-center gap-1.5 sm:gap-2 bg-white p-1 rounded-xl border border-slate-200 shadow-xs w-full sm:w-auto overflow-x-auto">
             {['All', 'Formal Sports', 'Informal Events'].map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                className={`px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex-1 sm:flex-initial text-center ${
                   filter === cat
                     ? 'bg-[#0F3D8C] text-white shadow-xs'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
@@ -48,11 +48,11 @@ export default function SportsGridSection() {
         </div>
 
         {/* Minimal Sports Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredSports.map((sport) => (
             <div
               key={sport.id}
-              className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-xl hover:border-[#DC2626]/40 transition-all flex flex-col justify-between"
+              className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-xl hover:border-[#DC2626]/40 transition-all flex flex-col justify-between"
             >
               <div className="space-y-3">
                 {/* Header */}

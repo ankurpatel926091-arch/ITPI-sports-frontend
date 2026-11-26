@@ -38,10 +38,10 @@ export default function ExperienceLucknowSection() {
         </div>
 
         {/* 3 Photo Cards Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 mb-8 sm:mb-16">
           
           <div className="group rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-md hover:shadow-2xl transition-all">
-            <div className="h-60 sm:h-64 overflow-hidden bg-slate-100">
+            <div className="h-44 sm:h-64 overflow-hidden bg-slate-100">
               <img
                 src={kathakImg}
                 alt="Kathak Dance, Music & Awadhi Cuisine"
@@ -49,11 +49,11 @@ export default function ExperienceLucknowSection() {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               <span className="text-[10px] font-bold uppercase tracking-wider text-[#DC2626]">
                 Living Heritage
               </span>
-              <h4 className="text-lg font-bold text-slate-900 mt-1 mb-2">
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 mt-1 mb-1 sm:mb-2">
                 Kathak Dance, Music & Awadhi Dining
               </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
@@ -63,7 +63,7 @@ export default function ExperienceLucknowSection() {
           </div>
 
           <div className="group rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-md hover:shadow-2xl transition-all">
-            <div className="h-60 sm:h-64 overflow-hidden bg-slate-100">
+            <div className="h-44 sm:h-64 overflow-hidden bg-slate-100">
               <img
                 src={monumentsImg}
                 alt="Architectural Wonders - Rumi Darwaza and Clock Tower"
@@ -71,11 +71,11 @@ export default function ExperienceLucknowSection() {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               <span className="text-[10px] font-bold uppercase tracking-wider text-[#0F3D8C]">
                 Nawabi Grandeur
               </span>
-              <h4 className="text-lg font-bold text-slate-900 mt-1 mb-2">
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 mt-1 mb-1 sm:mb-2">
                 Architectural Magnificence
               </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
@@ -85,7 +85,7 @@ export default function ExperienceLucknowSection() {
           </div>
 
           <div className="group rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-md hover:shadow-2xl transition-all">
-            <div className="h-60 sm:h-64 overflow-hidden bg-slate-100">
+            <div className="h-44 sm:h-64 overflow-hidden bg-slate-100">
               <img
                 src={chikankariImg}
                 alt="Chikankari Craft and Living Culture"
@@ -93,11 +93,11 @@ export default function ExperienceLucknowSection() {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               <span className="text-[10px] font-bold uppercase tracking-wider text-[#DC2626]">
                 Craftsmanship
               </span>
-              <h4 className="text-lg font-bold text-slate-900 mt-1 mb-2">
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 mt-1 mb-1 sm:mb-2">
                 Chikankari & Living Culture
               </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
@@ -108,33 +108,33 @@ export default function ExperienceLucknowSection() {
 
         </div>
 
-        {/* 6 Icons Grid in Dual Theme */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 6 Icons Grid in Dual Theme (2 columns on mobile, 3 on desktop) */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6">
           {LUCKNOW_HIGHLIGHTS.map((item, idx) => {
             const IconComponent = iconMap[item.icon] || Landmark;
             const isRed = idx % 2 === 0;
             return (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-blue-300 hover:bg-white hover:shadow-lg transition-all flex items-start gap-4"
+                className="p-3 sm:p-6 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 hover:border-blue-300 hover:bg-white hover:shadow-lg transition-all flex flex-col sm:flex-row items-start gap-2.5 sm:gap-4"
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border ${
+                <div className={`w-9 h-9 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center shrink-0 border ${
                   isRed
                     ? 'bg-red-50 border-red-200 text-[#DC2626]'
                     : 'bg-blue-50 border-blue-200 text-[#0F3D8C]'
                 }`}>
-                  <IconComponent className="w-6 h-6" />
+                  <IconComponent className="w-4 h-4 sm:w-6 sm:h-6" />
                 </div>
                 <div>
-                  <span className={`text-[10px] font-bold uppercase tracking-wider block ${
+                  <span className={`text-[9px] sm:text-[10px] font-bold uppercase tracking-wider block ${
                     isRed ? 'text-[#DC2626]' : 'text-[#0F3D8C]'
                   }`}>
                     {item.tagline}
                   </span>
-                  <h4 className="text-base font-bold text-slate-900 mb-1">
+                  <h4 className="text-xs sm:text-base font-bold text-slate-900 mb-0.5 sm:mb-1">
                     {item.title}
                   </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed line-clamp-2 sm:line-clamp-none">
                     {item.desc}
                   </p>
                 </div>

@@ -54,50 +54,50 @@ export default function EventOverviewSection() {
         </div>
 
         {/* Key Event Metrics / Highlights Strip */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-blue-300 transition-all">
-            <span className="block text-2xl sm:text-3xl font-black text-[#0F3D8C] font-serif">16+</span>
-            <span className="text-xs font-bold text-slate-800">State Chapters</span>
-            <span className="block text-[11px] text-slate-500 mt-0.5">Across India</span>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 mb-6 sm:mb-8">
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-blue-300 transition-all">
+            <span className="block text-xl sm:text-3xl font-black text-[#0F3D8C] font-serif">16+</span>
+            <span className="text-[11px] sm:text-xs font-bold text-slate-800">State Chapters</span>
+            <span className="block text-[10px] text-slate-500 mt-0.5">Across India</span>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-red-300 transition-all">
-            <span className="block text-2xl sm:text-3xl font-black text-[#DC2626] font-serif">9</span>
-            <span className="text-xs font-bold text-slate-800">Sports & Games</span>
-            <span className="block text-[11px] text-slate-500 mt-0.5">Formal & Informal</span>
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-red-300 transition-all">
+            <span className="block text-xl sm:text-3xl font-black text-[#DC2626] font-serif">9</span>
+            <span className="text-[11px] sm:text-xs font-bold text-slate-800">Sports & Games</span>
+            <span className="block text-[10px] text-slate-500 mt-0.5">Formal & Informal</span>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-blue-300 transition-all">
-            <span className="block text-2xl sm:text-3xl font-black text-[#0F3D8C] font-serif">3 Days</span>
-            <span className="text-xs font-bold text-slate-800">Sports & Culture</span>
-            <span className="block text-[11px] text-slate-500 mt-0.5">8th – 10th Jan 2027</span>
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-blue-300 transition-all">
+            <span className="block text-xl sm:text-3xl font-black text-[#0F3D8C] font-serif">3 Days</span>
+            <span className="text-[11px] sm:text-xs font-bold text-slate-800">Sports & Culture</span>
+            <span className="block text-[10px] text-slate-500 mt-0.5">8th – 10th Jan 2027</span>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-red-300 transition-all">
-            <span className="block text-2xl sm:text-3xl font-black text-[#DC2626] font-serif">Pan-India</span>
-            <span className="text-xs font-bold text-slate-800">Town Planners</span>
-            <span className="block text-[11px] text-slate-500 mt-0.5">Fellowship & Unity</span>
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-red-300 transition-all">
+            <span className="block text-xl sm:text-3xl font-black text-[#DC2626] font-serif">Pan-India</span>
+            <span className="text-[11px] sm:text-xs font-bold text-slate-800">Town Planners</span>
+            <span className="block text-[10px] text-slate-500 mt-0.5">Fellowship & Unity</span>
           </div>
         </div>
 
         {/* 4 Clean Objectives Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {objectives.map((item, idx) => {
             const Icon = item.icon;
             const isRed = idx % 2 === 0;
             return (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-blue-300 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between"
+                className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 hover:border-blue-300 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between"
               >
-                <div className="space-y-3">
-                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center border ${
+                <div className="space-y-2.5 sm:space-y-3">
+                  <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl flex items-center justify-center border ${
                     isRed ? 'bg-red-50 border-red-200 text-[#DC2626]' : 'bg-blue-50 border-blue-200 text-[#0F3D8C]'
                   }`}>
-                    <Icon className="w-5 h-5" />
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
-                  <h3 className="text-base font-bold text-slate-900">{item.title}</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
+                  <h3 className="text-sm sm:text-base font-bold text-slate-900">{item.title}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed line-clamp-2 sm:line-clamp-none">{item.desc}</p>
                 </div>
               </div>
             );

@@ -20,7 +20,7 @@ export default function MascotPlanveerSection() {
           
           {/* Left Column: Mascot Visual Card */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-sm bg-white p-3 sm:p-4 rounded-2xl border-2 border-slate-200 shadow-xl group">
+            <div className="relative w-full max-w-[270px] sm:max-w-sm bg-white p-3 sm:p-4 rounded-2xl border-2 border-slate-200 shadow-xl group">
               <div className="relative rounded-xl overflow-hidden bg-slate-900">
                 <img
                   src={mascotPoster}
@@ -43,7 +43,7 @@ export default function MascotPlanveerSection() {
           </div>
 
           {/* Right Column: Clean, Minimal Concept Narrative */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6">
             
             <div className="space-y-2">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 border border-red-200 text-[#DC2626] text-xs font-bold uppercase tracking-widest">
@@ -52,7 +52,7 @@ export default function MascotPlanveerSection() {
               </div>
               
               <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 font-serif">
-                Meet “Planveer” <span className="text-base sm:text-xl font-normal text-slate-500 block sm:inline sm:ml-2">({mascot.title})</span>
+                Meet “Planveer” <span className="text-sm sm:text-xl font-normal text-slate-500 block sm:inline sm:ml-2">({mascot.title})</span>
               </h2>
 
               <div className="h-1.5 w-20 bg-gradient-to-r from-[#DC2626] to-[#0F3D8C] rounded-full" />
@@ -62,12 +62,13 @@ export default function MascotPlanveerSection() {
               The Peacock, India’s National Bird and a familiar presence across the cities and heritage landscapes of Uttar Pradesh, represents grace, diversity, and harmony with nature.
             </p>
 
-            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed text-justify">
+            {/* Supplementary description kept on tablets/desktop, concise on mobile */}
+            <p className="hidden sm:block text-slate-600 text-xs sm:text-sm leading-relaxed text-justify">
               <strong>Planveer</strong> celebrates the union of heritage, urban planning foresight, and athletic excellence. Its vibrant feathers symbolize unity across chapters, while its agile spirit carries the ITPI sports flame into Lucknow 2027.
             </p>
 
             {/* 3 Minimal Pillars */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 pt-1 sm:pt-2">
               {highlights.map((h, idx) => (
                 <div key={idx} className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-xs">
                   <h4 className="text-xs font-bold text-[#0F3D8C] mb-1">{h.label}</h4>

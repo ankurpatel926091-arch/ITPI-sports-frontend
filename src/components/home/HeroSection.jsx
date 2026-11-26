@@ -34,46 +34,47 @@ export default function HeroSection() {
       {/* ========================================================
           2. CENTERED HERO CONTENT (BALANCED CENTER & SPACIOUS GAPPING)
       ======================================================== */}
-      <div className="relative z-10 w-full max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 text-center flex-1 flex flex-col justify-center items-center py-6 sm:py-8 my-auto">
+      <div className="relative z-10 w-full max-w-[1300px] mx-auto px-3 sm:px-6 lg:px-8 text-center flex-1 flex flex-col justify-center items-center py-5 sm:py-8 my-auto">
         
         {/* Top Eyebrow Badge (Shifted slightly upwards) */}
-        <div className="relative -top-2.5 sm:-top-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/65 border border-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] mb-3.5 sm:mb-4 shadow-md">
+        <div className="relative -top-1 sm:-top-4 inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-black/65 border border-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold uppercase tracking-[0.14em] sm:tracking-[0.18em] mb-2.5 sm:mb-4 shadow-md max-w-full">
           <Sparkles className="w-3.5 h-3.5 text-[#DC2626] shrink-0" />
-          <span>Institute of Town Planners, India • UP Regional Chapter</span>
+          <span className="hidden sm:inline">Institute of Town Planners, India • UP Regional Chapter</span>
+          <span className="sm:hidden font-semibold">ITPI • UP Regional Chapter</span>
         </div>
 
         {/* Sub-label */}
-        <span className="block text-amber-300 font-extrabold tracking-[0.2em] uppercase text-[11px] sm:text-xs font-sans mb-4 sm:mb-5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+        <span className="block text-amber-300 font-extrabold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-[10px] sm:text-xs font-sans mb-3 sm:mb-5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
           SECOND ITPI NATIONAL SPORTS MEET 2027
         </span>
 
-        {/* Main Hero Headline (Enlarged & Well-Spaced) */}
-        <h1 className="font-serif tracking-tight leading-[1.18] text-white max-w-5xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
-          <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[60px] font-black sm:whitespace-nowrap">
+        {/* Main Hero Headline (Responsive & Well-Spaced) */}
+        <h1 className="font-serif tracking-tight leading-[1.18] text-white max-w-5xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] px-1">
+          <span className="block text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[60px] font-black sm:whitespace-nowrap">
             Uniting Urban Planners Across India,
           </span>
-          <span className="block mt-3 sm:mt-4 text-xl sm:text-2xl md:text-3xl lg:text-[36px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-amber-200 to-white sm:whitespace-nowrap drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+          <span className="block mt-2 sm:mt-4 text-base xs:text-lg sm:text-2xl md:text-3xl lg:text-[36px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-amber-200 to-white sm:whitespace-nowrap drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
             Celebrating Athletic Excellence & Heritage
           </span>
         </h1>
 
         {/* Date & Location Pill Tags */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/65 border border-white/30 backdrop-blur-md text-white text-xs font-semibold shadow-md">
-            <Calendar className="w-3.5 h-3.5 text-amber-400" />
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mt-4 sm:mt-8">
+          <div className="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black/65 border border-white/30 backdrop-blur-md text-white text-[11px] sm:text-xs font-semibold shadow-md">
+            <Calendar className="w-3.5 h-3.5 text-amber-400 shrink-0" />
             <span>8th – 10th January, 2027</span>
           </div>
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/65 border border-white/30 backdrop-blur-md text-white text-xs font-semibold shadow-md">
-            <MapPin className="w-3.5 h-3.5 text-[#DC2626]" />
+          <div className="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-black/65 border border-white/30 backdrop-blur-md text-white text-[11px] sm:text-xs font-semibold shadow-md">
+            <MapPin className="w-3.5 h-3.5 text-[#DC2626] shrink-0" />
             <span>Lucknow, Uttar Pradesh</span>
           </div>
         </div>
 
         {/* Action CTA Buttons */}
-        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full sm:w-auto">
+        <div className="mt-5 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 w-full sm:w-auto px-4 sm:px-0">
           <a
             href="#register"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 sm:px-9 py-3.5 sm:py-4 rounded-full shadow-2xl shadow-black/80 hover:shadow-red-600/50 hover:-translate-y-0.5 transition-all"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 sm:px-9 py-3 sm:py-4 rounded-full shadow-2xl shadow-black/80 hover:shadow-red-600/50 hover:-translate-y-0.5 transition-all text-center"
           >
             <span>Register State Contingent</span>
             <ArrowRight className="w-4 h-4" />
@@ -81,7 +82,7 @@ export default function HeroSection() {
 
           <a
             href="#invitation"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-black/65 hover:bg-white hover:text-neutral-950 text-white border border-white/40 hover:border-white font-bold text-xs sm:text-sm uppercase tracking-wider px-8 sm:px-9 py-3.5 sm:py-4 rounded-full backdrop-blur-md shadow-2xl shadow-black/80 hover:-translate-y-0.5 transition-all"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-black/65 hover:bg-white hover:text-neutral-950 text-white border border-white/40 hover:border-white font-bold text-xs sm:text-sm uppercase tracking-wider px-6 sm:px-9 py-3 sm:py-4 rounded-full backdrop-blur-md shadow-2xl shadow-black/80 hover:-translate-y-0.5 transition-all text-center"
           >
             <FileText className="w-4 h-4 text-amber-300" />
             <span>Official Invitation</span>

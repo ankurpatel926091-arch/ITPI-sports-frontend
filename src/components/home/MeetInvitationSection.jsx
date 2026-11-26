@@ -23,7 +23,7 @@ export default function MeetInvitationSection() {
   }, []);
 
   return (
-    <section id="invitation" className="bg-white text-slate-900 py-16 sm:py-20 lg:py-24 border-b border-slate-200 relative overflow-hidden">
+    <section id="invitation" className="bg-white text-slate-900 py-10 sm:py-16 lg:py-20 border-b border-slate-200 relative overflow-hidden">
       {/* Background Soft Glows (Red & Blue) */}
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#DC2626]/5 blur-[150px] pointer-events-none rounded-full" />
       <div className="absolute bottom-10 left-0 w-[450px] h-[450px] bg-[#0F3D8C]/5 blur-[140px] pointer-events-none rounded-full" />
@@ -31,18 +31,18 @@ export default function MeetInvitationSection() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14 relative z-10">
         
         {/* Section Eyebrow */}
-        <div className="mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0F3D8C] text-xs font-bold uppercase tracking-widest">
+        <div className="mb-6 sm:mb-8 text-center sm:text-left">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0F3D8C] text-[11px] sm:text-xs font-bold uppercase tracking-widest">
             <Sparkles className="w-3.5 h-3.5 text-[#DC2626]" />
             Official Notification & Invitation Letter
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
           
           {/* LEFT COLUMN: OFFICIAL INVITATION LETTER CARD */}
           <div className="lg:col-span-5 flex flex-col items-center">
-            <div className="relative w-full max-w-md bg-white p-3 sm:p-4 border-2 border-slate-200 shadow-2xl rounded-2xl group">
+            <div className="relative w-full max-w-[320px] sm:max-w-md bg-white p-2.5 sm:p-4 border-2 border-slate-200 shadow-xl rounded-2xl group">
               
               {/* Image Frame */}
               <div className="relative rounded-xl overflow-hidden bg-slate-950 border border-slate-200">
@@ -53,23 +53,23 @@ export default function MeetInvitationSection() {
                 />
                 
                 {/* Event Tag Overlay */}
-                <div className="absolute top-3 left-3 bg-[#0F3D8C]/90 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[11px] font-bold tracking-wider uppercase">
+                <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 bg-[#0F3D8C]/90 backdrop-blur-md px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-white/20 text-white text-[10px] sm:text-[11px] font-bold tracking-wider uppercase">
                   Official Letterhead
                 </div>
               </div>
 
               {/* Action Buttons Under Letter */}
-              <div className="mt-4 flex gap-3">
+              <div className="mt-3 sm:mt-4 flex gap-2.5 sm:gap-3">
                 <button
                   onClick={() => window.print()}
-                  className="flex-1 flex items-center justify-center gap-1.5 text-center bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs uppercase tracking-wider py-3 rounded-lg border border-slate-300 transition"
+                  className="flex-1 flex items-center justify-center gap-1.5 text-center bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs uppercase tracking-wider py-2.5 sm:py-3 rounded-lg border border-slate-300 transition"
                 >
-                  <Printer className="w-4 h-4 text-[#0F3D8C]" />
+                  <Printer className="w-3.5 h-3.5 text-[#0F3D8C]" />
                   <span>Print Letter</span>
                 </button>
                 <a
                   href="#register"
-                  className="flex-1 text-center bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-xs uppercase tracking-wider py-3 rounded-lg shadow-md transition"
+                  className="flex-1 text-center bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-xs uppercase tracking-wider py-2.5 sm:py-3 rounded-lg shadow-md transition"
                 >
                   Nominate Team
                 </a>
@@ -78,24 +78,24 @@ export default function MeetInvitationSection() {
           </div>
 
           {/* RIGHT COLUMN: OFFICIAL INVITATION NARRATIVE & HIGHLIGHTS */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6">
             
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight font-serif">
                 Invitation to State Contingents
               </h2>
               {/* Dual Red & Blue Accent Bar */}
               <div className="h-1.5 w-24 bg-gradient-to-r from-[#DC2626] to-[#0F3D8C] rounded-full" />
-              <h3 className="text-lg sm:text-xl font-bold text-[#0F3D8C]">
+              <h3 className="text-base sm:text-xl font-bold text-[#0F3D8C]">
                 Institute of Town Planners, India – Uttar Pradesh Regional Chapter
               </h3>
             </div>
 
-            <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-left sm:text-justify">
-              The <strong className="text-slate-900">Institute of Town Planners, India – Uttar Pradesh Chapter</strong> is pleased to invite state contingents from across India to the <strong className="text-[#DC2626]">National Sports Meet for Urban Planners of India</strong>, scheduled from <span className="bg-red-50 text-[#DC2626] font-bold px-2 py-0.5 rounded border border-red-200">8th to 10th January 2027</span> in Lucknow, Uttar Pradesh. Approximately <span className="font-bold text-slate-900">16 state contingents</span> are expected to participate.
+            <p className="text-slate-700 text-xs sm:text-base leading-relaxed text-left sm:text-justify">
+              The <strong className="text-slate-900">Institute of Town Planners, India – Uttar Pradesh Chapter</strong> is pleased to invite state contingents from across India to the <strong className="text-[#DC2626]">National Sports Meet for Urban Planners of India</strong>, scheduled from <span className="bg-red-50 text-[#DC2626] font-bold px-1.5 py-0.5 rounded border border-red-200">8th to 10th January 2027</span> in Lucknow, Uttar Pradesh. Approximately <span className="font-bold text-slate-900">16 state contingents</span> are expected to participate.
             </p>
 
-            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed text-left sm:text-justify">
+            <p className="hidden sm:block text-slate-600 text-xs sm:text-sm leading-relaxed text-left sm:text-justify">
               The meet is intended to strengthen professional fellowship, encourage fitness, nurture sporting talent and create meaningful connections among planners beyond the workplace. Lucknow, popularly known as the City of Nawabs, is a beautiful blend of rich cultural heritage, architectural magnificence, refined traditions, and modern urban development.
             </p>
 

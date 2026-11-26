@@ -40,48 +40,48 @@ export default function ChampionshipGuidelinesSection() {
           {/* Left Column: Fees & Guidelines */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Fee Cards Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#0F3D8C]">
-                  Event Registration Fee
+            {/* Fee Cards Row (Side-by-side on mobile) */}
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
+              <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs space-y-1.5 sm:space-y-2">
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#0F3D8C]">
+                  Registration Fee
                 </span>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-2xl sm:text-3xl font-black text-slate-900 font-serif">
+                <div className="flex items-baseline gap-1 sm:gap-2">
+                  <span className="text-xl sm:text-3xl font-black text-slate-900 font-serif">
                     {fees.registrationPerPerson}
                   </span>
-                  <span className="text-xs text-slate-500">/ person</span>
+                  <span className="text-[10px] sm:text-xs text-slate-500">/ person</span>
                 </div>
-                <p className="text-[11px] text-slate-500 font-medium">
-                  {fees.registrationBreakdown} (playing/non-playing members)
+                <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium line-clamp-1 sm:line-clamp-none">
+                  {fees.registrationBreakdown}
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#DC2626]">
-                  Hotel Accommodation
+              <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs space-y-1.5 sm:space-y-2">
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#DC2626]">
+                  Hotel Stay
                 </span>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-2xl sm:text-3xl font-black text-slate-900 font-serif">
+                <div className="flex items-baseline gap-1 sm:gap-2">
+                  <span className="text-xl sm:text-3xl font-black text-slate-900 font-serif">
                     {fees.hotelAccommodation}
                   </span>
-                  <span className="text-xs text-slate-500">/ person / day</span>
+                  <span className="text-[10px] sm:text-xs text-slate-500">/ day</span>
                 </div>
-                <p className="text-[11px] text-slate-500 font-medium">
+                <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium line-clamp-1 sm:line-clamp-none">
                   {fees.hotelTerms}
                 </p>
               </div>
             </div>
 
             {/* Key Guidelines Bullet Points */}
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+            <div className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2.5 sm:space-y-3">
+              <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-900">
                 Key Participation Terms
               </h4>
-              <ul className="space-y-2.5 text-xs text-slate-600">
+              <ul className="space-y-2 text-xs text-slate-600">
                 {keyRules.map((rule, rIdx) => (
                   <li key={rIdx} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#0F3D8C] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0F3D8C] shrink-0 mt-0.5" />
                     <span className="leading-relaxed">{rule}</span>
                   </li>
                 ))}
@@ -91,7 +91,7 @@ export default function ChampionshipGuidelinesSection() {
           </div>
 
           {/* Right Column: Bank of Baroda Account Details (Page 36 of PDF) */}
-          <div className="lg:col-span-5 rounded-2xl bg-[#081A3A] text-white p-6 sm:p-7 space-y-4 border-2 border-blue-900 shadow-xl">
+          <div className="lg:col-span-5 rounded-xl sm:rounded-2xl bg-[#081A3A] text-white p-4 sm:p-7 space-y-3.5 sm:space-y-4 border-2 border-blue-900 shadow-xl">
             
             <div className="flex items-center gap-3 pb-3 border-b border-blue-900/80">
               <div className="w-10 h-10 rounded-xl bg-blue-600/30 border border-blue-400/30 flex items-center justify-center text-amber-300">

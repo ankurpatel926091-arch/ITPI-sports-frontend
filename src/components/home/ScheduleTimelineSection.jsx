@@ -30,13 +30,13 @@ export default function ScheduleTimelineSection() {
         </div>
 
         {/* 3 Day Minimal Selector Tabs */}
-        <div className="flex justify-center mb-8">
-          <div className="inline-flex p-1.5 rounded-xl bg-slate-100 border border-slate-200">
+        <div className="flex justify-center mb-6 sm:mb-8">
+          <div className="grid grid-cols-3 w-full max-w-md sm:w-auto sm:inline-flex p-1 sm:p-1.5 rounded-xl bg-slate-100 border border-slate-200 gap-1">
             {THREE_DAY_PROGRAM.map((item, idx) => (
               <button
                 key={idx}
                 onClick={() => setActiveDay(idx)}
-                className={`px-4 sm:px-6 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
+                className={`px-2.5 sm:px-6 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 text-center ${
                   activeDay === idx
                     ? 'bg-[#0F3D8C] text-white shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
@@ -50,7 +50,7 @@ export default function ScheduleTimelineSection() {
         </div>
 
         {/* Active Day Content (Clean minimal grid) */}
-        <div className="max-w-4xl mx-auto rounded-2xl bg-slate-50 border border-slate-200 p-6 sm:p-8 shadow-xs">
+        <div className="max-w-4xl mx-auto rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 p-4 sm:p-8 shadow-xs">
           
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-6 border-b border-slate-200">
             <div>
