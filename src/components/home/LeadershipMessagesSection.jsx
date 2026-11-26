@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Quote, Sparkles, ChevronDown, ChevronUp, UserCheck } from 'lucide-react';
+import { Quote, ChevronDown, ChevronUp, UserCheck } from 'lucide-react';
 import { LEADERSHIP_MESSAGES } from '../../data/eventData';
 
 export default function LeadershipMessagesSection() {
@@ -29,8 +29,7 @@ export default function LeadershipMessagesSection() {
 
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center space-y-3 mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#0F3D8C] text-[11px] font-bold uppercase tracking-widest shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#DC2626]" />
+          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#0F3D8C] text-[11px] font-bold uppercase tracking-widest shadow-sm">
             <span>Leadership Desk</span>
           </div>
 

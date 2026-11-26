@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CONTINGENTS_LIST, SPORTS_LIST } from '../data/eventData';
-import { UserCheck, ShieldCheck, Trophy, CheckCircle, ArrowRight, Sparkles } from 'lucide-react';
+import { UserCheck, ShieldCheck, Trophy, CheckCircle, ArrowRight } from 'lucide-react';
 
 export default function RegistrationPage() {
   const [regType, setRegType] = useState('chapter'); // 'chapter' or 'individual'

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CreditCard, Building2, CheckCircle2, ShieldCheck, Mail, Sparkles } from 'lucide-react';
+import { CreditCard, Building2, CheckCircle2, ShieldCheck, Mail } from 'lucide-react';
 import { EVENT_DETAILS } from '../../data/eventData';
 
 export default function ChampionshipGuidelinesSection() {
@@ -19,8 +19,7 @@ export default function ChampionshipGuidelinesSection() {
         
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center space-y-2.5 mb-8">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-[#DC2626] text-xs font-bold uppercase tracking-widest">
-            <Sparkles className="w-3.5 h-3.5 text-[#0F3D8C]" />
+          <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-red-50 border border-red-200 text-[#DC2626] text-xs font-bold uppercase tracking-widest">
             <span>Championship Guidelines & Fees</span>
           </div>
 

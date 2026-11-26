@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, MapPin, Download, ArrowRight, Sparkles, CheckCircle2, FileText, Printer } from 'lucide-react';
+import { Calendar, MapPin, Download, ArrowRight, CheckCircle2, FileText, Printer } from 'lucide-react';
 import invitationLetterImg from '../../assets/images/invitation_letter.jpg';
 
 export default function MeetInvitationSection() {
@@ -32,8 +32,7 @@ export default function MeetInvitationSection() {
         
         {/* Section Eyebrow */}
         <div className="mb-6 sm:mb-8 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0F3D8C] text-[11px] sm:text-xs font-bold uppercase tracking-widest">
-            <Sparkles className="w-3.5 h-3.5 text-[#DC2626]" />
+          <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0F3D8C] text-[11px] sm:text-xs font-bold uppercase tracking-widest">
             Official Notification & Invitation Letter
           </div>
         </div>

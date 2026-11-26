@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Target, Users, HeartHandshake, ShieldCheck, Sparkles, Building2 } from 'lucide-react';
+import { Target, Users, HeartHandshake, ShieldCheck, Building2 } from 'lucide-react';
 
 export default function AboutMeetSection() {
   return (
@@ -9,8 +9,7 @@ export default function AboutMeetSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold uppercase tracking-wider">
             National Conclave of Sports & Fellowship
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">

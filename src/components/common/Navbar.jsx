@@ -8,7 +8,6 @@ import {
   FileText,
   Menu,
   X,
-  Sparkles,
 } from 'lucide-react';
 
 export default function Navbar() {
@@ -154,8 +153,7 @@ export default function Navbar() {
             </nav>
 
             <div className="hidden lg:flex items-center gap-3 py-1.5 text-xs">
-              <span className="text-amber-300 font-bold font-mono flex items-center gap-1.5 text-[11px]">
-                <Sparkles className="w-3.5 h-3.5 text-red-400" />
+              <span className="text-amber-300 font-bold font-mono flex items-center text-[11px]">
                 16 State Contingents
               </span>
             </div>

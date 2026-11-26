@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CONTINGENTS_LIST, SPORTS_LIST } from '../../data/eventData';
-import { UserCheck, ShieldCheck, Trophy, CheckCircle, ArrowRight, Sparkles, Shirt, Building, Users } from 'lucide-react';
+import { UserCheck, ShieldCheck, Trophy, CheckCircle, ArrowRight, Shirt, Building, Users } from 'lucide-react';
 
 export default function RegistrationSection() {
   const [regType, setRegType] = useState('chapter'); // 'chapter' or 'individual'
@@ -72,8 +72,7 @@ export default function RegistrationSection() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-2.5">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 border border-red-200 text-[#DC2626] text-xs font-bold uppercase tracking-widest">
-            <Sparkles className="w-3.5 h-3.5 text-[#0F3D8C]" />
+          <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-red-100 border border-red-200 text-[#DC2626] text-xs font-bold uppercase tracking-widest">
             Official Registration Portal
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Clock, Sparkles } from 'lucide-react';
+import { Calendar, Clock } from 'lucide-react';
 import { THREE_DAY_PROGRAM } from '../../data/eventData';
 
 export default function ScheduleTimelineSection() {
@@ -13,8 +13,7 @@ export default function ScheduleTimelineSection() {
         
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center space-y-2.5 mb-8">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0F3D8C] text-xs font-bold uppercase tracking-widest">
-            <Sparkles className="w-3.5 h-3.5 text-[#DC2626]" />
+          <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0F3D8C] text-xs font-bold uppercase tracking-widest">
             <span>Itinerary</span>
           </div>
 

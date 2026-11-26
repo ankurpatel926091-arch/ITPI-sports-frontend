@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Compass, Flame, Shield, Award, Quote } from 'lucide-react';
+import { Compass, Flame, Shield, Award, Quote } from 'lucide-react';
 import { EVENT_DETAILS } from '../../data/eventData';
 import mascotPoster from '../../assets/images/poster_mascot.jpg';
 
@@ -79,8 +79,7 @@ export default function MascotPlanveerSection() {
           <div className="lg:col-span-7 space-y-5 sm:space-y-7">
 
             <div className="space-y-3">
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-red-100/80 border border-red-200 text-[#DC2626] text-[11px] font-bold uppercase tracking-widest shadow-sm">
-                <Sparkles className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-red-100/80 border border-red-200 text-[#DC2626] text-[11px] font-bold uppercase tracking-widest shadow-sm">
                 <span>Meet The Mascot</span>
               </div>
 

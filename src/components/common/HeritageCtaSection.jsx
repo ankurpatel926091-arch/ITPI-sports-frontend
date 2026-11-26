@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function HeritageCtaSection() {
   return (
@@ -15,8 +15,7 @@ export default function HeritageCtaSection() {
           <div className="relative z-10 max-w-4xl mx-auto space-y-2.5">
             
             {/* Top Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/80 border border-blue-400/40 text-blue-200 text-[11px] font-bold uppercase tracking-wider shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-[#DC2626]" />
+            <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-blue-950/80 border border-blue-400/40 text-blue-200 text-[11px] font-bold uppercase tracking-wider shadow-xs">
               <span>ITPI Fraternity • Est. 1951</span>
             </div>
 

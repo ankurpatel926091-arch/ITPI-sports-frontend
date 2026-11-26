@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Sparkles, Calendar, MapPin, FileText } from 'lucide-react';
+import { ArrowRight, Calendar, MapPin, FileText } from 'lucide-react';
 import heroBg from '../../assets/images/Hero_background.png';
 
 export default function HeroSection() {
@@ -37,8 +37,7 @@ export default function HeroSection() {
       <div className="relative z-10 w-full max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 text-center flex-1 flex flex-col justify-center items-center py-6 sm:py-8 my-auto">
         
         {/* Top Eyebrow Badge (Comfortable Gapping) */}
-        <div className="relative -top-1 sm:-top-3 inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-full bg-black/60 border border-white/25 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold uppercase tracking-[0.14em] sm:tracking-[0.18em] mb-3 sm:mb-4 shadow-md max-w-full">
-          <Sparkles className="w-3.5 h-3.5 text-[#DC2626] shrink-0" />
+        <div className="relative -top-1 sm:-top-3 inline-flex items-center px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-full bg-black/60 border border-white/25 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold uppercase tracking-[0.14em] sm:tracking-[0.18em] mb-3 sm:mb-4 shadow-md max-w-full">
           <span className="hidden sm:inline">Institute of Town Planners, India • UP Regional Chapter</span>
           <span className="sm:hidden font-semibold">ITPI • UP Regional Chapter</span>
         </div>

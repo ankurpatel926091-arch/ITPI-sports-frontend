@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Trophy, Users, Heart, Target, ArrowRight, FileText } from 'lucide-react';
+import { Trophy, Users, Heart, Target, ArrowRight, FileText } from 'lucide-react';
 import { EVENT_DETAILS } from '../../data/eventData';
 
 export default function EventOverviewSection() {
@@ -32,8 +32,7 @@ export default function EventOverviewSection() {
         
         {/* Top Header */}
         <div className="max-w-3xl mx-auto text-center space-y-2.5 mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0F3D8C] text-xs font-bold uppercase tracking-widest">
-            <Sparkles className="w-3.5 h-3.5 text-[#DC2626]" />
+          <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0F3D8C] text-xs font-bold uppercase tracking-widest">
             <span>Event at a Glance</span>
           </div>
 
