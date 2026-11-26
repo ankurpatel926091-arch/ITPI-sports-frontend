@@ -319,10 +319,10 @@ export default function RegistrationSection() {
                       {SPORTS_LIST.map((sport) => {
                         const isChecked = chapterForm.selectedSports.includes(sport.id);
                         return (
-                          <label
+                          <div
                             key={sport.id}
                             onClick={() => toggleSport(sport.id)}
-                            className={`p-3.5 rounded-xl border text-xs font-semibold cursor-pointer transition-all flex items-center justify-between ${
+                            className={`p-3.5 rounded-xl border text-xs font-semibold cursor-pointer select-none transition-all flex items-center justify-between ${
                               isChecked
                                 ? 'bg-blue-50 border-[#0F3D8C] text-[#0F3D8C] shadow-xs'
                                 : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
@@ -332,10 +332,10 @@ export default function RegistrationSection() {
                             <input
                               type="checkbox"
                               checked={isChecked}
-                              onChange={() => {}}
-                              className="rounded text-[#0F3D8C] focus:ring-0 shrink-0"
+                              readOnly
+                              className="rounded text-[#0F3D8C] focus:ring-0 shrink-0 pointer-events-none"
                             />
-                          </label>
+                          </div>
                         );
                       })}
                     </div>
@@ -553,10 +553,10 @@ export default function RegistrationSection() {
                         {SPORTS_LIST.map((sport) => {
                           const isChecked = individualForm.selectedSports.includes(sport.id);
                           return (
-                            <label
+                            <div
                               key={sport.id}
                               onClick={() => toggleSport(sport.id)}
-                              className={`p-3.5 rounded-xl border text-xs font-semibold cursor-pointer transition-all flex items-center justify-between ${
+                              className={`p-3.5 rounded-xl border text-xs font-semibold cursor-pointer select-none transition-all flex items-center justify-between ${
                                 isChecked
                                   ? 'bg-red-50 border-[#DC2626] text-[#DC2626] shadow-xs'
                                   : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
@@ -566,10 +566,10 @@ export default function RegistrationSection() {
                               <input
                                 type="checkbox"
                                 checked={isChecked}
-                                onChange={() => {}}
-                                className="rounded text-[#DC2626] focus:ring-0 shrink-0"
+                                readOnly
+                                className="rounded text-[#DC2626] focus:ring-0 shrink-0 pointer-events-none"
                               />
-                            </label>
+                            </div>
                           );
                         })}
                       </div>
