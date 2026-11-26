@@ -1,5 +1,6 @@
 import React from 'react';
 import { Trophy, Mail, Phone, MapPin, Calendar, Heart, ArrowRight } from 'lucide-react';
+import codeCrafterLogo from '../../assets/images/CodeCrafterLogo.png';
 
 export default function Footer() {
   return (
@@ -113,19 +114,25 @@ export default function Footer() {
       </div>
 
       {/* ========================================================
-          BOTTOM COPYRIGHT BAR
+          BOTTOM COPYRIGHT & CREDITS BAR
       ======================================================== */}
       <div className="border-t border-blue-900/80 bg-[#051024] py-5 text-sm text-slate-400">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
           <p className="text-center md:text-left">
             &copy; 2027 <strong>Institute of Town Planners, India (ITPI UP Chapter)</strong>. All Rights Reserved.
           </p>
 
-          <p className="flex items-center gap-1.5 text-slate-300 text-center">
-            <span>Hosted with</span>
-            <Heart className="w-4 h-4 text-[#DC2626] fill-[#DC2626] inline" />
-            <span>in Lucknow, Uttar Pradesh</span>
-          </p>
+          {/* Designed and Developed by CodeCrafter */}
+          <div className="flex items-center gap-2 text-slate-300">
+            <span className="text-xs text-slate-300 font-medium">
+              Designed &amp; Developed by
+            </span>
+            <img
+              src={codeCrafterLogo}
+              alt="CodeCrafter Web Solutions"
+              className="h-6 sm:h-7 w-auto object-contain hover:brightness-110 transition-all inline-block"
+            />
+          </div>
 
           <div className="flex items-center gap-3 text-xs text-blue-200">
             <a href="#invitation" className="hover:text-white transition-colors">Invitation</a>
