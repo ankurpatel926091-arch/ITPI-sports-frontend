@@ -15,10 +15,10 @@ export default function HeroSection() {
 
   return (
     <>
-      <div className="relative w-full flex flex-col justify-center overflow-hidden bg-[#081A3A] text-white lg:h-[calc(100vh-138px)] min-h-[490px] sm:min-h-[560px]">
+      <div className="relative w-full flex flex-col justify-center overflow-hidden bg-[#081A3A] text-white lg:h-[calc(100vh-138px)] min-h-[540px] sm:min-h-[560px]">
       
       {/* ========================================================
-          1. HERO BACKGROUND IMAGE & RESPONSIVE VIGNETTE OVERLAY
+          1. HERO BACKGROUND IMAGE & VIGNETTE (BRIGHT & CLEAR)
       ======================================================== */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -28,46 +28,46 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Balanced dark overlay on mobile for pristine text contrast over mascot */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/45 to-black/75 sm:from-black/55 sm:via-black/15 sm:to-transparent pointer-events-none" />
+      {/* Subtle top shade only for navbar contrast - background remains 100% bright & vibrant */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/20 pointer-events-none" />
 
       {/* ========================================================
-          2. CENTERED HERO CONTENT (PROPORTIONATE & CRISP ON PHONE)
+          2. CENTERED HERO CONTENT (SPACIOUS GAPPING ON MOBILE)
       ======================================================== */}
-      <div className="relative z-10 w-full max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 text-center flex-1 flex flex-col justify-center items-center py-4 sm:py-8 my-auto">
+      <div className="relative z-10 w-full max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 text-center flex-1 flex flex-col justify-center items-center py-6 sm:py-8 my-auto">
         
-        {/* Top Eyebrow Badge */}
-        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-0.5 sm:py-1.5 rounded-full bg-black/75 border border-white/20 backdrop-blur-md text-white text-[9px] sm:text-xs font-bold uppercase tracking-[0.12em] sm:tracking-[0.18em] mb-1.5 sm:mb-4 shadow-md max-w-full">
-          <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#DC2626] shrink-0" />
+        {/* Top Eyebrow Badge (Comfortable Gapping) */}
+        <div className="relative -top-1 sm:-top-3 inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-full bg-black/60 border border-white/25 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold uppercase tracking-[0.14em] sm:tracking-[0.18em] mb-3 sm:mb-4 shadow-md max-w-full">
+          <Sparkles className="w-3.5 h-3.5 text-[#DC2626] shrink-0" />
           <span className="hidden sm:inline">Institute of Town Planners, India • UP Regional Chapter</span>
           <span className="sm:hidden font-semibold">ITPI • UP Regional Chapter</span>
         </div>
 
         {/* Sub-label */}
-        <span className="block text-amber-300 font-extrabold tracking-[0.14em] sm:tracking-[0.2em] uppercase text-[9px] sm:text-xs font-sans mb-2 sm:mb-5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+        <span className="block text-amber-300 font-extrabold tracking-[0.16em] sm:tracking-[0.2em] uppercase text-[10px] sm:text-xs font-sans mb-3.5 sm:mb-5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
           SECOND ITPI NATIONAL SPORTS MEET 2027
         </span>
 
-        {/* Main Hero Headline */}
-        <h1 className="font-serif tracking-tight leading-[1.16] sm:leading-[1.18] text-white max-w-5xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] px-1">
-          <span className="block text-xl xs:text-2xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[60px] font-black sm:whitespace-nowrap">
+        {/* Main Hero Headline (Spacious Line Gap) */}
+        <h1 className="font-serif tracking-tight leading-[1.2] sm:leading-[1.18] text-white max-w-5xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] px-1">
+          <span className="block text-[22px] xs:text-2xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[60px] font-black sm:whitespace-nowrap">
             Uniting Urban Planners Across India,
           </span>
-          <span className="block mt-1 sm:mt-4 text-sm xs:text-base sm:text-2xl md:text-3xl lg:text-[36px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-200 to-amber-100 sm:whitespace-nowrap drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+          <span className="block mt-2.5 sm:mt-4 text-base xs:text-lg sm:text-2xl md:text-3xl lg:text-[36px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-200 to-amber-100 sm:whitespace-nowrap drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
             Celebrating Athletic Excellence & Heritage
           </span>
         </h1>
 
-        {/* Date & Location: Compact combined pill on phone, separate on desktop */}
-        <div className="mt-3 sm:mt-8">
+        {/* Date & Location: Clean gapping */}
+        <div className="mt-5 sm:mt-8">
           {/* Mobile Single Combined Pill */}
-          <div className="sm:hidden inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/75 border border-white/30 backdrop-blur-md text-white text-[11px] font-medium shadow-md">
-            <div className="flex items-center gap-1">
+          <div className="sm:hidden inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/60 border border-white/30 backdrop-blur-md text-white text-[11px] font-medium shadow-md">
+            <div className="flex items-center gap-1.5">
               <Calendar className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               <span>8th–10th Jan 2027</span>
             </div>
             <span className="text-white/40">•</span>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-[#DC2626] shrink-0" />
               <span>Lucknow, UP</span>
             </div>
@@ -75,19 +75,19 @@ export default function HeroSection() {
 
           {/* Desktop Dual Separate Pills */}
           <div className="hidden sm:flex flex-wrap items-center justify-center gap-4">
-            <div className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/65 border border-white/30 backdrop-blur-md text-white text-xs font-semibold shadow-md">
+            <div className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/60 border border-white/30 backdrop-blur-md text-white text-xs font-semibold shadow-md">
               <Calendar className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               <span>8th – 10th January, 2027</span>
             </div>
-            <div className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/65 border border-white/30 backdrop-blur-md text-white text-xs font-semibold shadow-md">
+            <div className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/60 border border-white/30 backdrop-blur-md text-white text-xs font-semibold shadow-md">
               <MapPin className="w-3.5 h-3.5 text-[#DC2626] shrink-0" />
               <span>Lucknow, Uttar Pradesh</span>
             </div>
           </div>
         </div>
 
-        {/* Action CTA Buttons (Sleek on mobile, spacious on desktop) */}
-        <div className="mt-4 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-5 w-full max-w-[280px] sm:max-w-none px-2 sm:px-0">
+        {/* Action CTA Buttons (Spacious Gapping) */}
+        <div className="mt-5 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-5 w-full max-w-[280px] sm:max-w-none px-2 sm:px-0">
           <a
             href="#register"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-5 sm:px-9 py-2.5 sm:py-4 rounded-full shadow-xl shadow-black/80 hover:shadow-red-600/50 hover:-translate-y-0.5 transition-all text-center"
@@ -98,7 +98,7 @@ export default function HeroSection() {
 
           <a
             href="#invitation"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-black/75 hover:bg-white hover:text-neutral-950 text-white border border-white/40 hover:border-white font-bold text-xs sm:text-sm uppercase tracking-wider px-5 sm:px-9 py-2.5 sm:py-4 rounded-full backdrop-blur-md shadow-xl shadow-black/80 hover:-translate-y-0.5 transition-all text-center"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-black/60 hover:bg-white hover:text-neutral-950 text-white border border-white/40 hover:border-white font-bold text-xs sm:text-sm uppercase tracking-wider px-5 sm:px-9 py-2.5 sm:py-4 rounded-full backdrop-blur-md shadow-xl shadow-black/80 hover:-translate-y-0.5 transition-all text-center"
           >
             <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300" />
             <span>Official Invitation</span>
