@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Calendar, MapPin, FileText } from 'lucide-react';
 import heroBg from '../../assets/images/Hero_background.png';
+import { LUCKNOW_MAP_URL } from '../../constants/contactLinks';
 
 export default function HeroSection() {
   const tickerItems = [
@@ -48,7 +49,7 @@ export default function HeroSection() {
         </span>
 
         {/* Main Hero Headline (Spacious Line Gap) */}
-        <h1 className="tracking-tight leading-[1.2] sm:leading-[1.18] text-white max-w-5xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] px-1">
+        <h1 className="font-serif tracking-tight leading-[1.2] sm:leading-[1.18] text-white max-w-5xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] px-1">
           <span className="block text-[22px] xs:text-2xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[60px] font-black sm:whitespace-nowrap">
             Uniting Urban Planners Across India,
           </span>
@@ -66,10 +67,16 @@ export default function HeroSection() {
               <span>8th–10th Jan 2027</span>
             </div>
             <span className="text-white/40">•</span>
-            <div className="flex items-center gap-1.5">
+            <a
+              href={LUCKNOW_MAP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-amber-300 transition-colors"
+              aria-label="View Lucknow on Google Maps"
+            >
               <MapPin className="w-3.5 h-3.5 text-[#DC2626] shrink-0" />
               <span>Lucknow, UP</span>
-            </div>
+            </a>
           </div>
 
           {/* Desktop Dual Separate Pills */}
@@ -78,10 +85,16 @@ export default function HeroSection() {
               <Calendar className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               <span>8th – 10th January, 2027</span>
             </div>
-            <div className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/60 border border-white/30 backdrop-blur-md text-white text-xs font-semibold shadow-md">
+            <a
+              href={LUCKNOW_MAP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/60 border border-white/30 backdrop-blur-md text-white text-xs font-semibold shadow-md hover:text-amber-300 transition-colors"
+              aria-label="View Lucknow on Google Maps"
+            >
               <MapPin className="w-3.5 h-3.5 text-[#DC2626] shrink-0" />
               <span>Lucknow, Uttar Pradesh</span>
-            </div>
+            </a>
           </div>
         </div>
 
@@ -117,7 +130,18 @@ export default function HeroSection() {
               <span className="text-white font-semibold text-xs sm:text-sm tracking-wide flex items-center hover:text-amber-300 transition-colors">
                 <span>{item.prefix}</span>
                 {item.highlight && (
-                  <span className="text-[#DC2626] font-extrabold ml-1 bg-red-950/70 px-1.5 py-0.5 rounded border border-red-800/40">{item.highlight}</span>
+                  item.prefix === 'Venue — ' ? (
+                    <a
+                      href={LUCKNOW_MAP_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#DC2626] font-extrabold ml-1 bg-red-950/70 px-1.5 py-0.5 rounded border border-red-800/40 hover:text-amber-300 transition-colors"
+                    >
+                      {item.highlight}
+                    </a>
+                  ) : (
+                    <span className="text-[#DC2626] font-extrabold ml-1 bg-red-950/70 px-1.5 py-0.5 rounded border border-red-800/40">{item.highlight}</span>
+                  )
                 )}
               </span>
               <span className="text-[#DC2626] mx-4 sm:mx-6 md:mx-8 text-xs drop-shadow-[0_0_8px_rgba(220,38,38,0.7)]">
