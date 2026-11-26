@@ -58,16 +58,16 @@ export default function ContingentsCounterSection() {
         </div>
 
         {/* Chapter Manager Callout Box */}
-        <div className="mt-8 sm:mt-10 p-4 sm:p-8 rounded-xl sm:rounded-2xl bg-white border-2 border-[#0F3D8C]/20 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-          <div className="flex items-center gap-3 sm:gap-4 text-center sm:text-left">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-50 border border-blue-200 text-[#0F3D8C] flex items-center justify-center shrink-0">
+        <div className="mt-8 sm:mt-10 p-4 sm:p-8 rounded-xl sm:rounded-2xl bg-white border-2 border-[#0F3D8C]/20 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
+          <div className="flex items-start gap-3 sm:gap-4 text-left">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-50 border border-blue-200 text-[#0F3D8C] flex items-center justify-center shrink-0 mt-0.5">
               <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-[#DC2626]" />
             </div>
-            <div>
-              <h4 className="text-sm sm:text-base font-bold text-slate-900">
+            <div className="text-left">
+              <h4 className="text-sm sm:text-base font-bold text-slate-900 leading-snug">
                 Are you an ITPI Regional Chapter Secretary or Manager?
               </h4>
-              <p className="text-[11px] sm:text-xs text-slate-600 mt-0.5">
+              <p className="text-[11px] sm:text-xs text-slate-600 mt-1 leading-relaxed">
                 Nominate your state sports delegation, submit participant athlete rosters and reserve chapter accommodation.
               </p>
             </div>
