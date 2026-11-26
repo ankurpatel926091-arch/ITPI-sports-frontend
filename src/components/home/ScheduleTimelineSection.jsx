@@ -203,33 +203,19 @@ export default function ScheduleTimelineSection() {
                 {day.events.map((event, eIdx) => (
                   <div
                     key={eIdx}
-                    className={`flex items-start gap-3 py-1.5 transition-all ${
-                      event.isHighlight
-                        ? 'bg-amber-50/80 -mx-2.5 px-2.5 rounded-xl border border-amber-200/60 shadow-2xs'
-                        : ''
-                    }`}
+                    className="flex items-start gap-3 py-1.5 transition-all"
                   >
                     {/* Time Slot on Left */}
                     <div className="w-24 sm:w-26 shrink-0 text-left pt-0.5">
-                      <span
-                        className={`text-[11px] sm:text-xs font-bold leading-tight block ${
-                          event.isHighlight ? 'text-amber-800' : 'text-slate-800'
-                        }`}
-                      >
+                      <span className="text-[11px] sm:text-xs font-bold leading-tight block text-slate-800">
                         {event.time}
                       </span>
                     </div>
 
                     {/* Timeline Dot & Vertical Connector */}
                     <div className="relative flex flex-col items-center self-stretch shrink-0 pt-1.5">
-                      {/* Timeline Dot: Golden for highlight meals, Red for normal events */}
-                      <span
-                        className={`w-2.5 h-2.5 rounded-full z-10 shrink-0 ${
-                          event.isHighlight
-                            ? 'bg-amber-500 ring-4 ring-amber-100'
-                            : 'bg-[#DC2626] ring-4 ring-red-50'
-                        }`}
-                      />
+                      {/* Uniform Red Dot */}
+                      <span className="w-2.5 h-2.5 rounded-full z-10 shrink-0 bg-[#DC2626] ring-4 ring-red-50" />
                       {/* Continuous vertical connector line */}
                       {eIdx < day.events.length - 1 && (
                         <span className="w-px bg-slate-200 flex-1 my-1" />
@@ -238,13 +224,7 @@ export default function ScheduleTimelineSection() {
 
                     {/* Event Title & Description on Right */}
                     <div className="flex-1 pb-1">
-                      <h4
-                        className={`text-xs sm:text-[13px] font-bold leading-snug ${
-                          event.isHighlight
-                            ? 'text-amber-950 font-extrabold'
-                            : 'text-slate-900'
-                        }`}
-                      >
+                      <h4 className="text-xs sm:text-[13px] font-bold leading-snug text-slate-900">
                         {event.title}
                       </h4>
                       {event.desc && (
