@@ -56,9 +56,9 @@ export default function HeroSection() {
         </h1>
 
         {/* Subtitle Paragraph */}
-        <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-white max-w-2xl mx-auto leading-relaxed font-medium drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] px-2">
+        {/* <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-white max-w-2xl mx-auto leading-relaxed font-medium drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] px-2">
           Welcoming <strong className="text-white font-bold underline decoration-[#DC2626] underline-offset-4">16 State Contingents</strong> to Lucknow from <strong className="text-amber-300 font-bold">8th to 10th January 2027</strong>. Fostering national fellowship, sporting prowess, and camaraderie beyond the workplace.
-        </p>
+        </p> */}
 
         {/* Date & Location Pill Tags */}
         <div className="flex flex-wrap items-center justify-center gap-2.5 mt-3 sm:mt-4">
@@ -89,22 +89,6 @@ export default function HeroSection() {
             <FileText className="w-4 h-4 text-amber-300" />
             <span>Official Invitation</span>
           </a>
-        </div>
-
-        {/* Metrics Quick Highlights */}
-        <div className="mt-4 sm:mt-5 pt-3 border-t border-white/20 grid grid-cols-3 gap-6 sm:gap-10 text-center max-w-lg mx-auto">
-          <div>
-            <span className="block text-lg sm:text-2xl font-black text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">16+</span>
-            <span className="text-[10px] sm:text-xs text-slate-100 font-semibold drop-shadow">State Chapters</span>
-          </div>
-          <div>
-            <span className="block text-lg sm:text-2xl font-black text-amber-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">9</span>
-            <span className="text-[10px] sm:text-xs text-slate-100 font-semibold drop-shadow">Sports & Games</span>
-          </div>
-          <div>
-            <span className="block text-lg sm:text-2xl font-black text-red-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">3 Days</span>
-            <span className="text-[10px] sm:text-xs text-slate-100 font-semibold drop-shadow">Sports & Culture</span>
-          </div>
         </div>
 
       </div>
