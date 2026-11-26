@@ -36,8 +36,8 @@ export default function HeroSection() {
       ======================================================== */}
       <div className="relative z-10 w-full max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 text-center flex-1 flex flex-col justify-center items-center py-6 sm:py-8 my-auto">
         
-        {/* Top Eyebrow Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/65 border border-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] mb-3 sm:mb-3.5 shadow-md">
+        {/* Top Eyebrow Badge (Shifted slightly upwards) */}
+        <div className="relative -top-2.5 sm:-top-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/65 border border-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] mb-3.5 sm:mb-4 shadow-md">
           <Sparkles className="w-3.5 h-3.5 text-[#DC2626] shrink-0" />
           <span>Institute of Town Planners, India • UP Regional Chapter</span>
         </div>
