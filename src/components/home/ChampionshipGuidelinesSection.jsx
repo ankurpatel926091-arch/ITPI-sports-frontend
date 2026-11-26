@@ -14,11 +14,11 @@ export default function ChampionshipGuidelinesSection() {
   ];
 
   return (
-    <section className="bg-slate-50 text-slate-900 py-14 sm:py-20 border-b border-slate-200">
+    <section className="bg-slate-50 text-slate-900 py-10 sm:py-14 border-b border-slate-200">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14">
         
         {/* Header */}
-        <div className="max-w-3xl mx-auto text-center space-y-3 mb-12">
+        <div className="max-w-3xl mx-auto text-center space-y-2.5 mb-8">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-[#DC2626] text-xs font-bold uppercase tracking-widest">
             <Sparkles className="w-3.5 h-3.5 text-[#0F3D8C]" />
             <span>Championship Guidelines & Fees</span>

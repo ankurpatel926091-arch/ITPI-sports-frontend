@@ -27,11 +27,11 @@ export default function EventOverviewSection() {
   ];
 
   return (
-    <section id="invitation" className="bg-white text-slate-900 py-14 sm:py-20 border-b border-slate-200">
+    <section id="invitation" className="bg-white text-slate-900 py-10 sm:py-14 border-b border-slate-200">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14">
         
         {/* Top Header */}
-        <div className="max-w-3xl mx-auto text-center space-y-3 mb-14">
+        <div className="max-w-3xl mx-auto text-center space-y-2.5 mb-8 sm:mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0F3D8C] text-xs font-bold uppercase tracking-widest">
             <Sparkles className="w-3.5 h-3.5 text-[#DC2626]" />
             <span>Event at a Glance</span>
@@ -78,7 +78,7 @@ export default function EventOverviewSection() {
         </div>
 
         {/* Minimal Action Strip */}
-        <div className="mt-10 p-5 rounded-2xl bg-gradient-to-r from-red-50/60 via-white to-blue-50/60 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="mt-6 sm:mt-8 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-red-50/60 via-white to-blue-50/60 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="space-y-0.5">
             <span className="text-xs font-bold text-[#DC2626] uppercase tracking-wider">
               "Muskuraiye, Aap Lucknow Mein Hain!"

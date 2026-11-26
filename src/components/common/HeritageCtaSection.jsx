@@ -3,7 +3,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function HeritageCtaSection() {
   return (
-    <section className="w-full bg-white pt-6 sm:pt-8 pb-12 sm:pb-16">
+    <section className="w-full bg-white pt-4 sm:pt-6 pb-8 sm:pb-10">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14">
         {/* Floating CTA Card in Royal Navy with Red & Blue Glows */}
         <div className="relative rounded-2xl sm:rounded-3xl bg-[#081A3A] border-2 border-blue-900/60 p-6 sm:p-10 md:p-12 text-center shadow-2xl overflow-hidden">

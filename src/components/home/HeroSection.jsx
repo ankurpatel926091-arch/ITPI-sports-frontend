@@ -15,7 +15,7 @@ export default function HeroSection() {
 
   return (
     <>
-      <div className="relative w-full flex flex-col justify-center overflow-hidden bg-[#081A3A] text-white lg:h-[calc(100vh-165px)] min-h-[500px] max-h-[820px]">
+      <div className="relative w-full flex flex-col justify-center overflow-hidden bg-[#081A3A] text-white lg:h-[calc(100vh-138px)] min-h-[560px]">
       
       {/* ========================================================
           1. HERO BACKGROUND IMAGE & VIGNETTE

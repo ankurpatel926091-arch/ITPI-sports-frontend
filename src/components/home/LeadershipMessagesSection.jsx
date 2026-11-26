@@ -10,11 +10,11 @@ export default function LeadershipMessagesSection() {
   };
 
   return (
-    <section className="bg-white text-slate-900 py-14 sm:py-20 border-b border-slate-200">
+    <section className="bg-white text-slate-900 py-10 sm:py-14 border-b border-slate-200">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14">
         
         {/* Header */}
-        <div className="max-w-3xl mx-auto text-center space-y-3 mb-14">
+        <div className="max-w-3xl mx-auto text-center space-y-2.5 mb-8 sm:mb-10">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0F3D8C] text-xs font-bold uppercase tracking-widest">
             <Sparkles className="w-3.5 h-3.5 text-[#DC2626]" />
             <span>Leadership Desk</span>

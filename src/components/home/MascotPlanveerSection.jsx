@@ -13,7 +13,7 @@ export default function MascotPlanveerSection() {
   ];
 
   return (
-    <section className="bg-slate-50 text-slate-900 py-14 sm:py-20 border-b border-slate-200 relative overflow-hidden">
+    <section className="bg-slate-50 text-slate-900 py-10 sm:py-14 border-b border-slate-200 relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
