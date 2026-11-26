@@ -74,61 +74,61 @@ export default function SportsGridSection() {
           {filteredSports.map((sport) => (
             <div
               key={sport.id}
-              className="group relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:shadow-xl hover:border-[#DC2626]/50 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+              className="group relative p-3.5 sm:p-4 rounded-xl bg-slate-100 border border-slate-300/80 shadow-xs hover:shadow-xl hover:border-[#DC2626]/60 transition-all duration-300 flex flex-col justify-between overflow-hidden"
             >
-              {/* Relatable Sport Background Image with Elegant Overlay */}
+              {/* Relatable Sport Background Image - Clearly Visible */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <img
                   src={SPORT_IMAGES[sport.id]}
                   alt={sport.name}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108 opacity-25 group-hover:opacity-35"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-white/90" />
-                <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent" />
+                {/* Translucent overlay: Light top for vibrant photo visibility, balanced bottom for crisp text */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/35 via-white/70 to-white/92 group-hover:from-white/20 group-hover:via-white/60 group-hover:to-white/88 transition-colors duration-300" />
               </div>
 
               <div className="relative z-10 space-y-2 sm:space-y-2.5">
                 {/* Header */}
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#0F3D8C]">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#0F3D8C] bg-white/90 backdrop-blur-xs px-2 py-0.5 rounded-md border border-slate-200/80 shadow-2xs">
                     {sport.category}
                   </span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-50/95 text-[#DC2626] border border-red-200/80 shadow-2xs backdrop-blur-xs">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-50/95 text-[#DC2626] border border-red-200 shadow-2xs backdrop-blur-xs">
                     {sport.badge}
                   </span>
                 </div>
 
                 {/* Name */}
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-tight">
+                <h3 className="text-lg sm:text-xl font-black text-slate-950 leading-tight drop-shadow-[0_1px_3px_rgba(255,255,255,0.9)]">
                   {sport.name}
                 </h3>
 
                 {/* Format */}
-                <p className="text-xs text-[#DC2626] font-semibold leading-snug">
+                <p className="text-xs text-red-700 font-bold leading-snug drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]">
                   {sport.format}
                 </p>
 
                 {/* Squad & Age */}
-                <div className="p-2 sm:p-2.5 rounded-lg bg-slate-50/85 backdrop-blur-xs border border-slate-200/70 space-y-1 text-[11px] text-slate-700 leading-relaxed shadow-2xs">
+                <div className="p-2 sm:p-2.5 rounded-lg bg-white/90 backdrop-blur-md border border-slate-200/90 space-y-1 text-[11px] text-slate-800 leading-relaxed shadow-xs">
                   <div>
-                    <span className="font-semibold text-slate-900">Squad:</span> {sport.squad}
+                    <span className="font-bold text-slate-950">Squad:</span> {sport.squad}
                   </div>
                   <div>
-                    <span className="font-semibold text-slate-900">Age Rules:</span> {sport.ageCategories}
+                    <span className="font-bold text-slate-950">Age Rules:</span> {sport.ageCategories}
                   </div>
                 </div>
 
                 {/* Highlight */}
-                <div className="flex items-start gap-1.5 text-[11px] text-slate-600 font-medium">
+                <div className="flex items-start gap-1.5 text-[11px] text-slate-800 font-semibold bg-white/80 backdrop-blur-xs px-2 py-1 rounded-md border border-slate-200/70 shadow-2xs">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#0F3D8C] shrink-0 mt-0.5" />
                   <span className="leading-tight">{sport.highlight}</span>
                 </div>
               </div>
 
               {/* Bottom Schedule Pill */}
-              <div className="relative z-10 mt-2.5 pt-2 sm:pt-2.5 border-t border-slate-200/80 flex items-center justify-between text-[11px]">
-                <span className="font-mono font-semibold text-slate-700">{sport.days}</span>
+              <div className="relative z-10 mt-2.5 pt-2 sm:pt-2.5 border-t border-slate-300/80 bg-white/85 backdrop-blur-xs -mx-3.5 -mb-3.5 sm:-mx-4 sm:-mb-4 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-b-xl flex items-center justify-between text-[11px]">
+                <span className="font-mono font-bold text-slate-800">{sport.days}</span>
                 <a
                   href="#register"
                   className="font-bold text-[#DC2626] hover:text-red-800 flex items-center gap-0.5"
