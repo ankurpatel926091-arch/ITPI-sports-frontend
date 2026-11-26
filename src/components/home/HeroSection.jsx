@@ -32,41 +32,38 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/15 to-transparent pointer-events-none" />
 
       {/* ========================================================
-          2. CENTERED HERO CONTENT (COMPACT VIEWPORT FIT)
+          2. CENTERED HERO CONTENT (COMPACT & BALANCED FIT)
       ======================================================== */}
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center flex-1 flex flex-col justify-center items-center py-4 lg:py-6">
+      <div className="relative z-10 w-full max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 text-center flex-1 flex flex-col justify-start items-center pt-5 sm:pt-7 lg:pt-9">
         
         {/* Top Eyebrow Badge */}
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 border border-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold uppercase tracking-[0.16em] mb-1.5 shadow-md">
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-black/65 border border-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] mb-1.5 shadow-md">
           <Sparkles className="w-3.5 h-3.5 text-[#DC2626] shrink-0" />
           <span>Institute of Town Planners, India • UP Regional Chapter</span>
         </div>
 
         {/* Sub-label */}
-        <span className="block text-amber-300 font-extrabold tracking-widest uppercase text-[11px] sm:text-xs font-sans mb-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+        <span className="block text-amber-300 font-extrabold tracking-[0.2em] uppercase text-[11px] sm:text-xs font-sans mb-1.5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
           SECOND ITPI NATIONAL SPORTS MEET 2027
         </span>
 
-        {/* Main Hero Headline */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black font-serif tracking-tight leading-[1.12] text-white max-w-4xl drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)]">
-          <span className="block">Uniting Urban Planners Across India,</span>
-          <span className="block mt-0.5 sm:mt-1 text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-amber-200 to-white">
+        {/* Main Hero Headline (Enlarged and Single-Line on Desktop) */}
+        <h1 className="font-serif tracking-tight leading-[1.12] text-white max-w-5xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+          <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[60px] font-black sm:whitespace-nowrap">
+            Uniting Urban Planners Across India,
+          </span>
+          <span className="block mt-1 sm:mt-1.5 text-xl sm:text-2xl md:text-3xl lg:text-[36px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-amber-200 to-white sm:whitespace-nowrap drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
             Celebrating Athletic Excellence & Heritage
           </span>
         </h1>
 
-        {/* Subtitle Paragraph */}
-        {/* <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-white max-w-2xl mx-auto leading-relaxed font-medium drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] px-2">
-          Welcoming <strong className="text-white font-bold underline decoration-[#DC2626] underline-offset-4">16 State Contingents</strong> to Lucknow from <strong className="text-amber-300 font-bold">8th to 10th January 2027</strong>. Fostering national fellowship, sporting prowess, and camaraderie beyond the workplace.
-        </p> */}
-
         {/* Date & Location Pill Tags */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 mt-3 sm:mt-4">
-          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/60 border border-white/30 backdrop-blur-md text-white text-xs font-semibold shadow-md">
+        <div className="flex flex-wrap items-center justify-center gap-2.5 mt-3.5 sm:mt-4">
+          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/65 border border-white/30 backdrop-blur-md text-white text-xs font-semibold shadow-md">
             <Calendar className="w-3.5 h-3.5 text-amber-400" />
             <span>8th – 10th January, 2027</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/60 border border-white/30 backdrop-blur-md text-white text-xs font-semibold shadow-md">
+          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/65 border border-white/30 backdrop-blur-md text-white text-xs font-semibold shadow-md">
             <MapPin className="w-3.5 h-3.5 text-[#DC2626]" />
             <span>Lucknow, Uttar Pradesh</span>
           </div>
@@ -84,7 +81,7 @@ export default function HeroSection() {
 
           <a
             href="#invitation"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-black/60 hover:bg-white hover:text-neutral-950 text-white border border-white/40 hover:border-white font-bold text-xs sm:text-sm uppercase tracking-wider px-7 py-3 rounded-full backdrop-blur-md shadow-2xl shadow-black/80 hover:-translate-y-0.5 transition-all"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-black/65 hover:bg-white hover:text-neutral-950 text-white border border-white/40 hover:border-white font-bold text-xs sm:text-sm uppercase tracking-wider px-7 py-3 rounded-full backdrop-blur-md shadow-2xl shadow-black/80 hover:-translate-y-0.5 transition-all"
           >
             <FileText className="w-4 h-4 text-amber-300" />
             <span>Official Invitation</span>
