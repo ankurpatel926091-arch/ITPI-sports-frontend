@@ -127,11 +127,19 @@ export default function Footer() {
             <span className="text-xs text-slate-300 font-medium">
               Designed &amp; Developed by
             </span>
-            <img
-              src={codeCrafterLogo}
-              alt="CodeCrafter Web Solutions"
-              className="h-6 sm:h-7 w-auto object-contain hover:brightness-110 transition-all inline-block"
-            />
+            <a
+              href="https://codecrafter.co.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center hover:opacity-90 transition-opacity"
+              title="CodeCrafter Web Solutions"
+            >
+              <img
+                src={codeCrafterLogo}
+                alt="CodeCrafter Web Solutions"
+                className="h-6 sm:h-7 w-auto object-contain hover:brightness-110 transition-all inline-block cursor-pointer"
+              />
+            </a>
           </div>
 
           <div className="flex items-center gap-3 text-xs text-blue-200">
