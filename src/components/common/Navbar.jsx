@@ -12,7 +12,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { LUCKNOW_MAP_URL } from "../../constants/contactLinks";
-import {logo} from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.png";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
