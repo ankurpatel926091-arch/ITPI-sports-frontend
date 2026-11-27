@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Trophy, Mail, Phone, MapPin, Calendar, Heart, ArrowRight } from 'lucide-react';
 import codeCrafterLogo from '../../assets/images/CodeCrafterLogo.png';
 import { ITPI_OFFICE_MAP_URL, ITPI_PHONE_LINK } from '../../constants/contactLinks';
@@ -44,13 +45,14 @@ export default function Footer() {
               Navigation
             </h4>
             <ul className="space-y-2 text-sm text-slate-300">
-              <li><a href="#home" className="hover:text-amber-300 transition-colors block">Home</a></li>
-              <li><a href="#invitation" className="hover:text-amber-300 transition-colors block">Invitation Letter</a></li>
-              <li><a href="#sports" className="hover:text-amber-300 transition-colors block">Sports & Rules</a></li>
-              <li><a href="#lucknow" className="hover:text-amber-300 transition-colors block">Experience Lucknow</a></li>
-              <li><a href="#contingents" className="hover:text-amber-300 transition-colors block">State Contingents</a></li>
-              <li><a href="#timeline" className="hover:text-amber-300 transition-colors block">Timeline</a></li>
-              <li><a href="#register" className="hover:text-[#DC2626] font-bold transition-colors block">Register Team</a></li>
+              <li><Link to="/" className="hover:text-amber-300 transition-colors block">Home</Link></li>
+              <li><Link to="/invitation" className="hover:text-amber-300 transition-colors block">Invitation Letter</Link></li>
+              <li><Link to="/sports" className="hover:text-amber-300 transition-colors block">Sports &amp; Rules</Link></li>
+              <li><Link to="/experience-lucknow" className="hover:text-amber-300 transition-colors block">Experience Lucknow</Link></li>
+              <li><Link to="/contingents" className="hover:text-amber-300 transition-colors block">State Contingents</Link></li>
+              <li><Link to="/timeline" className="hover:text-amber-300 transition-colors block">Timeline</Link></li>
+              <li><Link to="/guidelines" className="hover:text-amber-300 transition-colors block">Championship Guidelines</Link></li>
+              <li><Link to="/register" className="hover:text-[#DC2626] font-bold transition-colors block">Register Team</Link></li>
             </ul>
           </div>
 
@@ -61,12 +63,12 @@ export default function Footer() {
               Sports Disciplines
             </h4>
             <ul className="space-y-2 text-sm text-slate-300">
-              <li><a href="#sports" className="hover:text-amber-300 transition-colors block">🏏 Cricket (T10 Championship)</a></li>
-              <li><a href="#sports" className="hover:text-amber-300 transition-colors block">🏸 Badminton (Singles/Doubles)</a></li>
-              <li><a href="#sports" className="hover:text-amber-300 transition-colors block">🏓 Table Tennis (Singles/Pairs)</a></li>
-              <li><a href="#sports" className="hover:text-amber-300 transition-colors block">♟️ Chess (FIDE Rapid)</a></li>
-              <li><a href="#sports" className="hover:text-amber-300 transition-colors block">🎯 Carrom &amp; ⛳ Golf Tournament</a></li>
-              <li><a href="#sports" className="hover:text-amber-300 transition-colors block">🏃 Heritage 5K Marathon &amp; Tug of War</a></li>
+              <li><Link to="/sports" className="hover:text-amber-300 transition-colors block">🏏 Cricket (T20 Championship)</Link></li>
+              <li><Link to="/sports" className="hover:text-amber-300 transition-colors block">🏸 Badminton (Singles/Doubles)</Link></li>
+              <li><Link to="/sports" className="hover:text-amber-300 transition-colors block">🏓 Table Tennis (Singles/Pairs)</Link></li>
+              <li><Link to="/sports" className="hover:text-amber-300 transition-colors block">♟️ Chess (FIDE Rapid 6-Round)</Link></li>
+              <li><Link to="/sports" className="hover:text-amber-300 transition-colors block">🎯 Carrom &amp; ⛳ Golf Tournament</Link></li>
+              <li><Link to="/sports" className="hover:text-amber-300 transition-colors block">🏃 Heritage 5K Marathon &amp; Tug of War</Link></li>
             </ul>
           </div>
 
@@ -110,9 +112,9 @@ export default function Footer() {
               </div>
 
               <div className="pt-1">
-                <a href="#register" className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#DC2626] hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider rounded transition-all">
+                <Link to="/register" className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#DC2626] hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider rounded transition-all">
                   Register Contingent <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -150,11 +152,11 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center gap-3 text-xs text-blue-200">
-            <a href="#invitation" className="hover:text-white transition-colors">Invitation</a>
+            <Link to="/invitation" className="hover:text-white transition-colors">Invitation</Link>
             <span>•</span>
-            <a href="#sports" className="hover:text-white transition-colors">Rules</a>
+            <Link to="/sports" className="hover:text-white transition-colors">Rules</Link>
             <span>•</span>
-            <a href="#contingents" className="hover:text-white transition-colors">16 States</a>
+            <Link to="/contingents" className="hover:text-white transition-colors">16 States</Link>
           </div>
         </div>
       </div>

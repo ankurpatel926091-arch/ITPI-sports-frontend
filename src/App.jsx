@@ -1,66 +1,50 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/common/Navbar';
-import HeroSection from './components/home/HeroSection';
-import EventOverviewSection from './components/home/EventOverviewSection';
-import MascotPlanveerSection from './components/home/MascotPlanveerSection';
-import LeadershipMessagesSection from './components/home/LeadershipMessagesSection';
-import SportsGridSection from './components/home/SportsGridSection';
-import ScheduleTimelineSection from './components/home/ScheduleTimelineSection';
-import ExperienceLucknowSection from './components/home/ExperienceLucknowSection';
-import ChampionshipGuidelinesSection from './components/home/ChampionshipGuidelinesSection';
-import ContingentsCounterSection from './components/home/ContingentsCounterSection';
-import RegistrationSection from './components/home/RegistrationSection';
-import HeritageCtaSection from './components/common/HeritageCtaSection';
 import Footer from './components/common/Footer';
 import FloatingPills from './components/common/FloatingPills';
+import ScrollToTop from './components/common/ScrollToTop';
+
+// Pages
+import HomePage from './pages/HomePage';
+import InvitationPage from './pages/InvitationPage';
+import SportsRulesPage from './pages/SportsRulesPage';
+import LucknowGuidePage from './pages/LucknowGuidePage';
+import ContingentsPage from './pages/ContingentsPage';
+import TimelinePage from './pages/TimelinePage';
+import RegistrationPage from './pages/RegistrationPage';
+import GuidelinesPage from './pages/GuidelinesPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-900">
-      {/* 1. TOP NAVBAR */}
-      <Navbar />
+    <BrowserRouter>
+      <ScrollToTop />
+      <div className="min-h-screen flex flex-col bg-white text-slate-900">
+        {/* Persistent Sticky Navbar */}
+        <Navbar />
 
-      {/* 2. MAIN SECTIONS (MINIMAL, AUTHENTIC & WELL-SPACED) */}
-      <main className="flex-1">
-        {/* HERO WITH MARQUEE TICKER */}
-        <HeroSection />
+        {/* Dynamic Route Pages */}
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/invitation" element={<InvitationPage />} />
+            <Route path="/sports" element={<SportsRulesPage />} />
+            <Route path="/experience-lucknow" element={<LucknowGuidePage />} />
+            <Route path="/contingents" element={<ContingentsPage />} />
+            <Route path="/timeline" element={<TimelinePage />} />
+            <Route path="/register" element={<RegistrationPage />} />
+            <Route path="/guidelines" element={<GuidelinesPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </main>
 
-        {/* EVENT AT A GLANCE & 4 OBJECTIVES */}
-        <EventOverviewSection />
+        {/* Persistent Footer */}
+        <Footer />
 
-        {/* MEET "PLANVEER" MASCOT */}
-        <MascotPlanveerSection />
-
-        {/* LEADERSHIP WELCOME NOTES (CHAIRMAN & SECRETARY) */}
-        <LeadershipMessagesSection />
-
-        {/* SPORTS DISCIPLINES & RULES */}
-        <SportsGridSection />
-
-        {/* PROPOSED 3-DAY ITINERARY (INTERACTIVE DAY TABS) */}
-        <ScheduleTimelineSection />
-
-        {/* EXPERIENCE LUCKNOW (HERITAGE, KATHAK & CUISINE) */}
-        <ExperienceLucknowSection />
-
-        {/* CHAMPIONSHIP GUIDELINES, FEES & BANK DETAILS */}
-        <ChampionshipGuidelinesSection />
-
-        {/* 16 STATE CONTINGENTS */}
-        <ContingentsCounterSection />
-
-        {/* OFFICIAL NOMINATION PORTAL */}
-        <RegistrationSection />
-
-        {/* HERITAGE CALL TO ACTION */}
-        <HeritageCtaSection />
-      </main>
-
-      {/* 3. INSTITUTIONAL FOOTER */}
-      <Footer />
-
-      {/* 4. FLOATING VERTICAL PILLS */}
-      <FloatingPills />
-    </div>
+        {/* Floating Side Action Pills */}
+        <FloatingPills />
+      </div>
+    </BrowserRouter>
   );
 }
