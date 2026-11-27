@@ -3,15 +3,15 @@ import { Trophy, CheckCircle2, ChevronRight } from 'lucide-react';
 import { SPORTS_LIST } from '../../data/eventData';
 
 // Authentic sport background images
-import sportCricket from '../../assets/images/sport_cricket.jpg';
-import sportBadminton from '../../assets/images/sport_badminton.jpg';
-import sportTableTennis from '../../assets/images/sport_table_tennis.jpg';
-import sportChess from '../../assets/images/sport_chess.jpg';
-import sportCarrom from '../../assets/images/sport_carrom.jpg';
-import sportGolf from '../../assets/images/sport_golf.jpg';
-import sportTugOfWar from '../../assets/images/sport_tug_of_war.jpg';
-import sportSudoku from '../../assets/images/sport_sudoku.jpg';
-import sportMarathon from '../../assets/images/sport_marathon.jpg';
+import sportCricket from '../../assets/images/sport_cricket.webp';
+import sportBadminton from '../../assets/images/sport_badminton.webp';
+import sportTableTennis from '../../assets/images/sport_table_tennis.webp';
+import sportChess from '../../assets/images/sport_chess.webp';
+import sportCarrom from '../../assets/images/sport_carrom.webp';
+import sportGolf from '../../assets/images/sport_golf.webp';
+import sportTugOfWar from '../../assets/images/sport_tug_of_war.webp';
+import sportSudoku from '../../assets/images/sport_sudoku.webp';
+import sportMarathon from '../../assets/images/sport_marathon.webp';
 
 const SPORT_IMAGES = {
   cricket: sportCricket,
@@ -134,7 +134,7 @@ export default function SportsGridSection() {
                 <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
                   <span className="font-mono font-semibold text-slate-600">{sport.days}</span>
                   <a
-                    href="#register"
+                    href="register"
                     className="font-bold text-[#DC2626] hover:text-red-800 flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform"
                   >
                     <span>Nominate</span>

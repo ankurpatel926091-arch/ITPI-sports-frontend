@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Quote, ChevronDown, ChevronUp, UserCheck } from 'lucide-react';
+import { Quote, ChevronDown, ChevronUp, Award, MapPin, CheckCircle2, Building2 } from 'lucide-react';
 import { LEADERSHIP_MESSAGES } from '../../data/eventData';
+import leaderAnoop from '../../assets/images/leader_anoop_kumar.jpg';
+import leaderPushpendra from '../../assets/images/leader_pushpendra_kumar.jpg';
 
 export default function LeadershipMessagesSection() {
   const [expanded, setExpanded] = useState({ 0: false, 1: false });
@@ -9,15 +11,42 @@ export default function LeadershipMessagesSection() {
     setExpanded((prev) => ({ ...prev, [idx]: !prev[idx] }));
   };
 
-  return (
-    <section className="relative bg-gradient-to-b from-white via-slate-50/60 to-white text-slate-900 py-12 sm:py-16 lg:py-20 border-b border-slate-200 overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="pointer-events-none absolute top-0 left-1/4 w-72 h-72 bg-blue-100/40 rounded-full blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 right-1/4 w-80 h-80 bg-red-100/30 rounded-full blur-3xl" />
+  const leaders = [
+    {
+      ...LEADERSHIP_MESSAGES[0],
+      photo: leaderAnoop,
+      chapterRole: 'Host Chapter Chairman',
+      badgeColor: 'from-[#DC2626] to-[#EF4444]',
+      accentColor: '#DC2626',
+      accentBg: 'bg-red-50',
+      accentBorder: 'border-red-200',
+      accentText: 'text-[#DC2626]',
+      ringColor: 'ring-red-100',
+      lightGradient: 'from-red-50/50 via-white to-slate-50',
+    },
+    {
+      ...LEADERSHIP_MESSAGES[1],
+      photo: leaderPushpendra,
+      chapterRole: 'Organizing Secretary',
+      badgeColor: 'from-[#0F3D8C] to-[#1E40AF]',
+      accentColor: '#0F3D8C',
+      accentBg: 'bg-blue-50',
+      accentBorder: 'border-blue-200',
+      accentText: 'text-[#0F3D8C]',
+      ringColor: 'ring-blue-100',
+      lightGradient: 'from-blue-50/50 via-white to-slate-50',
+    },
+  ];
 
-      {/* Subtle grid pattern */}
+  return (
+    <section className="relative bg-gradient-to-b from-white via-slate-50/70 to-white text-slate-900 py-12 sm:py-16 lg:py-20 border-b border-slate-200 overflow-hidden">
+      {/* Decorative background blurs */}
+      <div className="pointer-events-none absolute top-0 left-1/4 w-80 h-80 bg-blue-100/35 rounded-full blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 right-1/4 w-96 h-96 bg-red-100/25 rounded-full blur-3xl" />
+
+      {/* Subtle architectural grid pattern */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        className="pointer-events-none absolute inset-0 opacity-[0.025]"
         style={{
           backgroundImage:
             'linear-gradient(#0F3D8C 1px, transparent 1px), linear-gradient(90deg, #0F3D8C 1px, transparent 1px)',
@@ -25,11 +54,12 @@ export default function LeadershipMessagesSection() {
         }}
       />
 
-      <div className="relative max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14">
+      <div className="relative max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10">
 
-        {/* Header */}
+        {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center space-y-3 mb-10 sm:mb-14">
-          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#0F3D8C] text-[11px] font-bold uppercase tracking-widest shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#0F3D8C] text-[11px] font-bold uppercase tracking-widest shadow-sm">
+            <Building2 className="w-3.5 h-3.5 text-[#0F3D8C]" />
             <span>Leadership Desk</span>
           </div>
 
@@ -45,95 +75,119 @@ export default function LeadershipMessagesSection() {
           </p>
         </div>
 
-        {/* 2 Cards Side by Side */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          {LEADERSHIP_MESSAGES.map((msg, idx) => {
-            const isRed = idx === 0;
+        {/* 2 Executive Cards Side by Side */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
+          {leaders.map((leader, idx) => {
             const isExpanded = expanded[idx];
-            const accentColor = isRed ? '#DC2626' : '#0F3D8C';
-            const accentBg = isRed ? 'bg-red-50' : 'bg-blue-50';
-            const accentBorder = isRed ? 'border-red-200' : 'border-blue-200';
-            const accentText = isRed ? 'text-[#DC2626]' : 'text-[#0F3D8C]';
-            const accentRing = isRed ? 'ring-red-100' : 'ring-blue-100';
 
             return (
               <div
                 key={idx}
-                className={`group relative rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-2xl transition-all duration-500 ring-1 ${accentRing} overflow-hidden flex flex-col`}
+                className={`group relative rounded-3xl bg-white border border-slate-200 shadow-md hover:shadow-2xl transition-all duration-500 ring-1 ${leader.ringColor} overflow-hidden flex flex-col justify-between`}
               >
-                {/* Top accent bar */}
+                {/* Top Colored Accent Stripe */}
                 <div
-                  className="h-1 w-full"
+                  className="h-1.5 w-full"
                   style={{
-                    background: `linear-gradient(90deg, ${accentColor}, ${isRed ? '#F59E0B' : '#3B82F6'})`,
+                    background: `linear-gradient(90deg, ${leader.accentColor}, ${idx === 0 ? '#F59E0B' : '#38BDF8'})`,
                   }}
                 />
 
-                {/* Subtle corner glow */}
-                <div
-                  className="pointer-events-none absolute -top-20 -right-20 w-48 h-48 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"
-                  style={{ backgroundColor: accentColor }}
-                />
+                <div className="p-6 sm:p-8 flex flex-col justify-between flex-1 space-y-6">
 
-                <div className="relative p-5 sm:p-8 flex flex-col flex-1 justify-between">
-
-                  <div className="space-y-4">
-                    {/* Top Badge & Quote Icon */}
-                    <div className="flex items-start justify-between">
-                      <span className={`text-[10px] sm:text-[11px] font-extrabold px-3 py-1 rounded-full border uppercase tracking-wider ${accentBg} ${accentText} ${accentBorder}`}>
-                        {msg.badge}
-                      </span>
-                      <div className={`w-10 h-10 rounded-xl ${accentBg} flex items-center justify-center shrink-0`}>
-                        <Quote className={`w-5 h-5 ${accentText} opacity-70`} />
+                  {/* Header: Executive Photo & Official Profile */}
+                  <div className="flex items-center sm:items-start gap-4 sm:gap-5">
+                    {/* Portrait Photo Container */}
+                    <div className="relative shrink-0">
+                      <div className={`w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-2xl overflow-hidden border-2 border-white shadow-lg ring-2 ${leader.ringColor} bg-slate-900`}>
+                        <img
+                          src={leader.photo}
+                          alt={leader.name}
+                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <div
+                        className="absolute -bottom-1.5 -right-1.5 w-6 h-6 rounded-full text-white shadow-md flex items-center justify-center"
+                        style={{ backgroundColor: leader.accentColor }}
+                        title="Verified Committee Leader"
+                      >
+                        <Award className="w-3.5 h-3.5" />
                       </div>
                     </div>
 
-                    {/* Highlight Quote */}
-                    <div className="relative pl-4 border-l-2" style={{ borderColor: accentColor }}>
-                      <p className="text-slate-800 text-sm sm:text-base leading-relaxed italic">
-                        “{msg.quote}”
+                    {/* Metadata & Title */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                        <span className={`text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${leader.accentBg} ${leader.accentText} ${leader.accentBorder}`}>
+                          {leader.badge}
+                        </span>
+                        <span className="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full flex items-center gap-1">
+                          <MapPin className="w-3 h-3 text-red-500" /> Lucknow 2027
+                        </span>
+                      </div>
+
+                      <h3 className="text-base sm:text-lg lg:text-xl font-extrabold text-slate-900 tracking-tight leading-snug">
+                        {leader.name}
+                      </h3>
+
+                      <p className={`text-xs sm:text-[13px] font-bold ${leader.accentText} mt-0.5`}>
+                        {leader.role}
+                      </p>
+
+                      <p className="text-[11px] text-slate-500 font-medium mt-0.5">
+                        Institute of Town Planners, India (ITPI UP Chapter)
                       </p>
                     </div>
+                  </div>
 
-                    {/* Expandable Full Message */}
+                  {/* Highlight Quote Block */}
+                  <div
+                    className={`relative p-4 sm:p-5 rounded-2xl bg-gradient-to-br ${leader.lightGradient} border border-slate-200/80 shadow-sm`}
+                  >
+                    <Quote
+                      className="absolute -top-3 right-4 w-7 h-7 p-1 rounded-full bg-white border border-slate-200 shadow-sm opacity-80"
+                      style={{ color: leader.accentColor }}
+                    />
+                    <p className="text-slate-800 text-xs sm:text-[14px] leading-relaxed italic font-medium">
+                      “{leader.quote}”
+                    </p>
+                  </div>
+
+                  {/* Expandable Full Message */}
+                  <div className="space-y-3 pt-1">
                     <div
                       className={`grid transition-all duration-500 ease-in-out ${
                         isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <div className="pt-3 border-t border-slate-200 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                          {msg.fullMessage}
+                        <div className="pt-3 pb-2 border-t border-slate-200 text-xs sm:text-sm text-slate-600 leading-relaxed whitespace-pre-line">
+                          {leader.fullMessage}
                         </div>
                       </div>
                     </div>
 
                     <button
+                      type="button"
                       onClick={() => toggleExpand(idx)}
-                      className={`inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold ${accentText} hover:opacity-80 transition-all cursor-pointer group/btn`}
+                      className={`inline-flex items-center gap-1.5 text-xs font-bold ${leader.accentText} hover:opacity-80 transition-all cursor-pointer group/btn`}
                     >
-                      <span>{isExpanded ? 'Show Less' : 'Read Full Note'}</span>
+                      <span>{isExpanded ? 'Collapse Message' : 'Read Full Message'}</span>
                       <span className="transition-transform duration-300 group-hover/btn:translate-y-0.5">
                         {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
                       </span>
                     </button>
                   </div>
 
-                  {/* Author Info */}
-                  <div className="pt-5 mt-5 border-t border-slate-200 flex items-center justify-between">
-                    <div>
-                      <h4 className="text-sm sm:text-base font-bold text-slate-900">
-                        {msg.name}
-                      </h4>
-                      <p className="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5">
-                        {msg.role}
-                      </p>
+                  {/* Bottom Verification & Sign-off Bar */}
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                    <div className="flex items-center gap-1.5 font-semibold text-slate-700">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Official Host Communication</span>
                     </div>
-                    <div
-                      className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center font-bold ring-2 ${accentBg} ${accentText} ${isRed ? 'ring-red-100' : 'ring-blue-100'}`}
-                    >
-                      <UserCheck className="w-5 h-5" />
-                    </div>
+                    <span className="font-semibold text-slate-400">
+                      {leader.chapterRole}
+                    </span>
                   </div>
 
                 </div>

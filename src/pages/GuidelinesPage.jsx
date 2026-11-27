@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, AlertCircle, Building2, CreditCard, Users, CheckCircle2, ArrowRight, FileText } from 'lucide-react';
 import { EVENT_DETAILS } from '../data/eventData';
+import HeritageCtaSection from '../components/common/HeritageCtaSection';
 
 export default function GuidelinesPage() {
   const bank = EVENT_DETAILS.bankDetails;
@@ -208,6 +209,7 @@ export default function GuidelinesPage() {
         </div>
 
       </div>
+      <HeritageCtaSection />
     </div>
   );
 }

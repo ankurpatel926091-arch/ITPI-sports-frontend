@@ -14,6 +14,7 @@ import ContingentsPage from './pages/ContingentsPage';
 import TimelinePage from './pages/TimelinePage';
 import RegistrationPage from './pages/RegistrationPage';
 import GuidelinesPage from './pages/GuidelinesPage';
+import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
@@ -31,10 +32,13 @@ export default function App() {
             <Route path="/invitation" element={<InvitationPage />} />
             <Route path="/sports" element={<SportsRulesPage />} />
             <Route path="/experience-lucknow" element={<LucknowGuidePage />} />
+            <Route path="/experience_lucknow" element={<LucknowGuidePage />} />
             <Route path="/contingents" element={<ContingentsPage />} />
+            <Route path="/state-contingents" element={<ContingentsPage />} />
             <Route path="/timeline" element={<TimelinePage />} />
             <Route path="/register" element={<RegistrationPage />} />
             <Route path="/guidelines" element={<GuidelinesPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

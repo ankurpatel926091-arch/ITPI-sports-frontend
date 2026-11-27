@@ -165,33 +165,39 @@ export default function LucknowGuidePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Air */}
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2.5">
-              <div className="w-10 h-10 rounded-xl bg-blue-100 text-[#0F3D8C] flex items-center justify-center">
-                <Plane className="w-5 h-5" />
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-blue-100 text-[#0F3D8C] flex items-center justify-center shrink-0">
+                  <Plane className="w-5 h-5" />
+                </div>
+                <h4 className="text-sm font-bold text-slate-900">By Air</h4>
               </div>
-              <h4 className="text-sm font-bold text-slate-900">By Air</h4>
               <p className="text-xs text-slate-600 leading-relaxed">
                 <strong>Chaudhary Charan Singh International Airport (LKO)</strong> at Amausi connects direct daily flights to Delhi, Mumbai, Bengaluru, Hyderabad, Kolkata, Chennai, and other major state capitals. Connected to city center via Lucknow Metro.
               </p>
             </div>
 
             {/* Rail */}
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2.5">
-              <div className="w-10 h-10 rounded-xl bg-red-100 text-[#DC2626] flex items-center justify-center">
-                <Train className="w-5 h-5" />
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-red-100 text-[#DC2626] flex items-center justify-center shrink-0">
+                  <Train className="w-5 h-5" />
+                </div>
+                <h4 className="text-sm font-bold text-slate-900">By Train</h4>
               </div>
-              <h4 className="text-sm font-bold text-slate-900">By Train</h4>
               <p className="text-xs text-slate-600 leading-relaxed">
                 <strong>Lucknow Charbagh Railway Station (LKO / LJN)</strong> is one of India's most connected railway hubs, served by Vande Bharat Express, Tejas Express, Shatabdi, and Rajdhani trains from all four zones of the country.
               </p>
             </div>
 
             {/* Weather */}
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2.5">
-              <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center">
-                <Sun className="w-5 h-5" />
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+                  <Sun className="w-5 h-5" />
+                </div>
+                <h4 className="text-sm font-bold text-slate-900">January Climate</h4>
               </div>
-              <h4 className="text-sm font-bold text-slate-900">January Climate</h4>
               <p className="text-xs text-slate-600 leading-relaxed">
                 January in Lucknow experiences pleasant, crisp winter weather with temperatures between <strong>8°C (morning/evening) and 21°C (sunny daytime)</strong>. Ideal playing conditions for outdoor sports. Light woollens/jackets recommended.
               </p>
@@ -202,7 +208,7 @@ export default function LucknowGuidePage() {
           <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
               <MapPin className="w-4 h-4 text-[#DC2626]" />
-              <span>Event Locations: Designated Sports Stadiums & Arenas across Lucknow, UP</span>
+              <span>Event Locations: Designated Sports Stadiums & Arenas across Lucknow, UP.</span>
             </div>
             <a
               href={LUCKNOW_MAP_URL}

@@ -37,7 +37,7 @@ export const EVENT_DETAILS = {
 export const LEADERSHIP_MESSAGES = [
   {
     role: 'Chairman, ITPI UP Regional Chapter',
-    name: 'Mr. Anoop Kumar Srivastava',
+    name: 'TPr. Anoop Kumar Srivastava',
     designation: 'Chairman',
     quote: 'Sports bring physical activity, renewed energy and balance into our lives. They strengthen qualities that serve us equally well in planning: teamwork, discipline, strategic thinking, and adaptability.',
     fullMessage: `On behalf of the Institute of Town Planners, India, Uttar Pradesh Regional Chapter, I warmly welcome you to Lucknow for the Second ITPI National Sports Meet, from 8–10 January 2027. It is a pleasure to bring our planning fraternity together in a celebration of sportsmanship, friendship and shared purpose.
@@ -47,7 +47,7 @@ export const LEADERSHIP_MESSAGES = [
   },
   {
     role: 'Secretary, Sports Committee',
-    name: 'Mr. Pushpendra Kumar',
+    name: 'TPr. Pushpendra Kumar',
     designation: 'Secretary Sports Committee',
     quote: 'Making sports a regular part of our lives helps us maintain fitness, manage stress, and return to our work with renewed energy. Let us play with passion, compete with integrity and celebrate together.',
     fullMessage: `It gives me immense pleasure to welcome you to the Second ITPI National Sports Meet 2027 in Lucknow. This meet celebrates sporting talent, enthusiasm, and fellowship within our planning fraternity.

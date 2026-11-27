@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, FileText } from 'lucide-react';
 
 export default function HeritageCtaSection() {
   return (
@@ -31,20 +32,20 @@ export default function HeritageCtaSection() {
 
             {/* Action Buttons (Red & Blue Combination) */}
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-              <a
-                href="#register"
+              <Link
+                to="/register"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-7 py-2.5 sm:py-3 rounded-xl shadow-lg shadow-red-950/40 hover:-translate-y-0.5 transition-all"
               >
                 <span>Nominate State Contingent</span>
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
 
-              <a
-                href="#invitation"
+              <Link
+                to="/invitation"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0F3D8C] hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-7 py-2.5 sm:py-3 rounded-xl shadow-lg shadow-blue-950/40 hover:-translate-y-0.5 transition-all border border-blue-400/30"
               >
                 <span>Read Official Invitation</span>
-              </a>
+              </Link>
             </div>
 
           </div>

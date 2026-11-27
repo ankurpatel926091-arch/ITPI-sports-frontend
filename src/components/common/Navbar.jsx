@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   Trophy,
@@ -10,6 +10,18 @@ import {
   UserPlus,
   Mail,
   ChevronRight,
+  ChevronDown,
+  Home,
+  Compass,
+  Users,
+  Clock,
+  ShieldCheck,
+  Target,
+  Award,
+  Activity,
+  Footprints,
+  Building2,
+  Sparkles,
 } from "lucide-react";
 import { LUCKNOW_MAP_URL } from "../../constants/contactLinks";
 import logo from "../../assets/images/logo.png";
@@ -17,6 +29,13 @@ import logo from "../../assets/images/logo.png";
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [mobileExpanded, setMobileExpanded] = useState({
+    about: true,
+    sports: true,
+    contingents: false,
+  });
+  const dropdownTimeoutRef = useRef(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -27,15 +46,140 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "Invitation Letter", path: "/invitation" },
-    { name: "Sports & Rules", path: "/sports" },
-    { name: "Experience Lucknow", path: "/experience-lucknow" },
-    { name: "State Contingents", path: "/contingents" },
-    { name: "Timeline", path: "/timeline" },
-    { name: "Guidelines", path: "/guidelines" },
-    { name: "Register Team", path: "/register" },
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileMenuOpen]);
+
+  // Close drawer and dropdown on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setActiveDropdown(null);
+  }, [location.pathname]);
+
+  const handleMouseEnter = (key) => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setActiveDropdown(key);
+  };
+
+  const handleMouseLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150);
+  };
+
+  const toggleMobileAccordion = (key) => {
+    setMobileExpanded((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
+
+  // Structured Navigation Menu with Grouped Submenus
+  const navMenuItems = [
+    {
+      key: "home",
+      name: "Home",
+      path: "/",
+      icon: Home,
+    },
+    {
+      key: "about",
+      name: "About Meet",
+      icon: FileText,
+      submenus: [
+        {
+          name: "Official Invitation Letter",
+          path: "/invitation",
+          desc: "Welcome letter from ITPI UP Chapter Chairman",
+          icon: FileText,
+          badge: "Official",
+        },
+        {
+          name: "3-Day Program Timeline",
+          path: "/timeline",
+          desc: "Day-wise match schedule & grand ceremonies",
+          icon: Clock,
+          badge: "8-10 Jan",
+        },
+        {
+          name: "Championship Guidelines",
+          path: "/guidelines",
+          desc: "Eligibility, brochure rules, age quotas & fees",
+          icon: ShieldCheck,
+        },
+      ],
+    },
+    {
+      key: "sports",
+      name: "Sports & Rules",
+      icon: Trophy,
+      submenus: [
+        {
+          name: "All 9 Disciplines Rulebook",
+          path: "/sports",
+          desc: "Master tournament overview, age quotas & comparison matrix",
+          icon: Trophy,
+          badge: "Rulebook",
+        },
+        {
+          name: "Flagship & Racket Sports",
+          path: "/sports#cricket",
+          desc: "Cricket (T20), Badminton & Table Tennis at BBD Complex",
+          icon: Award,
+          badge: "Team Games",
+        },
+        {
+          name: "Mind Games & Community Events",
+          path: "/sports#chess",
+          desc: "Chess, Carrom, Golf, Tug of War & 5K Heritage Marathon",
+          icon: Activity,
+          badge: "Mind & Fun",
+        },
+      ],
+    },
+    {
+      key: "contingents",
+      name: "Contingents",
+      icon: Users,
+      submenus: [
+        {
+          name: "16 State Chapters Directory",
+          path: "/contingents",
+          desc: "Participating regional chapters & managers",
+          icon: Users,
+          badge: "16 States",
+        },
+        {
+          name: "Nominate State Squad",
+          path: "/register",
+          desc: "Submit official chapter roster & delegation entries",
+          icon: UserPlus,
+          badge: "Register",
+        },
+      ],
+    },
+    {
+      key: "experience",
+      name: "Experience Lucknow",
+      path: "/experience-lucknow",
+      icon: Compass,
+    },
+    {
+      key: "contact",
+      name: "Contact",
+      path: "/contact",
+      icon: Mail,
+    },
   ];
 
   return (
@@ -97,15 +241,13 @@ export default function Navbar() {
         <div className="bg-white border-b border-slate-200 py-2 sm:py-2.5">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14 flex items-center justify-between gap-4">
             {/* Logo & Institute Branding */}
-            <Link to="/" className="flex items-center gap-2.5 group">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-[#0F3D8C] via-[#1E40AF] to-[#DC2626] p-0.5 shadow-md flex items-center justify-center shrink-0">
-                <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center group-hover:bg-slate-50 transition-colors">
-                  <img
-                    src={logo}
-                    alt="Logo"
-                    className="w-8 h-8 object-contain"
-                  />
-                </div>
+            <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-white p-1.5 flex items-center justify-center shadow-md shrink-0 border border-slate-200/80 group-hover:shadow-lg group-hover:border-slate-300 transition-all">
+                <img
+                  src={logo}
+                  alt="ITPI Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="flex flex-col">
                 <div className="flex items-center gap-2">
@@ -161,68 +303,306 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* NAVIGATION BAR (Navy Blue with Red Border) */}
+        {/* NAVIGATION BAR WITH DROPDOWNS (Navy Blue with Red Border) */}
         <div className="w-full bg-[#081A3A] border-b-2 border-[#DC2626]">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14 flex items-center justify-between">
+            {/* Desktop Navigation Links with Dropdown Menus */}
             <nav className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) => {
-                const isActive = location.pathname === link.path;
+              {navMenuItems.map((item) => {
+                const hasSubmenu = Boolean(item.submenus && item.submenus.length > 0);
+                const isDropdownOpen = activeDropdown === item.key;
+                const isCurrentDirectRoute = item.path && location.pathname === item.path;
+                const isSubmenuActive =
+                  hasSubmenu &&
+                  item.submenus.some(
+                    (sub) =>
+                      location.pathname === sub.path.split("#")[0] &&
+                      (sub.path.includes("#") ? location.hash === `#${sub.path.split("#")[1]}` : true)
+                  );
+                const isActive = isCurrentDirectRoute || isSubmenuActive;
+
+                if (!hasSubmenu) {
+                  return (
+                    <Link
+                      key={item.key}
+                      to={item.path}
+                      className={`px-4 py-3 text-xs font-extrabold uppercase tracking-wider transition-all border-b-2 inline-flex items-center gap-1.5 ${
+                        isActive
+                          ? "text-white bg-blue-900/70 border-[#DC2626]"
+                          : "text-white hover:bg-blue-900/60 border-transparent hover:border-[#DC2626]"
+                      }`}
+                    >
+                      <span>{item.name}</span>
+                    </Link>
+                  );
+                }
+
                 return (
-                  <Link
-                    key={link.name}
-                    to={link.path}
-                    className={`px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all border-b-2 ${
-                      isActive
-                        ? "text-white bg-blue-900/60 border-[#DC2626]"
-                        : "text-slate-200 hover:text-white hover:bg-blue-900/40 border-transparent hover:border-[#DC2626]"
-                    }`}
+                  <div
+                    key={item.key}
+                    className="relative group"
+                    onMouseEnter={() => handleMouseEnter(item.key)}
+                    onMouseLeave={handleMouseLeave}
                   >
-                    {link.name}
-                  </Link>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setActiveDropdown(isDropdownOpen ? null : item.key)
+                      }
+                      className={`px-4 py-3 text-xs font-extrabold uppercase tracking-wider transition-all border-b-2 inline-flex items-center gap-1.5 cursor-pointer select-none ${
+                        isActive || isDropdownOpen
+                          ? "text-white bg-blue-900/70 border-[#DC2626]"
+                          : "text-white hover:bg-blue-900/60 border-transparent hover:border-[#DC2626]"
+                      }`}
+                      aria-expanded={isDropdownOpen}
+                      aria-haspopup="true"
+                    >
+                      <span>{item.name}</span>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                          isDropdownOpen ? "rotate-180 text-[#DC2626]" : "text-white/80 group-hover:text-white"
+                        }`}
+                      />
+                    </button>
+
+                    {/* Desktop Dropdown Panel */}
+                    {isDropdownOpen && (
+                      <div
+                        className="absolute left-0 top-full mt-0 w-80 bg-[#081A3A] border border-blue-900/80 rounded-b-2xl shadow-2xl p-2 z-50 backdrop-blur-md animate-in fade-in slide-in-from-top-1 duration-150"
+                        onMouseEnter={() => handleMouseEnter(item.key)}
+                        onMouseLeave={handleMouseLeave}
+                      >
+                        <div className="space-y-1">
+                          {item.submenus.map((sub) => {
+                            const SubIcon = sub.icon;
+                            const [subPathBase, subHash] = sub.path.split("#");
+                            const isSubActive = subHash
+                              ? location.pathname === subPathBase && location.hash === `#${subHash}`
+                              : location.pathname === subPathBase && (!location.hash || location.hash === "");
+
+                            return (
+                              <Link
+                                key={sub.name}
+                                to={sub.path}
+                                onClick={() => setActiveDropdown(null)}
+                                className={`group flex items-start gap-3 p-2.5 rounded-xl transition-all ${
+                                  isSubActive
+                                    ? "bg-blue-900/70 border border-blue-800/80"
+                                    : "hover:bg-blue-900/60 border border-transparent"
+                                }`}
+                              >
+                                <div
+                                  className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 transition-all bg-[#DC2626] text-white shadow-md shadow-red-950/40 ${
+                                    isSubActive
+                                      ? "ring-2 ring-white/40"
+                                      : "group-hover:bg-red-500 group-hover:scale-105"
+                                  }`}
+                                >
+                                  <SubIcon className="w-4 h-4" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center justify-between gap-1">
+                                    <span className="text-xs font-bold text-white transition-colors">
+                                      {sub.name}
+                                    </span>
+                                    {sub.badge && (
+                                      <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.2 rounded bg-red-600/30 text-red-300 border border-red-500/40">
+                                        {sub.badge}
+                                      </span>
+                                    )}
+                                  </div>
+                                  <p className="text-[11px] text-slate-300 leading-tight mt-0.5 line-clamp-2 font-normal">
+                                    {sub.desc}
+                                  </p>
+                                </div>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 );
               })}
             </nav>
 
+            {/* Right Badge */}
             <div className="hidden lg:flex items-center gap-3 py-1.5 text-xs">
-              <span className="text-amber-300 font-bold font-mono flex items-center text-[11px]">
-                16 State Contingents
+              <Link
+                to="/contingents"
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/40 border border-blue-800 text-amber-300 font-bold hover:bg-blue-900/70 transition text-[11px]"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                <span>16 State Contingents</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* ========================================================
+          3. MOBILE SLIDE-OVER SIDEBAR DRAWER (With Accordion Submenus)
+      ======================================================== */}
+      {/* Backdrop Overlay */}
+      <div
+        className={`fixed inset-0 bg-black/70 backdrop-blur-xs z-[60] transition-opacity duration-300 lg:hidden ${
+          mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setMobileMenuOpen(false)}
+        aria-hidden="true"
+      />
+
+      {/* Slide-over Drawer Panel */}
+      <div
+        className={`fixed top-0 right-0 bottom-0 w-[88%] max-w-[360px] bg-[#081A3A] text-white z-[70] shadow-2xl flex flex-col justify-between transform transition-transform duration-300 ease-out lg:hidden border-l border-blue-900/60 ${
+          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        {/* Drawer Header */}
+        <div className="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-[#0B214A]">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-white p-1 flex items-center justify-center shadow-md shrink-0">
+              <img src={logo} alt="ITPI Logo" className="w-full h-full object-contain" />
+            </div>
+            <div>
+              <div className="flex items-center gap-1.5">
+                <span className="font-black text-sm text-white tracking-tight leading-none uppercase">
+                  ITPI SPORTS <span className="text-[#DC2626]">2027</span>
+                </span>
+                <span className="text-[8px] bg-red-600 text-white font-extrabold px-1.5 py-0.5 rounded-full">
+                  UP Host
+                </span>
+              </div>
+              <span className="text-[10px] text-slate-300 font-semibold block mt-0.5">
+                Lucknow, Uttar Pradesh
               </span>
             </div>
           </div>
 
-          {/* Mobile Dropdown Menu */}
-          {mobileMenuOpen && (
-            <div className="lg:hidden bg-[#081A3A] border-t border-blue-900 px-4 py-3 space-y-1.5">
-              {navLinks.map((link) => {
-                const isActive = location.pathname === link.path;
-                return (
-                  <Link
-                    key={link.name}
-                    to={link.path}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`block px-3 py-2 rounded-lg text-xs font-semibold transition-colors ${
-                      isActive
-                        ? "text-white bg-[#DC2626]"
-                        : "text-slate-200 hover:bg-[#0F3D8C]"
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                );
-              })}
-              <div className="pt-2 border-t border-blue-900">
-                <Link
-                  to="/register"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block w-full text-center py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-[#DC2626]"
-                >
-                  Nominate State Team
-                </Link>
-              </div>
-            </div>
-          )}
+          {/* Close Button */}
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition cursor-pointer"
+            aria-label="Close navigation drawer"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
-      </header>
+
+        {/* Drawer Nav Links List with Accordion */}
+        <div className="flex-1 overflow-y-auto p-4 space-y-2">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block px-2 py-0.5">
+            Main Navigation
+          </span>
+
+          {navMenuItems.map((item) => {
+            const hasSubmenu = Boolean(item.submenus && item.submenus.length > 0);
+            const isExpanded = mobileExpanded[item.key];
+            const Icon = item.icon;
+
+            if (!hasSubmenu) {
+              const isActive = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.key}
+                  to={item.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all ${
+                    isActive
+                      ? "bg-[#DC2626] text-white shadow-md shadow-red-950/30"
+                      : "text-white hover:bg-white/10"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <Icon className={`w-4 h-4 ${isActive ? "text-white" : "text-slate-300"}`} />
+                    <span>{item.name}</span>
+                  </div>
+                  <ChevronRight className={`w-4 h-4 ${isActive ? "text-white" : "text-slate-400"}`} />
+                </Link>
+              );
+            }
+
+            // Accordion Item for menus with submenus
+            return (
+              <div
+                key={item.key}
+                className="rounded-xl overflow-hidden bg-blue-950/40 border border-blue-900/50"
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleMobileAccordion(item.key)}
+                  className="w-full flex items-center justify-between px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider text-slate-100 hover:bg-white/5 transition cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <Icon className="w-4 h-4 text-[#DC2626]" />
+                    <span>{item.name}</span>
+                  </div>
+                  <ChevronDown
+                    className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
+                      isExpanded ? "rotate-180 text-[#DC2626]" : ""
+                    }`}
+                  />
+                </button>
+
+                {/* Submenu Links */}
+                {isExpanded && (
+                  <div className="px-2 pb-2 pt-1 space-y-1 bg-black/20 border-t border-blue-900/40">
+                    {item.submenus.map((sub) => {
+                      const SubIcon = sub.icon;
+                      const [subPathBase, subHash] = sub.path.split("#");
+                      const isSubActive = subHash
+                        ? location.pathname === subPathBase && location.hash === `#${subHash}`
+                        : location.pathname === subPathBase && (!location.hash || location.hash === "");
+
+                      return (
+                        <Link
+                          key={sub.name}
+                          to={sub.path}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={`flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                            isSubActive
+                              ? "bg-[#DC2626] text-white font-bold"
+                              : "text-slate-300 hover:bg-white/10 hover:text-white"
+                          }`}
+                        >
+                          <div className="flex items-center gap-2.5 min-w-0">
+                            <div className="w-6 h-6 rounded-md bg-[#DC2626] text-white flex items-center justify-center shrink-0 shadow-xs">
+                              <SubIcon className="w-3.5 h-3.5" />
+                            </div>
+                            <span className="truncate">{sub.name}</span>
+                          </div>
+                          {sub.badge && (
+                            <span className="text-[9px] font-extrabold px-1.5 py-0.2 rounded bg-white/20 text-white shrink-0 ml-1">
+                              {sub.badge}
+                            </span>
+                          )}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Drawer Footer Actions */}
+        <div className="p-4 sm:p-5 border-t border-white/10 bg-[#0B214A] space-y-2.5">
+          <Link
+            to="/register"
+            onClick={() => setMobileMenuOpen(false)}
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition"
+          >
+            <UserPlus className="w-4 h-4" />
+            <span>Nominate Contingent</span>
+          </Link>
+
+          <div className="text-center pt-1 text-[10px] text-slate-400">
+            8th – 10th January 2027 • Lucknow, UP
+          </div>
+        </div>
+      </div>
     </>
   );
 }
+

@@ -175,31 +175,33 @@ export default function ScheduleTimelineSection() {
         </div>
 
         {/* 3-Column Timeline Layout (Reference LAF 3.0 Architecture) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           {PROGRAM_SCHEDULE.map((day, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+              className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full justify-between"
             >
-              {/* Red Pill Header (Matching Reference Design) */}
-              <div className="flex justify-center mb-5">
-                <div className="px-8 sm:px-10 py-2 sm:py-2.5 rounded-full bg-[#DC2626] text-white font-black text-sm tracking-widest uppercase shadow-md shadow-red-600/20 text-center">
-                  {day.dayNumber}
+              <div>
+                {/* Red Pill Header (Matching Reference Design) */}
+                <div className="flex justify-center mb-5">
+                  <div className="px-8 sm:px-10 py-2 sm:py-2.5 rounded-full bg-[#DC2626] text-white font-black text-sm tracking-widest uppercase shadow-md shadow-red-600/20 text-center">
+                    {day.dayNumber}
+                  </div>
+                </div>
+
+                {/* Day Subtitle Info */}
+                <div className="text-center pb-4 mb-5 border-b border-slate-100 min-h-[50px] flex flex-col justify-center">
+                  <span className="text-xs font-bold text-slate-800 block">
+                    {day.dayTitle}
+                  </span>
+                  <span className="text-[11px] text-slate-500 block mt-0.5 leading-snug">
+                    {day.tagline}
+                  </span>
                 </div>
               </div>
 
-              {/* Day Subtitle Info */}
-              <div className="text-center pb-4 mb-5 border-b border-slate-100">
-                <span className="text-xs font-bold text-slate-800 block">
-                  {day.dayTitle}
-                </span>
-                <span className="text-[11px] text-slate-500 block mt-0.5 leading-snug">
-                  {day.tagline}
-                </span>
-              </div>
-
-              {/* Timeline Items List */}
-              <div className="space-y-4">
+              {/* Timeline Items List - Evenly distributed across full card height */}
+              <div className="flex-1 flex flex-col justify-between py-1 my-1">
                 {day.events.map((event, eIdx) => (
                   <div
                     key={eIdx}
@@ -235,6 +237,17 @@ export default function ScheduleTimelineSection() {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Bottom Card Summary / Status Anchor */}
+              <div className="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                <span className="inline-flex items-center gap-1.5 font-bold text-[#0F3D8C]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626]" />
+                  {day.dayNumber === 'DAY 1' ? '8 Sessions • Opening Day' : day.dayNumber === 'DAY 2' ? '7 Sessions • Super Saturday' : '6 Sessions • Grand Finale'}
+                </span>
+                <span className="font-semibold text-slate-400">
+                  {day.dayNumber === 'DAY 1' ? 'Inaugural Matches' : day.dayNumber === 'DAY 2' ? 'Semi-Final Stages' : 'Closing & Awards'}
+                </span>
               </div>
             </div>
           ))}

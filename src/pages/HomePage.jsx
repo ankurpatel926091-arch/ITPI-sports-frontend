@@ -8,7 +8,7 @@ import ScheduleTimelineSection from '../components/home/ScheduleTimelineSection'
 import ExperienceLucknowSection from '../components/home/ExperienceLucknowSection';
 import ChampionshipGuidelinesSection from '../components/home/ChampionshipGuidelinesSection';
 import ContingentsCounterSection from '../components/home/ContingentsCounterSection';
-import RegistrationSection from '../components/home/RegistrationSection';
+import RegistrationCtaSection from '../components/home/RegistrationCtaSection';
 import HeritageCtaSection from '../components/common/HeritageCtaSection';
 
 export default function HomePage() {
@@ -36,13 +36,13 @@ export default function HomePage() {
       <ExperienceLucknowSection />
 
       {/* 8. CHAMPIONSHIP GUIDELINES, FEES & BANK DETAILS */}
-      <ChampionshipGuidelinesSection />
+      {/* <ChampionshipGuidelinesSection /> */}
 
       {/* 9. 16 STATE CONTINGENTS COUNTER */}
-      <ContingentsCounterSection />
+      {/* <ContingentsCounterSection /> */}
 
-      {/* 10. QUICK REGISTRATION SECTION */}
-      <RegistrationSection />
+      {/* 10. QUICK REGISTRATION & NOMINATION HUB CTA */}
+      <RegistrationCtaSection />
 
       {/* 11. HERITAGE SKYLINE CTA SECTION */}
       <HeritageCtaSection />

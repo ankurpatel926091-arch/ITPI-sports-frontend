@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, MapPin, Download, ArrowRight, CheckCircle2, FileText, Printer } from 'lucide-react';
-import invitationLetterImg from '../../assets/images/invitation_letter.jpg';
+import invitationLetterImg from '../../assets/images/invitation_letter.webp';
 import { LUCKNOW_MAP_URL } from '../../constants/contactLinks';
 
 export default function MeetInvitationSection() {
@@ -68,7 +68,7 @@ export default function MeetInvitationSection() {
                   <span>Print Letter</span>
                 </button>
                 <a
-                  href="#register"
+                  href="register"
                   className="flex-1 text-center bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-xs uppercase tracking-wider py-2.5 sm:py-3 rounded-lg shadow-md transition"
                 >
                   Nominate Team

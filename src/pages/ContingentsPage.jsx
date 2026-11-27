@@ -7,8 +7,10 @@ export default function ContingentsPage() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredStates = CONTINGENTS_LIST.filter(s =>
-    s.state.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    s.region.toLowerCase().includes(searchQuery.toLowerCase())
+    (s.name && s.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
+    (s.code && s.code.toLowerCase().includes(searchQuery.toLowerCase())) ||
+    (s.manager && s.manager.toLowerCase().includes(searchQuery.toLowerCase())) ||
+    (s.id && s.id.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
   return (
@@ -58,54 +60,60 @@ export default function ContingentsPage() {
 
         {/* 16 State Chapters Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 mb-16">
-          {filteredStates.map((contingent) => (
-            <div
-              key={contingent.id}
-              className={`p-5 rounded-2xl border transition-all duration-300 flex flex-col justify-between ${
-                contingent.isHost
-                  ? 'bg-gradient-to-br from-red-50/80 via-white to-blue-50/80 border-[#DC2626]/40 shadow-md ring-1 ring-red-200'
-                  : 'bg-white border-slate-200 shadow-xs hover:shadow-md hover:border-[#0F3D8C]/40'
-              }`}
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0F3D8C]">
-                    {contingent.stateCode}
+          {filteredStates.map((contingent) => {
+            const isHost = contingent.id === 'UP';
+            return (
+              <div
+                key={contingent.id}
+                className={`p-5 rounded-2xl border transition-all duration-300 flex flex-col justify-between ${
+                  isHost
+                    ? 'bg-gradient-to-br from-red-50/80 via-white to-blue-50/80 border-[#DC2626]/40 shadow-md ring-1 ring-red-200'
+                    : 'bg-white border-slate-200 shadow-xs hover:shadow-md hover:border-[#0F3D8C]/40'
+                }`}
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center font-bold text-xs text-[#0F3D8C] font-mono">
+                      {contingent.id}
+                    </span>
+                    {isHost ? (
+                      <span className="text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full bg-[#DC2626] text-white">
+                        Host Chapter
+                      </span>
+                    ) : (
+                      <span className="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full font-mono">
+                        {contingent.code}
+                      </span>
+                    )}
+                  </div>
+
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 leading-tight">
+                      {contingent.name}
+                    </h3>
+                    <p className="text-[11px] text-slate-500 font-medium mt-1">
+                      Manager: <strong className="text-slate-700">{contingent.manager}</strong>
+                    </p>
+                    <p className="text-[11px] text-slate-500 font-medium">
+                      Contact: <span className="font-mono text-slate-600">{contingent.contact}</span>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                  <span className="text-slate-500 font-medium">Squad: <strong className="text-slate-900">{contingent.athletes} Athletes</strong></span>
+                  <span className="font-bold text-emerald-600 flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    <span>Invited & Eligible</span>
                   </span>
-                  {contingent.isHost ? (
-                    <span className="text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full bg-[#DC2626] text-white">
-                      Host Chapter
-                    </span>
-                  ) : (
-                    <span className="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">
-                      {contingent.region}
-                    </span>
-                  )}
-                </div>
-
-                <div>
-                  <h3 className="text-base font-bold text-slate-900 leading-tight">
-                    {contingent.state}
-                  </h3>
-                  <p className="text-[11px] text-slate-500 font-medium mt-0.5">
-                    {contingent.chapter}
-                  </p>
                 </div>
               </div>
-
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                <span className="text-slate-500">Status</span>
-                <span className="font-bold text-emerald-600 flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>Invited & Eligible</span>
-                </span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* National Sports Committee Section (Authentic from Page 33 of Brochure) */}
-        <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-10 shadow-sm space-y-8 mb-16">
+        <div id="committee" className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-10 shadow-sm space-y-8 mb-16 scroll-mt-24">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <span className="text-xs font-bold uppercase tracking-wider text-[#DC2626]">
               Brochure Official Secretariat

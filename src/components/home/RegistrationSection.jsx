@@ -1,41 +1,37 @@
 import React, { useState } from 'react';
 import { CONTINGENTS_LIST, SPORTS_LIST } from '../../data/eventData';
-import { UserCheck, ShieldCheck, Trophy, CheckCircle, ArrowRight, Shirt, Building, Users } from 'lucide-react';
+import { UserCheck, ShieldCheck, Trophy, CheckCircle, ArrowRight, Building, Users, BedDouble } from 'lucide-react';
 
 export default function RegistrationSection() {
   const [regType, setRegType] = useState('chapter'); // 'chapter' or 'individual'
 
-  // Chapter state
+  // Clean Chapter state (Backend-ready)
   const [chapterForm, setChapterForm] = useState({
     chapter: 'ITPI-UP',
-    teamName: '',
     managerName: '',
     itpiNumber: '',
     email: '',
     mobile: '',
     squadSize: '16',
-    jerseyColor: 'Royal Navy Blue & White',
-    selectedSports: ['cricket', 'badminton'],
-    roomsNeeded: '8 Rooms (Twin Sharing)',
-    arrivalDate: '2027-01-08',
+    selectedSports: [],
+    accommodation: 'yes',
   });
 
-  // Individual state
+  // Clean Individual state (Backend-ready)
   const [individualForm, setIndividualForm] = useState({
     fullName: '',
     itpiNumber: '',
     chapter: 'ITPI-UP',
-    designation: '',
     email: '',
     mobile: '',
     participationRole: 'playing', // 'playing' or 'delegate'
     tshirtSize: 'L',
-    selectedSports: ['cricket'],
+    selectedSports: [],
     accommodation: 'yes',
-    emergencyContact: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [refId, setRefId] = useState('');
 
   const toggleSport = (sportId) => {
     if (regType === 'chapter') {
@@ -63,6 +59,8 @@ export default function RegistrationSection() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const generatedId = `ITPI-2027-${Math.floor(100000 + Math.random() * 900000)}`;
+    setRefId(generatedId);
     setSubmitted(true);
   };
 
@@ -81,8 +79,8 @@ export default function RegistrationSection() {
           <div className="h-1.5 w-24 bg-gradient-to-r from-[#DC2626] to-[#0F3D8C] rounded-full mx-auto" />
           <p className="text-slate-600 text-xs sm:text-base max-w-xl mx-auto">
             {regType === 'chapter'
-              ? 'Official portal for ITPI State Chapters to submit state squad rosters, jersey themes and accommodation.'
-              : 'Individual portal for Town Planners and members to register as players or non-playing delegates.'}
+              ? 'Submit official ITPI State Chapter contingent nominations, team manager details and sports entries.'
+              : 'Individual portal for Town Planners and ITPI members to register as players or non-playing delegates.'}
           </p>
         </div>
 
@@ -94,37 +92,35 @@ export default function RegistrationSection() {
                 setRegType('chapter');
                 setSubmitted(false);
               }}
-              className={`px-3 sm:px-6 py-2 sm:py-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
+              className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
                 regType === 'chapter'
                   ? 'bg-[#0F3D8C] text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <ShieldCheck className="w-4 h-4 text-amber-300 shrink-0" />
-              <span className="hidden sm:inline">State Chapter Nomination</span>
-              <span className="sm:hidden">Chapter Entry</span>
+              <span>State Chapter Nomination</span>
             </button>
             <button
               onClick={() => {
                 setRegType('individual');
                 setSubmitted(false);
               }}
-              className={`px-3 sm:px-6 py-2 sm:py-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
+              className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
                 regType === 'individual'
                   ? 'bg-[#DC2626] text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <UserCheck className="w-4 h-4 shrink-0" />
-              <span className="hidden sm:inline">Individual Delegate Entry</span>
-              <span className="sm:hidden">Individual Entry</span>
+              <span>Individual Delegate Entry</span>
             </button>
           </div>
         </div>
 
         {submitted ? (
-          <div className="p-8 sm:p-14 rounded-2xl bg-white border-2 border-emerald-500 shadow-xl text-center space-y-6">
-            <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+          <div className="p-8 sm:p-12 rounded-2xl bg-white border-2 border-emerald-500 shadow-xl text-center space-y-6 max-w-2xl mx-auto">
+            <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-sm">
               <CheckCircle className="w-8 h-8" />
             </div>
             <div className="space-y-2">
@@ -134,7 +130,7 @@ export default function RegistrationSection() {
               <p className="text-sm text-slate-600 max-w-lg mx-auto">
                 {regType === 'chapter' ? (
                   <>
-                    Thank you, Manager <strong>{chapterForm.managerName || 'Chapter Representative'}</strong>. The contingent nomination for <strong>{chapterForm.chapter} ({chapterForm.teamName || 'Official Squad'})</strong> has been recorded.
+                    Thank you, Manager <strong>{chapterForm.managerName || 'Chapter Representative'}</strong>. The contingent nomination for <strong>{chapterForm.chapter}</strong> has been successfully recorded.
                   </>
                 ) : (
                   <>
@@ -142,10 +138,13 @@ export default function RegistrationSection() {
                   </>
                 )}
               </p>
-              <p className="text-xs text-[#0F3D8C] font-mono font-bold pt-2">
-                Registration Ref ID: ITPI-2027-{Math.floor(100000 + Math.random() * 900000)}
-              </p>
+              <div className="pt-3">
+                <span className="inline-block px-4 py-2 rounded-xl bg-blue-50 border border-blue-200 text-[#0F3D8C] font-mono font-extrabold text-sm">
+                  Registration Ref ID: {refId}
+                </span>
+              </div>
             </div>
+
             <div className="pt-4 flex justify-center gap-4">
               <button
                 onClick={() => setSubmitted(false)}
@@ -156,10 +155,10 @@ export default function RegistrationSection() {
             </div>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="p-5 sm:p-10 rounded-2xl bg-white border border-slate-200 shadow-xl space-y-6 sm:space-y-8">
+          <form onSubmit={handleSubmit} className="p-5 sm:p-10 rounded-2xl bg-white border border-slate-200 shadow-xl space-y-6 sm:space-y-8 max-w-5xl mx-auto">
             
             {/* ========================================================
-                OPTION 1: STATE CHAPTER NOMINATION FIELDS
+                OPTION 1: STATE CHAPTER NOMINATION (CLEAN BACKEND SCHEMA)
             ======================================================== */}
             {regType === 'chapter' ? (
               <>
@@ -168,7 +167,7 @@ export default function RegistrationSection() {
                   <div className="pb-2 border-b border-slate-200 flex items-center justify-between">
                     <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0F3D8C] flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full bg-[#0F3D8C]" />
-                      1. State Chapter &amp; Team Manager Details
+                      1. State Chapter &amp; Manager Details
                     </h3>
                     <span className="text-[11px] font-bold text-[#0F3D8C] bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
                       Official Chapter Roster
@@ -195,20 +194,6 @@ export default function RegistrationSection() {
 
                     <div>
                       <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Official Chapter Squad / Team Name *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={chapterForm.teamName}
-                        onChange={(e) => setChapterForm({ ...chapterForm, teamName: e.target.value })}
-                        placeholder="e.g. UP Urban Titans"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#0F3D8C] focus:bg-white"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
                         Chapter Secretary / Manager Name *
                       </label>
                       <input
@@ -223,7 +208,7 @@ export default function RegistrationSection() {
 
                     <div>
                       <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Manager ITPI Membership / Roll No. *
+                        Manager ITPI Roll / Membership No. *
                       </label>
                       <input
                         type="text"
@@ -262,22 +247,7 @@ export default function RegistrationSection() {
                         className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#0F3D8C] focus:bg-white"
                       />
                     </div>
-                  </div>
-                </div>
 
-                {/* Section 2: Chapter Squad & Jersey Theme */}
-                <div className="space-y-4 pt-4 border-t border-slate-200">
-                  <div className="pb-2 border-b border-slate-200 flex items-center justify-between">
-                    <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0F3D8C] flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#DC2626]" />
-                      2. Contingent Size, Jersey &amp; Sports Participation
-                    </h3>
-                    <span className="text-xs font-bold text-[#DC2626]">
-                      {chapterForm.selectedSports.length} Sports Selected
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
                     <div>
                       <label className="block text-xs font-semibold text-slate-700 mb-1">
                         Expected Contingent Squad Size *
@@ -285,7 +255,7 @@ export default function RegistrationSection() {
                       <select
                         value={chapterForm.squadSize}
                         onChange={(e) => setChapterForm({ ...chapterForm, squadSize: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none"
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#0F3D8C] focus:bg-white"
                       >
                         <option value="12">12 Members (Playing Squad)</option>
                         <option value="16">16 Members (Full Contingent Standard)</option>
@@ -293,92 +263,66 @@ export default function RegistrationSection() {
                         <option value="25+">25+ Members (Large State Delegation)</option>
                       </select>
                     </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        State Chapter Sports Jersey Color / Theme *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={chapterForm.jerseyColor}
-                        onChange={(e) => setChapterForm({ ...chapterForm, jerseyColor: e.target.value })}
-                        placeholder="e.g. Royal Blue & Gold (Depicting State Culture)"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#0F3D8C] focus:bg-white"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Sports Checklist */}
-                  <div className="pt-2">
-                    <label className="block text-xs font-semibold text-slate-700 mb-2">
-                      Nominate Chapter Teams For Disciplines:
-                    </label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                      {SPORTS_LIST.map((sport) => {
-                        const isChecked = chapterForm.selectedSports.includes(sport.id);
-                        return (
-                          <div
-                            key={sport.id}
-                            onClick={() => toggleSport(sport.id)}
-                            className={`p-3.5 rounded-xl border text-xs font-semibold cursor-pointer select-none transition-all flex items-center justify-between ${
-                              isChecked
-                                ? 'bg-blue-50 border-[#0F3D8C] text-[#0F3D8C] shadow-xs'
-                                : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                            }`}
-                          >
-                            <span className="truncate pr-1">{sport.name}</span>
-                            <input
-                              type="checkbox"
-                              checked={isChecked}
-                              readOnly
-                              className="rounded text-[#0F3D8C] focus:ring-0 shrink-0 pointer-events-none"
-                            />
-                          </div>
-                        );
-                      })}
-                    </div>
                   </div>
                 </div>
 
-                {/* Section 3: Chapter Accommodation & Logistics */}
+                {/* Section 2: Sports Disciplines Selection */}
+                <div className="space-y-4 pt-4 border-t border-slate-200">
+                  <div className="pb-2 border-b border-slate-200 flex items-center justify-between">
+                    <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0F3D8C] flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#DC2626]" />
+                      2. Nominate Chapter Teams for Disciplines
+                    </h3>
+                    <span className="text-xs font-bold text-[#DC2626]">
+                      {chapterForm.selectedSports.length} Sports Selected
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {SPORTS_LIST.map((sport) => {
+                      const isChecked = chapterForm.selectedSports.includes(sport.id);
+                      return (
+                        <div
+                          key={sport.id}
+                          onClick={() => toggleSport(sport.id)}
+                          className={`p-3.5 rounded-xl border text-xs font-semibold cursor-pointer select-none transition-all flex items-center justify-between ${
+                            isChecked
+                              ? 'bg-blue-50 border-[#0F3D8C] text-[#0F3D8C] shadow-xs'
+                              : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                          }`}
+                        >
+                          <span className="truncate pr-1">{sport.name}</span>
+                          <input
+                            type="checkbox"
+                            checked={isChecked}
+                            readOnly
+                            className="rounded text-[#0F3D8C] focus:ring-0 shrink-0 pointer-events-none"
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Section 3: Accommodation Requirement */}
                 <div className="space-y-4 pt-4 border-t border-slate-200">
                   <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0F3D8C] flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#DC2626]" />
-                    3. Chapter Contingent Accommodation Booking
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#0F3D8C]" />
+                    3. Hospitality &amp; Accommodation
                   </h3>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Contingent Hotel Rooms Required in Lucknow
-                      </label>
-                      <select
-                        value={chapterForm.roomsNeeded}
-                        onChange={(e) => setChapterForm({ ...chapterForm, roomsNeeded: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none"
-                      >
-                        <option value="6 Rooms">6 Rooms (approx 12 beds)</option>
-                        <option value="8 Rooms (Twin Sharing)">8 Rooms (Standard Contingent - 16 beds)</option>
-                        <option value="10 Rooms">10 Rooms (approx 20 beds)</option>
-                        <option value="12+ Rooms">12+ Rooms (Large Contingent)</option>
-                        <option value="Self-arranged">Self-arranged by State Chapter</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Expected Arrival Date in Lucknow
-                      </label>
-                      <select
-                        value={chapterForm.arrivalDate}
-                        onChange={(e) => setChapterForm({ ...chapterForm, arrivalDate: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none"
-                      >
-                        <option value="2027-01-07">7th January 2027 (Pre-event check-in)</option>
-                        <option value="2027-01-08">8th January 2027 (Opening Day Morning)</option>
-                      </select>
-                    </div>
+                  <div className="max-w-md">
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      Does the State Contingent Require Official Hotel Stay in Lucknow? *
+                    </label>
+                    <select
+                      value={chapterForm.accommodation}
+                      onChange={(e) => setChapterForm({ ...chapterForm, accommodation: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#0F3D8C] focus:bg-white"
+                    >
+                      <option value="yes">Yes, Official Accommodation Required (Twin Sharing)</option>
+                      <option value="no">No, Self-arranged by State Chapter</option>
+                    </select>
                   </div>
                 </div>
 
@@ -386,7 +330,7 @@ export default function RegistrationSection() {
                 <div className="pt-6 border-t border-slate-200 text-center">
                   <button
                     type="submit"
-                    className="w-full sm:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-[#0F3D8C] to-[#1E3A8A] hover:from-blue-900 hover:to-blue-950 text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-xl shadow-blue-950/30 hover:scale-[1.02] transition-all cursor-pointer"
+                    className="w-full sm:w-auto px-10 py-3.5 rounded-xl bg-gradient-to-r from-[#0F3D8C] to-[#1E3A8A] hover:from-blue-900 hover:to-blue-950 text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-blue-950/20 hover:scale-[1.01] transition-all cursor-pointer"
                   >
                     Submit State Chapter Nomination Roster
                   </button>
@@ -394,7 +338,7 @@ export default function RegistrationSection() {
               </>
             ) : (
               /* ========================================================
-                  OPTION 2: INDIVIDUAL DELEGATE ENTRY FIELDS
+                  OPTION 2: INDIVIDUAL DELEGATE (CLEAN BACKEND SCHEMA)
               ======================================================== */
               <>
                 {/* Section 1: Individual Delegate Information */}
@@ -402,7 +346,7 @@ export default function RegistrationSection() {
                   <div className="pb-2 border-b border-slate-200 flex items-center justify-between">
                     <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#DC2626] flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full bg-[#DC2626]" />
-                      1. Individual Delegate Information
+                      1. Individual Delegate Details
                     </h3>
                     <span className="text-[11px] font-bold text-[#DC2626] bg-red-50 px-2.5 py-0.5 rounded-full border border-red-200">
                       Personal Delegate Pass
@@ -457,19 +401,6 @@ export default function RegistrationSection() {
 
                     <div>
                       <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Designation / Organization
-                      </label>
-                      <input
-                        type="text"
-                        value={individualForm.designation}
-                        onChange={(e) => setIndividualForm({ ...individualForm, designation: e.target.value })}
-                        placeholder="e.g. Town Planner / Faculty"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#DC2626] focus:bg-white"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
                         Email Address *
                       </label>
                       <input
@@ -495,6 +426,20 @@ export default function RegistrationSection() {
                         className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#DC2626] focus:bg-white"
                       />
                     </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        Participation Role *
+                      </label>
+                      <select
+                        value={individualForm.participationRole}
+                        onChange={(e) => setIndividualForm({ ...individualForm, participationRole: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#DC2626] focus:bg-white"
+                      >
+                        <option value="playing">Playing Athlete (Participating in Sports)</option>
+                        <option value="delegate">Non-Playing Delegate / Spectator / Guest</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
 
@@ -503,42 +448,39 @@ export default function RegistrationSection() {
                   <div className="pb-2 border-b border-slate-200 flex items-center justify-between">
                     <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0F3D8C] flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full bg-[#DC2626]" />
-                      2. Participation Category &amp; Sports
+                      2. Event Kit &amp; Accommodation
                     </h3>
-                    <span className="text-xs font-bold text-[#DC2626]">
-                      {individualForm.selectedSports.length} Selected
-                    </span>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
                     <div>
                       <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Participation Role
-                      </label>
-                      <select
-                        value={individualForm.participationRole}
-                        onChange={(e) => setIndividualForm({ ...individualForm, participationRole: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none"
-                      >
-                        <option value="playing">Playing Athlete (Participating in Sports)</option>
-                        <option value="delegate">Non-Playing Delegate / Spectator / Guest</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Event Kit &amp; T-Shirt Size
+                        Official Event Kit T-Shirt Size *
                       </label>
                       <select
                         value={individualForm.tshirtSize}
                         onChange={(e) => setIndividualForm({ ...individualForm, tshirtSize: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none"
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#DC2626] focus:bg-white"
                       >
                         <option value="S">Small (S - 38)</option>
                         <option value="M">Medium (M - 40)</option>
                         <option value="L">Large (L - 42 - Standard)</option>
                         <option value="XL">Extra Large (XL - 44)</option>
                         <option value="XXL">Double XL (XXL - 46)</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        Require Accommodation in Lucknow? *
+                      </label>
+                      <select
+                        value={individualForm.accommodation}
+                        onChange={(e) => setIndividualForm({ ...individualForm, accommodation: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#DC2626] focus:bg-white"
+                      >
+                        <option value="yes">Yes, Need Official Delegate Accommodation</option>
+                        <option value="no">No, Self-arranged / Local Resident</option>
                       </select>
                     </div>
                   </div>
@@ -576,48 +518,11 @@ export default function RegistrationSection() {
                   )}
                 </div>
 
-                {/* Section 3: Accommodation & Logistics */}
-                <div className="space-y-4 pt-4 border-t border-slate-200">
-                  <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0F3D8C] flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#DC2626]" />
-                    3. Hospitality &amp; Emergency Contact
-                  </h3>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Require Accommodation in Lucknow?
-                      </label>
-                      <select
-                        value={individualForm.accommodation}
-                        onChange={(e) => setIndividualForm({ ...individualForm, accommodation: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#DC2626] focus:bg-white"
-                      >
-                        <option value="yes">Yes, Need Official Delegate Booking</option>
-                        <option value="no">No, Self-arranged / Local Resident</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Emergency Contact Number
-                      </label>
-                      <input
-                        type="tel"
-                        value={individualForm.emergencyContact}
-                        onChange={(e) => setIndividualForm({ ...individualForm, emergencyContact: e.target.value })}
-                        placeholder="+91 94150 XXXXX"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#DC2626] focus:bg-white"
-                      />
-                    </div>
-                  </div>
-                </div>
-
                 {/* Submit Button */}
                 <div className="pt-6 border-t border-slate-200 text-center">
                   <button
                     type="submit"
-                    className="w-full sm:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-xl shadow-red-950/30 hover:scale-[1.02] transition-all cursor-pointer"
+                    className="w-full sm:w-auto px-10 py-3.5 rounded-xl bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-red-950/20 hover:scale-[1.01] transition-all cursor-pointer"
                   >
                     Submit Delegate Entry &amp; Generate Pass
                   </button>
