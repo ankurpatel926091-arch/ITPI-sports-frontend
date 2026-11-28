@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { CONTINGENTS_LIST, SPORTS_LIST } from '../../data/eventData';
-import { UserCheck, ShieldCheck, Trophy, CheckCircle, ArrowRight, Building, Users, BedDouble } from 'lucide-react';
+import { 
+  UserCheck, ShieldCheck, Trophy, CheckCircle, ArrowRight, 
+  Building, Users, BedDouble, AlertCircle 
+} from 'lucide-react';
 
 export default function RegistrationSection() {
   const [regType, setRegType] = useState('chapter'); // 'chapter' or 'individual'
@@ -17,6 +20,9 @@ export default function RegistrationSection() {
     accommodation: 'yes',
   });
 
+  const [chapterErrors, setChapterErrors] = useState({});
+  const [chapterTouched, setChapterTouched] = useState({});
+
   // Clean Individual state (Backend-ready)
   const [individualForm, setIndividualForm] = useState({
     fullName: '',
@@ -30,35 +36,205 @@ export default function RegistrationSection() {
     accommodation: 'yes',
   });
 
+  const [individualErrors, setIndividualErrors] = useState({});
+  const [individualTouched, setIndividualTouched] = useState({});
+
   const [submitted, setSubmitted] = useState(false);
   const [refId, setRefId] = useState('');
+
+  // Email & Phone Validators
+  const isValidEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((email || '').trim());
+  };
+
+  const isValidPhone = (phone) => {
+    const cleaned = (phone || '').replace(/[\s\-\(\)\+]/g, '');
+    const withoutCountryCode = cleaned.startsWith('91') && cleaned.length === 12 ? cleaned.slice(2) : cleaned;
+    return /^[6-9]\d{9}$/.test(withoutCountryCode);
+  };
+
+  // Field Level Validation for Chapter Form
+  const validateChapterField = (name, value, allValues = chapterForm) => {
+    let err = '';
+    const val = (typeof value === 'string' ? value : '').trim();
+
+    if (name === 'managerName') {
+      if (!val) err = 'Secretary / Manager name is required.';
+      else if (val.length < 3) err = 'Name must be at least 3 characters.';
+      else if (!/^[\p{L}\p{M}][\p{L}\p{M}\s.'’-]*$/u.test(val)) err = 'Please enter a valid name using letters only.';
+    } else if (name === 'itpiNumber') {
+      if (val && val.length < 3) err = 'Please enter a valid ITPI membership number.';
+    } else if (name === 'email') {
+      if (val && !isValidEmail(val)) err = 'Please enter a valid email address (e.g. chapter@itpi.org.in).';
+    } else if (name === 'mobile') {
+      if (!val) err = 'Mobile / WhatsApp number is required.';
+      else if (!isValidPhone(val)) err = 'Please enter a valid 10-digit mobile number.';
+    } else if (name === 'selectedSports') {
+      const sports = Array.isArray(value) ? value : allValues.selectedSports;
+      if (!sports || sports.length === 0) {
+        err = 'Please select at least 1 sport discipline for your chapter contingent.';
+      }
+    }
+    return err;
+  };
+
+  // Field Level Validation for Individual Form
+  const validateIndividualField = (name, value, allValues = individualForm) => {
+    let err = '';
+    const val = (typeof value === 'string' ? value : '').trim();
+
+    if (name === 'fullName') {
+      if (!val) err = 'Full name is required.';
+      else if (val.length < 3) err = 'Full name must be at least 3 characters.';
+      else if (!/^[\p{L}\p{M}][\p{L}\p{M}\s.'’-]*$/u.test(val)) err = 'Please enter a valid name using letters only.';
+    } else if (name === 'itpiNumber') {
+      if (!val) err = 'ITPI membership / roll number is required.';
+      else if (val.length < 3) err = 'Please enter a valid ITPI membership number.';
+    } else if (name === 'email') {
+      if (!val) err = 'Email address is required.';
+      else if (!isValidEmail(val)) err = 'Please enter a valid email address (e.g. planner@example.com).';
+    } else if (name === 'mobile') {
+      if (!val) err = 'Mobile / WhatsApp number is required.';
+      else if (!isValidPhone(val)) err = 'Please enter a valid 10-digit mobile number.';
+    } else if (name === 'selectedSports') {
+      const role = allValues.participationRole;
+      const sports = Array.isArray(value) ? value : allValues.selectedSports;
+      if (role === 'playing' && (!sports || sports.length === 0)) {
+        err = 'Playing athletes must select at least 1 sport discipline.';
+      }
+    }
+    return err;
+  };
+
+  // Handle Chapter input change
+  const handleChapterChange = (name, value) => {
+    const updated = { ...chapterForm, [name]: value };
+    setChapterForm(updated);
+
+    if (chapterTouched[name]) {
+      const err = validateChapterField(name, value, updated);
+      setChapterErrors((prev) => ({ ...prev, [name]: err }));
+    }
+  };
+
+  const handleChapterBlur = (name) => {
+    setChapterTouched((prev) => ({ ...prev, [name]: true }));
+    const err = validateChapterField(name, chapterForm[name]);
+    setChapterErrors((prev) => ({ ...prev, [name]: err }));
+  };
+
+  // Handle Individual input change
+  const handleIndividualChange = (name, value) => {
+    const updated = { ...individualForm, [name]: value };
+    setIndividualForm(updated);
+
+    if (individualTouched[name]) {
+      const err = validateIndividualField(name, value, updated);
+      setIndividualErrors((prev) => ({ ...prev, [name]: err }));
+    }
+    if (name === 'participationRole' && individualTouched.selectedSports) {
+      const sportsErr = validateIndividualField('selectedSports', updated.selectedSports, updated);
+      setIndividualErrors((prev) => ({ ...prev, selectedSports: sportsErr }));
+    }
+  };
+
+  const handleIndividualBlur = (name) => {
+    setIndividualTouched((prev) => ({ ...prev, [name]: true }));
+    const err = validateIndividualField(name, individualForm[name]);
+    setIndividualErrors((prev) => ({ ...prev, [name]: err }));
+  };
 
   const toggleSport = (sportId) => {
     if (regType === 'chapter') {
       setChapterForm((prev) => {
         const exists = prev.selectedSports.includes(sportId);
-        return {
-          ...prev,
-          selectedSports: exists
-            ? prev.selectedSports.filter((id) => id !== sportId)
-            : [...prev.selectedSports, sportId],
-        };
+        const updatedSports = exists
+          ? prev.selectedSports.filter((id) => id !== sportId)
+          : [...prev.selectedSports, sportId];
+
+        if (chapterTouched.selectedSports) {
+          const err = validateChapterField('selectedSports', updatedSports);
+          setChapterErrors((e) => ({ ...e, selectedSports: err }));
+        }
+
+        return { ...prev, selectedSports: updatedSports };
       });
     } else {
       setIndividualForm((prev) => {
         const exists = prev.selectedSports.includes(sportId);
-        return {
-          ...prev,
-          selectedSports: exists
-            ? prev.selectedSports.filter((id) => id !== sportId)
-            : [...prev.selectedSports, sportId],
-        };
+        const updatedSports = exists
+          ? prev.selectedSports.filter((id) => id !== sportId)
+          : [...prev.selectedSports, sportId];
+
+        if (individualTouched.selectedSports) {
+          const err = validateIndividualField('selectedSports', updatedSports, { ...prev, selectedSports: updatedSports });
+          setIndividualErrors((e) => ({ ...e, selectedSports: err }));
+        }
+
+        return { ...prev, selectedSports: updatedSports };
       });
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (regType === 'chapter') {
+      const newErrors = {};
+      const newTouched = {
+        managerName: true,
+        itpiNumber: true,
+        email: true,
+        mobile: true,
+        selectedSports: true,
+      };
+
+      ['managerName', 'itpiNumber', 'email', 'mobile', 'selectedSports'].forEach((field) => {
+        const err = validateChapterField(field, chapterForm[field]);
+        if (err) newErrors[field] = err;
+      });
+
+      setChapterTouched(newTouched);
+      setChapterErrors(newErrors);
+
+      if (Object.keys(newErrors).length > 0) {
+        const firstKey = Object.keys(newErrors)[0];
+        const el = document.getElementById(`chapter-${firstKey}`);
+        if (el) {
+          el.focus();
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
+    } else {
+      const newErrors = {};
+      const newTouched = {
+        fullName: true,
+        itpiNumber: true,
+        email: true,
+        mobile: true,
+        selectedSports: true,
+      };
+
+      ['fullName', 'itpiNumber', 'email', 'mobile', 'selectedSports'].forEach((field) => {
+        const err = validateIndividualField(field, individualForm[field]);
+        if (err) newErrors[field] = err;
+      });
+
+      setIndividualTouched(newTouched);
+      setIndividualErrors(newErrors);
+
+      if (Object.keys(newErrors).length > 0) {
+        const firstKey = Object.keys(newErrors)[0];
+        const el = document.getElementById(`ind-${firstKey}`);
+        if (el) {
+          el.focus();
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
+    }
+
     const generatedId = `ITPI-2027-${Math.floor(100000 + Math.random() * 900000)}`;
     setRefId(generatedId);
     setSubmitted(true);
@@ -155,7 +331,7 @@ export default function RegistrationSection() {
             </div>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="p-5 sm:p-10 rounded-2xl bg-white border border-slate-200 shadow-xl space-y-6 sm:space-y-8 max-w-5xl mx-auto">
+          <form onSubmit={handleSubmit} noValidate className="p-5 sm:p-10 rounded-2xl bg-white border border-slate-200 shadow-xl space-y-6 sm:space-y-8 max-w-5xl mx-auto">
             
             {/* ========================================================
                 OPTION 1: STATE CHAPTER NOMINATION (CLEAN BACKEND SCHEMA)
@@ -197,41 +373,74 @@ export default function RegistrationSection() {
                         Chapter Secretary / Manager Name *
                       </label>
                       <input
+                        id="chapter-managerName"
                         type="text"
-                        required
                         value={chapterForm.managerName}
-                        onChange={(e) => setChapterForm({ ...chapterForm, managerName: e.target.value })}
+                        onChange={(e) => handleChapterChange('managerName', e.target.value)}
+                        onBlur={() => handleChapterBlur('managerName')}
                         placeholder="e.g. Ar. Sanjay Gupta"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#0F3D8C] focus:bg-white"
+                        className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm text-slate-900 transition-colors focus:outline-none ${
+                          chapterTouched.managerName && chapterErrors.managerName
+                            ? 'border-red-500 bg-red-50/40 focus:border-red-600 focus:bg-white'
+                            : 'border-slate-300 bg-slate-50 focus:border-[#0F3D8C] focus:bg-white'
+                        }`}
                       />
+                      {chapterTouched.managerName && chapterErrors.managerName && (
+                        <p className="text-[11px] font-semibold text-red-600 flex items-center gap-1 mt-1">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{chapterErrors.managerName}</span>
+                        </p>
+                      )}
                     </div>
 
                     <div>
                       <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Manager ITPI Roll / Membership No. *
+                        Manager ITPI Roll / Membership No. (Optional)
                       </label>
                       <input
+                        id="chapter-itpiNumber"
                         type="text"
-                        required
                         value={chapterForm.itpiNumber}
-                        onChange={(e) => setChapterForm({ ...chapterForm, itpiNumber: e.target.value })}
+                        onChange={(e) => handleChapterChange('itpiNumber', e.target.value)}
+                        onBlur={() => handleChapterBlur('itpiNumber')}
                         placeholder="e.g. ITPI/F/1998/567"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#0F3D8C] focus:bg-white"
+                        className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm text-slate-900 transition-colors focus:outline-none ${
+                          chapterTouched.itpiNumber && chapterErrors.itpiNumber
+                            ? 'border-red-500 bg-red-50/40 focus:border-red-600 focus:bg-white'
+                            : 'border-slate-300 bg-slate-50 focus:border-[#0F3D8C] focus:bg-white'
+                        }`}
                       />
+                      {chapterTouched.itpiNumber && chapterErrors.itpiNumber && (
+                        <p className="text-[11px] font-semibold text-red-600 flex items-center gap-1 mt-1">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{chapterErrors.itpiNumber}</span>
+                        </p>
+                      )}
                     </div>
 
                     <div>
                       <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Official Chapter Email Address *
+                        Official Chapter Email Address (Optional)
                       </label>
                       <input
+                        id="chapter-email"
                         type="email"
-                        required
                         value={chapterForm.email}
-                        onChange={(e) => setChapterForm({ ...chapterForm, email: e.target.value })}
+                        onChange={(e) => handleChapterChange('email', e.target.value)}
+                        onBlur={() => handleChapterBlur('email')}
                         placeholder="chapter@itpi.org.in"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#0F3D8C] focus:bg-white"
+                        className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm text-slate-900 transition-colors focus:outline-none ${
+                          chapterTouched.email && chapterErrors.email
+                            ? 'border-red-500 bg-red-50/40 focus:border-red-600 focus:bg-white'
+                            : 'border-slate-300 bg-slate-50 focus:border-[#0F3D8C] focus:bg-white'
+                        }`}
                       />
+                      {chapterTouched.email && chapterErrors.email && (
+                        <p className="text-[11px] font-semibold text-red-600 flex items-center gap-1 mt-1">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{chapterErrors.email}</span>
+                        </p>
+                      )}
                     </div>
 
                     <div>
@@ -239,13 +448,24 @@ export default function RegistrationSection() {
                         Manager WhatsApp / Mobile No. *
                       </label>
                       <input
+                        id="chapter-mobile"
                         type="tel"
-                        required
                         value={chapterForm.mobile}
-                        onChange={(e) => setChapterForm({ ...chapterForm, mobile: e.target.value })}
+                        onChange={(e) => handleChapterChange('mobile', e.target.value)}
+                        onBlur={() => handleChapterBlur('mobile')}
                         placeholder="+91 94150 12345"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#0F3D8C] focus:bg-white"
+                        className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm text-slate-900 transition-colors focus:outline-none ${
+                          chapterTouched.mobile && chapterErrors.mobile
+                            ? 'border-red-500 bg-red-50/40 focus:border-red-600 focus:bg-white'
+                            : 'border-slate-300 bg-slate-50 focus:border-[#0F3D8C] focus:bg-white'
+                        }`}
                       />
+                      {chapterTouched.mobile && chapterErrors.mobile && (
+                        <p className="text-[11px] font-semibold text-red-600 flex items-center gap-1 mt-1">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{chapterErrors.mobile}</span>
+                        </p>
+                      )}
                     </div>
 
                     <div>
@@ -267,7 +487,7 @@ export default function RegistrationSection() {
                 </div>
 
                 {/* Section 2: Sports Disciplines Selection */}
-                <div className="space-y-4 pt-4 border-t border-slate-200">
+                <div id="chapter-selectedSports" className="space-y-4 pt-4 border-t border-slate-200">
                   <div className="pb-2 border-b border-slate-200 flex items-center justify-between">
                     <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0F3D8C] flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full bg-[#DC2626]" />
@@ -277,6 +497,13 @@ export default function RegistrationSection() {
                       {chapterForm.selectedSports.length} Sports Selected
                     </span>
                   </div>
+
+                  {chapterTouched.selectedSports && chapterErrors.selectedSports && (
+                    <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs font-semibold flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      <span>{chapterErrors.selectedSports}</span>
+                    </div>
+                  )}
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {SPORTS_LIST.map((sport) => {
@@ -359,13 +586,24 @@ export default function RegistrationSection() {
                         Full Name *
                       </label>
                       <input
+                        id="ind-fullName"
                         type="text"
-                        required
                         value={individualForm.fullName}
-                        onChange={(e) => setIndividualForm({ ...individualForm, fullName: e.target.value })}
+                        onChange={(e) => handleIndividualChange('fullName', e.target.value)}
+                        onBlur={() => handleIndividualBlur('fullName')}
                         placeholder="e.g. Ar. Rajesh Kumar"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#DC2626] focus:bg-white"
+                        className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm text-slate-900 transition-colors focus:outline-none ${
+                          individualTouched.fullName && individualErrors.fullName
+                            ? 'border-red-500 bg-red-50/40 focus:border-red-600 focus:bg-white'
+                            : 'border-slate-300 bg-slate-50 focus:border-[#DC2626] focus:bg-white'
+                        }`}
                       />
+                      {individualTouched.fullName && individualErrors.fullName && (
+                        <p className="text-[11px] font-semibold text-red-600 flex items-center gap-1 mt-1">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{individualErrors.fullName}</span>
+                        </p>
+                      )}
                     </div>
 
                     <div>
@@ -373,13 +611,24 @@ export default function RegistrationSection() {
                         ITPI Membership / Roll No. *
                       </label>
                       <input
+                        id="ind-itpiNumber"
                         type="text"
-                        required
                         value={individualForm.itpiNumber}
-                        onChange={(e) => setIndividualForm({ ...individualForm, itpiNumber: e.target.value })}
+                        onChange={(e) => handleIndividualChange('itpiNumber', e.target.value)}
+                        onBlur={() => handleIndividualBlur('itpiNumber')}
                         placeholder="e.g. ITPI/A/2014/1234"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#DC2626] focus:bg-white"
+                        className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm text-slate-900 transition-colors focus:outline-none ${
+                          individualTouched.itpiNumber && individualErrors.itpiNumber
+                            ? 'border-red-500 bg-red-50/40 focus:border-red-600 focus:bg-white'
+                            : 'border-slate-300 bg-slate-50 focus:border-[#DC2626] focus:bg-white'
+                        }`}
                       />
+                      {individualTouched.itpiNumber && individualErrors.itpiNumber && (
+                        <p className="text-[11px] font-semibold text-red-600 flex items-center gap-1 mt-1">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{individualErrors.itpiNumber}</span>
+                        </p>
+                      )}
                     </div>
 
                     <div>
@@ -404,13 +653,24 @@ export default function RegistrationSection() {
                         Email Address *
                       </label>
                       <input
+                        id="ind-email"
                         type="email"
-                        required
                         value={individualForm.email}
-                        onChange={(e) => setIndividualForm({ ...individualForm, email: e.target.value })}
+                        onChange={(e) => handleIndividualChange('email', e.target.value)}
+                        onBlur={() => handleIndividualBlur('email')}
                         placeholder="planner@example.com"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#DC2626] focus:bg-white"
+                        className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm text-slate-900 transition-colors focus:outline-none ${
+                          individualTouched.email && individualErrors.email
+                            ? 'border-red-500 bg-red-50/40 focus:border-red-600 focus:bg-white'
+                            : 'border-slate-300 bg-slate-50 focus:border-[#DC2626] focus:bg-white'
+                        }`}
                       />
+                      {individualTouched.email && individualErrors.email && (
+                        <p className="text-[11px] font-semibold text-red-600 flex items-center gap-1 mt-1">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{individualErrors.email}</span>
+                        </p>
+                      )}
                     </div>
 
                     <div>
@@ -418,13 +678,24 @@ export default function RegistrationSection() {
                         Mobile / WhatsApp No. *
                       </label>
                       <input
+                        id="ind-mobile"
                         type="tel"
-                        required
                         value={individualForm.mobile}
-                        onChange={(e) => setIndividualForm({ ...individualForm, mobile: e.target.value })}
+                        onChange={(e) => handleIndividualChange('mobile', e.target.value)}
+                        onBlur={() => handleIndividualBlur('mobile')}
                         placeholder="+91 98765 43210"
-                        className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#DC2626] focus:bg-white"
+                        className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm text-slate-900 transition-colors focus:outline-none ${
+                          individualTouched.mobile && individualErrors.mobile
+                            ? 'border-red-500 bg-red-50/40 focus:border-red-600 focus:bg-white'
+                            : 'border-slate-300 bg-slate-50 focus:border-[#DC2626] focus:bg-white'
+                        }`}
                       />
+                      {individualTouched.mobile && individualErrors.mobile && (
+                        <p className="text-[11px] font-semibold text-red-600 flex items-center gap-1 mt-1">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>{individualErrors.mobile}</span>
+                        </p>
+                      )}
                     </div>
 
                     <div>
@@ -433,7 +704,7 @@ export default function RegistrationSection() {
                       </label>
                       <select
                         value={individualForm.participationRole}
-                        onChange={(e) => setIndividualForm({ ...individualForm, participationRole: e.target.value })}
+                        onChange={(e) => handleIndividualChange('participationRole', e.target.value)}
                         className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#DC2626] focus:bg-white"
                       >
                         <option value="playing">Playing Athlete (Participating in Sports)</option>
@@ -486,10 +757,23 @@ export default function RegistrationSection() {
                   </div>
 
                   {individualForm.participationRole === 'playing' && (
-                    <div className="pt-2 animate-fadeIn">
-                      <label className="block text-xs font-semibold text-slate-700 mb-2">
-                        Select Games You Wish to Compete In:
-                      </label>
+                    <div id="ind-selectedSports" className="pt-2 animate-fadeIn space-y-2">
+                      <div className="flex items-center justify-between">
+                        <label className="block text-xs font-semibold text-slate-700">
+                          Select Games You Wish to Compete In: *
+                        </label>
+                        <span className="text-xs font-bold text-[#DC2626]">
+                          {individualForm.selectedSports.length} Selected
+                        </span>
+                      </div>
+
+                      {individualTouched.selectedSports && individualErrors.selectedSports && (
+                        <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs font-semibold flex items-center gap-2">
+                          <AlertCircle className="w-4 h-4 shrink-0" />
+                          <span>{individualErrors.selectedSports}</span>
+                        </div>
+                      )}
+
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                         {SPORTS_LIST.map((sport) => {
                           const isChecked = individualForm.selectedSports.includes(sport.id);

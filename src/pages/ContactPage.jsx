@@ -10,29 +10,119 @@ import {
   LUCKNOW_MAP_URL, 
   ITPI_PHONE_LINK 
 } from '../constants/contactLinks';
-import { CONTINGENTS_LIST } from '../data/eventData';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     phone: '',
-    itpiMembership: '',
-    stateChapter: 'Uttar Pradesh (Host Chapter) (ITPI-UP)',
-    queryTopic: 'Contingent & Squad Nomination',
+    queryTopic: 'General Inquiry',
     message: '',
   });
 
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [ticketNo, setTicketNo] = useState('');
   const [activeFaq, setActiveFaq] = useState(null);
 
+  // Email Regex Validator
+  const isValidEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
+  };
+
+  // Indian/International Phone Validator
+  const isValidPhone = (phone) => {
+    if (!phone || phone.trim() === '') return true; // Optional field
+    const cleaned = phone.replace(/[\s\-\(\)\+]/g, '');
+    const withoutCountryCode = cleaned.startsWith('91') && cleaned.length === 12 ? cleaned.slice(2) : cleaned;
+    return /^[6-9]\d{9}$/.test(withoutCountryCode);
+  };
+
+  // Field Level Validation
+  const validateField = (name, value) => {
+    let err = '';
+    const val = (value || '').trim();
+
+    if (name === 'fullName') {
+      if (!val) {
+        err = 'Please enter your full name.';
+      } else if (val.length < 3) {
+        err = 'Full name must be at least 3 characters.';
+      } else if (!/^[\p{L}\p{M}][\p{L}\p{M}\s.'’-]*$/u.test(val)) {
+        err = 'Name should only contain letters and standard characters.';
+      }
+    } else if (name === 'email') {
+      if (!val) {
+        err = 'Please enter your email address.';
+      } else if (!isValidEmail(val)) {
+        err = 'Please enter a valid email address (e.g. planner@example.com).';
+      }
+    } else if (name === 'phone') {
+      if (val && !isValidPhone(val)) {
+        err = 'Please enter a valid 10-digit mobile number (e.g. 9415012345).';
+      }
+    } else if (name === 'message' && val) {
+      if (val.length < 10) {
+        err = 'Message must be at least 10 characters long.';
+      }
+    }
+
+    return err;
+  };
+
+  // Handle Input Change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (touched[name]) {
+      const err = validateField(name, value);
+      setErrors((prev) => ({ ...prev, [name]: err }));
+    }
+  };
+
+  // Handle Input Blur
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    const err = validateField(name, value);
+    setErrors((prev) => ({ ...prev, [name]: err }));
+  };
+
+  // Form Submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.fullName || !formData.email || !formData.phone || !formData.message) {
-      alert('Please fill all mandatory fields (Name, Email, Phone, Message).');
+
+    // Validate all fields
+    const newErrors = {};
+    const newTouched = {
+      fullName: true,
+      email: true,
+      phone: true,
+      queryTopic: true,
+      message: true,
+    };
+
+    ['fullName', 'email', 'phone', 'message'].forEach((field) => {
+      const err = validateField(field, formData[field]);
+      if (err) newErrors[field] = err;
+    });
+
+    setTouched(newTouched);
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length > 0) {
+      // Find first error and scroll into view
+      const firstErrorKey = Object.keys(newErrors)[0];
+      const element = document.getElementById(`field-${firstErrorKey}`);
+      if (element) {
+        element.focus();
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
       return;
     }
+
     const randomTicket = `ITPI-2027-${Math.floor(1000 + Math.random() * 9000)}`;
     setTicketNo(randomTicket);
     setSubmitted(true);
@@ -108,10 +198,9 @@ export default function ContactPage() {
                 </div>
 
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 max-w-sm mx-auto text-left text-xs space-y-1">
-                  <div><strong>State Chapter:</strong> {formData.stateChapter}</div>
                   <div><strong>Topic:</strong> {formData.queryTopic}</div>
                   <div><strong>Email:</strong> {formData.email}</div>
-                  <div><strong>Phone:</strong> {formData.phone}</div>
+                  {formData.phone && <div><strong>Phone:</strong> {formData.phone}</div>}
                 </div>
 
                 <button
@@ -121,9 +210,7 @@ export default function ContactPage() {
                       fullName: '',
                       email: '',
                       phone: '',
-                      itpiMembership: '',
-                      stateChapter: 'Uttar Pradesh (Host Chapter) (ITPI-UP)',
-                      queryTopic: 'Contingent & Squad Nomination',
+                      queryTopic: 'General Inquiry',
                       message: '',
                     });
                   }}
@@ -133,7 +220,7 @@ export default function ContactPage() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} noValidate className="space-y-5">
                 
                 <div className="border-b border-slate-100 pb-4">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#DC2626]">
@@ -147,121 +234,145 @@ export default function ContactPage() {
                 {/* Name & Email Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
+                    <label htmlFor="field-fullName" className="text-xs font-bold text-slate-700 flex items-center gap-1">
                       <span>Full Name</span>
                       <span className="text-red-500">*</span>
                     </label>
                     <input
+                      id="field-fullName"
+                      name="fullName"
                       type="text"
-                      required
                       placeholder="e.g. Ar. Sanjay Gupta"
                       value={formData.fullName}
-                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-900 focus:bg-white focus:outline-none focus:border-[#0F3D8C] transition"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      aria-invalid={!!(touched.fullName && errors.fullName)}
+                      className={`w-full px-3.5 py-2.5 rounded-xl border text-xs font-medium text-slate-900 focus:bg-white focus:outline-none transition ${
+                        touched.fullName && errors.fullName
+                          ? 'border-red-500 bg-red-50/50 focus:border-red-600 focus:ring-1 focus:ring-red-500'
+                          : 'border-slate-200 bg-slate-50 focus:border-[#0F3D8C]'
+                      }`}
                     />
+                    {touched.fullName && errors.fullName && (
+                      <p role="alert" className="text-[11px] font-semibold text-red-600 flex items-center gap-1 mt-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.fullName}</span>
+                      </p>
+                    )}
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
+                    <label htmlFor="field-email" className="text-xs font-bold text-slate-700 flex items-center gap-1">
                       <span>Email Address</span>
                       <span className="text-red-500">*</span>
                     </label>
                     <input
-                      type="email"
-                      required
+                      id="field-email"
+                      name="email"
+                      type="text"
                       placeholder="planner@example.com"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-900 focus:bg-white focus:outline-none focus:border-[#0F3D8C] transition"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      aria-invalid={!!(touched.email && errors.email)}
+                      className={`w-full px-3.5 py-2.5 rounded-xl border text-xs font-medium text-slate-900 focus:bg-white focus:outline-none transition ${
+                        touched.email && errors.email
+                          ? 'border-red-500 bg-red-50/50 focus:border-red-600 focus:ring-1 focus:ring-red-500'
+                          : 'border-slate-200 bg-slate-50 focus:border-[#0F3D8C]'
+                      }`}
+                      
                     />
+                    {touched.email && errors.email && (
+                      <p role="alert" className="text-[11px] font-semibold text-red-600 flex items-center gap-1 mt-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.email}</span>
+                      </p>
+                    )}
                   </div>
                 </div>
 
-                {/* Phone & Membership No. Row */}
+                {/* Optional Phone & Inquiry Topic */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
-                      <span>WhatsApp / Mobile No.</span>
-                      <span className="text-red-500">*</span>
+                    <label htmlFor="field-phone" className="text-xs font-bold text-slate-700 flex items-center gap-1">
+                      <span>WhatsApp / Mobile No. (Optional)</span>
                     </label>
                     <input
+                      id="field-phone"
+                      name="phone"
                       type="tel"
-                      required
-                      placeholder="+91 94150 XXXXX"
+                      placeholder="e.g. 94150 12345"
                       value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-900 focus:bg-white focus:outline-none focus:border-[#0F3D8C] transition"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      aria-invalid={!!(touched.phone && errors.phone)}
+                      className={`w-full px-3.5 py-2.5 rounded-xl border text-xs font-medium text-slate-900 focus:bg-white focus:outline-none transition ${
+                        touched.phone && errors.phone
+                          ? 'border-red-500 bg-red-50/50 focus:border-red-600 focus:ring-1 focus:ring-red-500'
+                          : 'border-slate-200 bg-slate-50 focus:border-[#0F3D8C]'
+                      }`}
                     />
+                    {touched.phone && errors.phone && (
+                      <p role="alert" className="text-[11px] font-semibold text-red-600 flex items-center gap-1 mt-1">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.phone}</span>
+                      </p>
+                    )}
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700">
-                      <span>ITPI Membership / Roll No. (Optional)</span>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="e.g. ITPI/A/2016/542"
-                      value={formData.itpiMembership}
-                      onChange={(e) => setFormData({ ...formData, itpiMembership: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-900 focus:bg-white focus:outline-none focus:border-[#0F3D8C] transition"
-                    />
-                  </div>
-                </div>
-
-                {/* State Chapter & Query Topic Row */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700">
-                      <span>Representing State Chapter</span>
-                    </label>
-                    <select
-                      value={formData.stateChapter}
-                      onChange={(e) => setFormData({ ...formData, stateChapter: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-900 focus:bg-white focus:outline-none focus:border-[#0F3D8C] transition cursor-pointer"
-                    >
-                      {CONTINGENTS_LIST.map((c) => (
-                        <option key={c.id} value={`${c.name} (${c.code})`}>
-                          {c.name} ({c.code})
-                        </option>
-                      ))}
-                      <option value="Non-Chapter / Individual Member">Non-Chapter / Individual Member</option>
-                      <option value="Other / External Sponsor">Other / External Organization</option>
-                    </select>
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700">
+                    <label htmlFor="field-queryTopic" className="text-xs font-bold text-slate-700">
                       <span>Subject / Inquiry Category</span>
                     </label>
                     <select
+                      id="field-queryTopic"
+                      name="queryTopic"
                       value={formData.queryTopic}
-                      onChange={(e) => setFormData({ ...formData, queryTopic: e.target.value })}
+                      onChange={handleChange}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-900 focus:bg-white focus:outline-none focus:border-[#0F3D8C] transition cursor-pointer"
                     >
-                      <option value="Contingent & Squad Nomination">Contingent &amp; Squad Nomination</option>
+                      <option value="General Inquiry">General Inquiry</option>
+                      <option value="Registration Help">Registration Help</option>
                       <option value="Sports Rules & Eligibility">Sports Rules &amp; Discipline Regulations</option>
                       <option value="Accommodation & Hospitality in Lucknow">Accommodation &amp; Hotel Bookings</option>
                       <option value="Travel, Transit & Arrivals">Airport / Station Transit Assistance</option>
                       <option value="Sponsorship & Exhibition Stalls">Sponsorship &amp; Exhibition Stalls</option>
-                      <option value="General Query">General Query</option>
                     </select>
+                    <p className="text-[10px] text-slate-500">
+                      For a new contingent nomination, use the{' '}
+                      <Link to="/register" className="font-semibold text-[#0F3D8C] hover:underline">
+                        Registration Portal
+                      </Link>.
+                    </p>
                   </div>
                 </div>
 
                 {/* Message Textarea */}
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
-                    <span>Your Message / Query Details</span>
-                    <span className="text-red-500">*</span>
+                  <label htmlFor="field-message" className="text-xs font-bold text-slate-700 flex items-center gap-1">
+                    <span>Your Message (Optional)</span>
                   </label>
                   <textarea
+                    id="field-message"
+                    name="message"
                     rows={4}
-                    required
-                    placeholder="Please specify your query in detail, including team size, specific sport or assistance required..."
+                    placeholder="Please describe your question or how we can help..."
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-900 focus:bg-white focus:outline-none focus:border-[#0F3D8C] transition resize-none"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    aria-invalid={!!(touched.message && errors.message)}
+                    className={`w-full px-3.5 py-2.5 rounded-xl border text-xs font-medium text-slate-900 focus:bg-white focus:outline-none transition resize-y ${
+                      touched.message && errors.message
+                        ? 'border-red-500 bg-red-50/50 focus:border-red-600 focus:ring-1 focus:ring-red-500'
+                        : 'border-slate-200 bg-slate-50 focus:border-[#0F3D8C]'
+                    }`}
                   />
+                  {touched.message && errors.message && (
+                    <p role="alert" className="text-[11px] font-semibold text-red-600 flex items-center gap-1 mt-1">
+                      <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                      <span>{errors.message}</span>
+                    </p>
+                  )}
                 </div>
 
                 {/* Submit CTA */}
@@ -341,18 +452,7 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                {/* Phone */}
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
-                    <Phone className="w-4 h-4 text-emerald-400" />
-                  </div>
-                  <div>
-                    <span className="text-white/60 block text-[10px] uppercase font-bold">Secretariat Phone Helpline</span>
-                    <a href={ITPI_PHONE_LINK} className="text-white font-bold hover:text-amber-300 transition font-mono">
-                      +91 94150 00000
-                    </a>
-                  </div>
-                </div>
+                
 
                 {/* Timing */}
                 <div className="flex items-start gap-3">
