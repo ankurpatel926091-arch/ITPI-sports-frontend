@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Calendar, Clock, User, ArrowRight, BookOpen, 
-  Sparkles, X, ChevronRight, Share2, Tag, CheckCircle2 
+  X, ChevronRight, Share2, Tag, CheckCircle2
 } from 'lucide-react';
 import blogUrbanSports from '../../assets/images/blog_urban_sports.jpg';
 import blogMascotStory from '../../assets/images/blog_mascot_story.jpg';
@@ -201,7 +202,7 @@ export default function LatestBlogSection() {
                 <button
                   type="button"
                   onClick={() => setSelectedPost(post)}
-                  className="w-full mt-3 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-50 hover:bg-[#0F3D8C] text-[#0F3D8C] hover:text-white font-semibold text-xs sm:text-sm transition-all border border-slate-200 hover:border-[#0F3D8C] group-hover:bg-[#0F3D8C] group-hover:text-white"
+                  className="w-full mt-3 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-50 hover:bg-[#0F3D8C] text-[#0F3D8C] hover:text-white font-semibold text-xs sm:text-sm transition-all border border-slate-200 hover:border-[#0F3D8C] group-hover:bg-[#0F3D8C] group-hover:text-white cursor-pointer"
                 >
                   <span>Read Full Article</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -213,27 +214,22 @@ export default function LatestBlogSection() {
 
         {/* Bottom Banner with Newsletter / Quick Link */}
         <div className="mt-10 sm:mt-12 bg-white rounded-2xl p-5 sm:p-7 border border-slate-200/90 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3.5 text-center sm:text-left">
-            <div className="w-11 h-11 rounded-xl bg-blue-50 border border-blue-200 text-[#0F3D8C] flex items-center justify-center shrink-0 mx-auto sm:mx-0">
-              <Sparkles className="w-5 h-5 text-[#DC2626]" />
-            </div>
-            <div>
-              <h4 className="text-sm sm:text-base font-bold text-slate-900">
-                Official Newsletter & Bulletin Dispatch
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-600">
-                Regular event circulars, fixture draws, and travel advisories will be published here.
-              </p>
-            </div>
+          <div className="text-center sm:text-left">
+            <h4 className="text-sm sm:text-base font-bold text-slate-900">
+              Official Newsletter & Bulletin Dispatch
+            </h4>
+            <p className="text-xs sm:text-sm text-slate-600">
+              Regular event circulars, fixture draws, and travel advisories will be published here.
+            </p>
           </div>
 
           <div className="flex items-center gap-3 w-full sm:w-auto">
-            <a
-              href="#register"
+            <Link
+              to="/register"
               className="w-full sm:w-auto text-center px-4 py-2.5 rounded-xl bg-[#081A3A] hover:bg-[#0F3D8C] text-white text-xs sm:text-sm font-bold transition-colors shadow-sm"
             >
               State Nominations Portal
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -261,7 +257,7 @@ export default function LatestBlogSection() {
                 type="button"
                 onClick={() => setSelectedPost(null)}
                 aria-label="Close modal"
-                className="absolute top-3 right-3 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white transition-colors"
+                className="absolute top-3 right-3 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -295,14 +291,6 @@ export default function LatestBlogSection() {
                   </span>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => handleShare(selectedPost)}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0F3D8C] hover:text-[#DC2626] transition-colors"
-                >
-                  <Share2 className="w-3.5 h-3.5" />
-                  <span>{copiedId === selectedPost.id ? 'Link Copied!' : 'Share'}</span>
-                </button>
               </div>
 
               {/* Subtitle / summary */}
@@ -353,7 +341,7 @@ export default function LatestBlogSection() {
                 <button
                   type="button"
                   onClick={() => setSelectedPost(null)}
-                  className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-[#0F3D8C] text-white font-bold text-xs sm:text-sm transition-colors"
+                  className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-[#0F3D8C] text-white font-bold text-xs sm:text-sm transition-colors cursor-pointer"
                 >
                   Close Article
                 </button>

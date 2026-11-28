@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ShieldCheck, ArrowRight } from 'lucide-react';
 import { CONTINGENTS_LIST } from '../../data/eventData';
 
@@ -22,13 +23,13 @@ export default function ContingentsCounterSection() {
             </p>
           </div>
 
-          <a
-            href="register"
+          <Link
+            to="/register"
             className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0F3D8C] hover:text-[#DC2626] self-start md:self-auto transition-colors"
           >
             <span>Nominate Chapter Athletes</span>
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </Link>
         </div>
 
         {/* 16 Chapters Grid (2 columns on mobile, 4 on desktop) */}
@@ -71,12 +72,12 @@ export default function ContingentsCounterSection() {
               </p>
             </div>
           </div>
-          <a
-            href="register"
+          <Link
+            to="/register"
             className="w-full sm:w-auto text-center px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-xs uppercase tracking-wider shrink-0 shadow-md transition"
           >
             Submit Contingent Roster
-          </a>
+          </Link>
         </div>
 
       </div>

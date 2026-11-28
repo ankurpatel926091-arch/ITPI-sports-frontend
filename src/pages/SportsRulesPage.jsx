@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Trophy, Users, Clock, ShieldCheck, CheckCircle2, ChevronRight, 
-  AlertCircle, FileText, Search, Award, Sparkles, Shirt, Footprints, 
+  AlertCircle, FileText, Search, Award, Shirt, Footprints,
   Target, Activity, Layers, HelpCircle, Download, MapPin
 } from 'lucide-react';
 import { SPORTS_LIST } from '../data/eventData';

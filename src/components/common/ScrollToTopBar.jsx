@@ -68,7 +68,7 @@ export default function ScrollToTopBar() {
             type="button"
             onClick={scrollToTop}
             aria-label="Scroll to top of page"
-            className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-[#0F3D8C] shadow-2xl shadow-blue-950/30 hover:shadow-red-600/30 border border-slate-200 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#0F3D8C]/40"
+            className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-[#0F3D8C] shadow-2xl shadow-blue-950/30 hover:shadow-red-600/30 border border-slate-200 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#0F3D8C]/40 cursor-pointer"
           >
             {/* SVG Circular Progress Track */}
             <svg

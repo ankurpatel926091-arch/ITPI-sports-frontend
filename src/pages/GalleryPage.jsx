@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { 
   Camera, Filter, X, ChevronLeft, ChevronRight, 
   Maximize2, Share2, Download, Calendar, MapPin, 
-  Sparkles, Trophy, Users, Heart, ArrowRight 
+  Trophy, Users, Heart, ArrowRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -26,7 +26,7 @@ import sportGolf from '../assets/images/sport_golf.webp';
 
 const CATEGORIES = [
   { id: 'all', label: 'All Photos' },
-  { id: 'sports', label: 'Sports & Matches', icon: Sparkles },
+  { id: 'sports', label: 'Sports & Matches' },
   { id: 'ceremonies', label: 'Ceremonies & Awards', icon: Trophy },
   { id: 'heritage', label: 'Lucknow & Culture', icon: Heart }
 ];

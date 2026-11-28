@@ -1,7 +1,7 @@
 
 import React from 'react';
 import {
-  Compass, Flame, Shield, Award, Quote, Sparkles,
+  Compass, Flame, Shield, Award, Quote,
   MapPin, Activity
 } from 'lucide-react';
 import { EVENT_DETAILS } from '../../data/eventData';
@@ -89,8 +89,7 @@ export default function MascotPlanveerSection() {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-40 pointer-events-none" />
 
                   {/* Corner Badge */}
-                  <div className="absolute top-2.5 left-2.5 bg-[#DC2626] text-white text-[9px] sm:text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 sm:py-1 rounded-full shadow-md flex items-center gap-1.5">
-                    <Sparkles className="w-3 h-3 text-amber-300" />
+                  <div className="absolute top-2.5 left-2.5 bg-[#DC2626] text-white text-[9px] sm:text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 sm:py-1 rounded-full shadow-md">
                     <span>Official Mascot</span>
                   </div>
 
@@ -144,8 +143,7 @@ export default function MascotPlanveerSection() {
             {/* Header */}
             <div className="space-y-2">
 
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-red-100/80 border border-red-200 text-[#DC2626] text-[10px] sm:text-[11px] font-bold uppercase tracking-wider sm:tracking-widest shadow-sm whitespace-nowrap">
-                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#DC2626] shrink-0" />
+              <div className="inline-flex px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-red-100/80 border border-red-200 text-[#DC2626] text-[10px] sm:text-[11px] font-bold uppercase tracking-wider sm:tracking-widest shadow-sm whitespace-nowrap">
                 <span className="hidden sm:inline">Meet The Mascot • 2nd National Sports Meet</span>
                 <span className="sm:hidden">Meet The Mascot • Lucknow 2027</span>
               </div>

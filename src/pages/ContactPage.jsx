@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { 
   Mail, Phone, MapPin, Calendar, Clock, Send, CheckCircle2, 
   HelpCircle, MessageSquare, Building2, User, FileText, 
-  ArrowRight, Sparkles, AlertCircle, ChevronDown, ChevronUp
+  ArrowRight, AlertCircle, ChevronDown, ChevronUp
 } from 'lucide-react';
 import { 
   ITPI_OFFICE_MAP_URL, 

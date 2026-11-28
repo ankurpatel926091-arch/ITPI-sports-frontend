@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Trophy, CheckCircle2, ChevronRight } from 'lucide-react';
 import { SPORTS_LIST } from '../../data/eventData';
 
@@ -133,13 +134,13 @@ export default function SportsGridSection() {
                 {/* 3. Bottom Schedule & Nomination Bar */}
                 <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
                   <span className="font-mono font-semibold text-slate-600">{sport.days}</span>
-                  <a
-                    href="register"
+                  <Link
+                    to="/register"
                     className="font-bold text-[#DC2626] hover:text-red-800 flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform"
                   >
                     <span>Nominate</span>
                     <ChevronRight className="w-3.5 h-3.5" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

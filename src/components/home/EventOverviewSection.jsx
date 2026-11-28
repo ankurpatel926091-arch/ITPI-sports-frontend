@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Trophy, Users, Heart, Target, ArrowRight, FileText } from 'lucide-react';
 import { EVENT_DETAILS } from '../../data/eventData';
 
@@ -116,12 +117,12 @@ export default function EventOverviewSection() {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <a
-              href="register"
+            <Link
+              to="/register"
               className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#DC2626] to-[#B70D2B] text-white text-xs font-extrabold uppercase tracking-wider shadow-sm hover:from-red-600 hover:to-red-700 transition"
             >
               Nominate Team
-            </a>
+            </Link>
           </div>
         </div>
 

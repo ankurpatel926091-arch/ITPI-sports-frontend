@@ -15,7 +15,7 @@ export default function Footer() {
           MAIN 4-COLUMN FOOTER CONTAINER
       ======================================================== */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14 py-7 sm:py-9">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-x-12 xl:gap-x-14">
 
           {/* COLUMN 1: IDENTITY & HISTORY */}
           <div className="lg:col-span-4 space-y-3">
@@ -113,7 +113,7 @@ export default function Footer() {
           </div>
 
           {/* COLUMN 4: HEADQUARTERS & DESK */}
-          <div className="lg:col-span-3 space-y-3">
+          <div className="lg:col-span-3 space-y-3 lg:pl-6 xl:pl-10">
             <h4 className="text-sm font-extrabold text-white uppercase tracking-wider flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded bg-[#DC2626]" />
               Organizing Secretariat

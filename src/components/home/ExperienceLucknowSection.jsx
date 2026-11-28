@@ -17,8 +17,8 @@ export default function ExperienceLucknowSection() {
           alt="Lucknow Heritage Landmarks - Rumi Darwaza, Bara Imambara, and Clock Tower"
           className="w-full h-full object-cover object-[center_35%] sm:object-center filter brightness-115 contrast-105"
         />
-        {/* Natural gradient: completely transparent at top, gentle readable contrast at bottom */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 via-40% to-transparent sm:from-black/35 sm:via-black/10" />
+        {/* Natural gradient: rich readable contrast behind text while keeping monument arches clear */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 via-50% to-transparent sm:from-black/75 sm:via-black/35 sm:to-transparent" />
       </div>
 
       {/* High-Impact Foreground Content Positioned at Bottom (Phone Scaled) */}
@@ -32,10 +32,12 @@ export default function ExperienceLucknowSection() {
           </span>
         </h2>
 
-        {/* Scaled-up Iconic Awadhi Tagline */}
-        <p className="mt-1.5 sm:mt-3 text-amber-200 font-serif italic text-sm xs:text-base sm:text-2xl lg:text-3xl font-semibold tracking-wide drop-shadow-[0_3px_14px_rgba(0,0,0,0.95)]">
-          “Muskuraiye, Aap Lucknow Mein Hain!”
-        </p>
+        {/* Scaled-up Iconic Awadhi Tagline - High Contrast Glass Badge */}
+        <div className="mt-2 sm:mt-3.5 inline-flex items-center px-4 sm:px-6 py-1 sm:py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 shadow-2xl">
+          <p className="text-white font-serif italic text-sm xs:text-base sm:text-xl lg:text-2xl font-bold tracking-wide drop-shadow-md">
+            “Muskuraiye, Aap Lucknow Mein Hain!”
+          </p>
+        </div>
 
         {/* Enhanced 1-Liner Subtext */}
         <p className="mt-1.5 sm:mt-2.5 text-slate-100 text-[10.5px] xs:text-xs sm:text-base lg:text-lg max-w-xl mx-auto leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] font-medium line-clamp-2 sm:line-clamp-none">
