@@ -4,6 +4,7 @@ import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import FloatingPills from './components/common/FloatingPills';
 import ScrollToTop from './components/common/ScrollToTop';
+import ScrollToTopBar from './components/common/ScrollToTopBar';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -15,6 +16,7 @@ import TimelinePage from './pages/TimelinePage';
 import RegistrationPage from './pages/RegistrationPage';
 import GuidelinesPage from './pages/GuidelinesPage';
 import ContactPage from './pages/ContactPage';
+import GalleryPage from './pages/GalleryPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
@@ -38,6 +40,8 @@ export default function App() {
             <Route path="/timeline" element={<TimelinePage />} />
             <Route path="/register" element={<RegistrationPage />} />
             <Route path="/guidelines" element={<GuidelinesPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/photos" element={<GalleryPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
@@ -48,6 +52,9 @@ export default function App() {
 
         {/* Floating Side Action Pills */}
         <FloatingPills />
+
+        {/* Floating Scroll To Top Bar & Progress Button */}
+        <ScrollToTopBar />
       </div>
     </BrowserRouter>
   );

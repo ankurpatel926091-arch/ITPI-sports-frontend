@@ -329,19 +329,19 @@ export default function SportsRulesPage() {
   });
 
   return (
-    <div className="py-10 sm:py-16 bg-slate-50 text-slate-900">
+    <div className="py-8 sm:py-16 bg-slate-50 text-slate-900">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14">
         
         {/* ========================================================
             1. HERO PAGE HEADER
         ======================================================== */}
-        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-100 border border-red-200 text-[#DC2626] text-xs font-bold uppercase tracking-widest shadow-xs">
-            <Trophy className="w-3.5 h-3.5 text-[#DC2626]" />
-            <span>Official Championship Rulebook • ITPI UP Chapter</span>
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-14 space-y-3 sm:space-y-4">
+          <div className="inline-flex items-center gap-1 sm:gap-2 px-2.5 sm:px-4 py-1.5 rounded-full bg-red-100 border border-red-200 text-[#DC2626] text-[9px] sm:text-xs font-bold uppercase tracking-normal sm:tracking-widest shadow-xs">
+            <Trophy className="hidden sm:block w-3.5 h-3.5 text-[#DC2626]" />
+            <span className="whitespace-nowrap">Official Championship Rulebook • ITPI UP Chapter</span>
           </div>
           
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight">
             Sports Disciplines & <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#DC2626] via-red-600 to-[#0F3D8C]">
               Tournament Regulations
@@ -349,17 +349,17 @@ export default function SportsRulesPage() {
           </h1>
 
           {/* Quick Stats Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 pt-2 text-xs font-bold text-slate-700">
-            <span className="px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-xs flex items-center gap-1.5">
+          <div className="flex flex-wrap items-center justify-start sm:justify-center gap-2 sm:gap-4 pt-1 sm:pt-2 text-[10px] sm:text-xs font-bold text-slate-700">
+            <span className="whitespace-nowrap px-2.5 sm:px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-xs flex items-center gap-1.5">
               <Award className="w-4 h-4 text-[#DC2626]" /> 9 Disciplines
             </span>
-            <span className="px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-xs flex items-center gap-1.5">
+            <span className="whitespace-nowrap px-2.5 sm:px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-xs flex items-center gap-1.5">
               <Users className="w-4 h-4 text-[#0F3D8C]" /> 16 State Chapters
             </span>
-            <span className="px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-xs flex items-center gap-1.5">
+            <span className="whitespace-nowrap px-2.5 sm:px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-xs flex items-center gap-1.5">
               <Clock className="w-4 h-4 text-emerald-600" /> 8th – 10th Jan 2027
             </span>
-            <span className="px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-xs flex items-center gap-1.5">
+            <span className="whitespace-nowrap px-2.5 sm:px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-xs flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-purple-600" /> ICC, BWF & FIDE Laws
             </span>
           </div>
@@ -368,7 +368,7 @@ export default function SportsRulesPage() {
         {/* ========================================================
             2. COMMON CHAMPIONSHIP GUIDELINES BANNER (FROM PAGE 14)
         ======================================================== */}
-        <div className="rounded-3xl bg-gradient-to-r from-[#081A3A] to-[#0F3D8C] text-white p-6 sm:p-8 shadow-lg mb-10 space-y-5">
+        <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#081A3A] to-[#0F3D8C] text-white p-4 sm:p-8 shadow-lg mb-8 sm:mb-10 space-y-4 sm:space-y-5">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-5">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-[#DC2626] flex items-center justify-center text-white shrink-0 shadow-md">
@@ -426,7 +426,7 @@ export default function SportsRulesPage() {
         {/* ========================================================
             3. FILTER BAR & REAL-TIME SEARCH
         ======================================================== */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-xs mb-8">
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-xs mb-8">
           
           {/* Category Pills */}
           <div className="flex flex-wrap items-center gap-1.5 w-full lg:w-auto">
@@ -466,7 +466,7 @@ export default function SportsRulesPage() {
         </div>
 
         {/* Results Counter */}
-        <div className="flex items-center justify-between text-xs text-slate-500 font-semibold mb-6 px-1">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-4 text-xs text-slate-500 font-semibold mb-4 sm:mb-6 px-1">
           <span>Showing <strong>{filteredSports.length}</strong> Championship Disciplines</span>
           <span className="text-[11px] text-[#DC2626]">Click on any sport card to expand complete tournament specifications</span>
         </div>
@@ -474,7 +474,7 @@ export default function SportsRulesPage() {
         {/* ========================================================
             4. COMPREHENSIVE SPORTS RULEBOOK CARDS (SPLIT LAYOUT)
         ======================================================== */}
-        <div className="space-y-8 sm:space-y-10 mb-16">
+        <div className="space-y-6 sm:space-y-10 mb-12 sm:mb-16">
           {filteredSports.map((sport) => {
             return (
               <div

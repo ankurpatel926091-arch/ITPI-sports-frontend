@@ -93,13 +93,13 @@ export default function LeadershipMessagesSection() {
                   }}
                 />
 
-                <div className="p-6 sm:p-8 flex flex-col justify-between flex-1 space-y-6">
+                <div className="p-4 sm:p-8 flex flex-col justify-between flex-1 space-y-4 sm:space-y-6">
 
                   {/* Header: Executive Photo & Official Profile */}
-                  <div className="flex items-center sm:items-start gap-4 sm:gap-5">
+                  <div className="flex items-center sm:items-start gap-3 sm:gap-5">
                     {/* Portrait Photo Container */}
                     <div className="relative shrink-0">
-                      <div className={`w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-2xl overflow-hidden border-2 border-white shadow-lg ring-2 ${leader.ringColor} bg-slate-900`}>
+                      <div className={`w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-xl sm:rounded-2xl overflow-hidden border-2 border-white shadow-lg ring-2 ${leader.ringColor} bg-slate-900`}>
                         <img
                           src={leader.photo}
                           alt={leader.name}

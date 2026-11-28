@@ -17,54 +17,54 @@ export default function HeroSection() {
 
   return (
     <>
-      <div className="relative w-full flex flex-col justify-center overflow-hidden bg-[#081A3A] text-white lg:h-[calc(100vh-138px)] min-h-[540px] sm:min-h-[560px]">
+      <div className="relative w-full flex flex-col justify-center overflow-hidden bg-[#081A3A] text-white lg:h-[calc(100vh-138px)] min-h-[460px] xs:min-h-[490px] sm:min-h-[560px]">
       
       {/* ========================================================
-          1. HERO BACKGROUND IMAGE & VIGNETTE (BRIGHT & CLEAR)
+          1. HERO BACKGROUND IMAGE & VIGNETTE (RESPONSIVE ALIGNMENT)
       ======================================================== */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-no-repeat bg-[position:80%_center] sm:bg-[position:center_45%]"
         style={{
           backgroundImage: `url(${heroBg})`,
-          backgroundPosition: 'center 45%',
         }}
       />
 
-      {/* Subtle top shade only for navbar contrast - background remains 100% bright & vibrant */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/20 pointer-events-none" />
+      {/* Responsive overlays: Soft readable scrim on mobile, natural glow on desktop */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/30 sm:from-black/45 sm:to-black/20 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#081A3A]/75 via-[#081A3A]/30 to-transparent sm:hidden pointer-events-none" />
 
       {/* ========================================================
-          2. HERO CONTENT (LEFT ALIGNED ON DESKTOP)
+          2. HERO CONTENT (CLEANLY SCALED FOR MOBILE & DESKTOP)
       ======================================================== */}
-      <div className="relative z-10 w-full max-w-[1300px] mx-auto lg:mx-0 lg:ml-[3.5vw] px-4 sm:px-6 lg:px-8 text-center lg:text-left flex-1 flex flex-col justify-center items-center lg:items-start lg:w-[48%] lg:max-w-[620px] py-6 sm:py-8 my-auto">
+      <div className="relative z-10 w-full max-w-[1300px] mx-auto lg:mx-0 lg:ml-[3.5vw] px-3.5 sm:px-6 lg:px-8 text-center lg:text-left flex-1 flex flex-col justify-center items-center lg:items-start lg:w-[48%] lg:max-w-[620px] py-4 sm:py-8 my-auto">
         
-        {/* Top Eyebrow Badge (Comfortable Gapping) */}
-        <div className="relative -top-1 sm:-top-3 inline-flex items-center px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-full bg-black/60 border border-white/25 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold uppercase tracking-[0.14em] sm:tracking-[0.18em] mb-3 sm:mb-4 shadow-md max-w-full">
+        {/* Top Eyebrow Badge (Compact on mobile) */}
+        <div className="inline-flex items-center px-3 sm:px-4 py-0.5 sm:py-1.5 rounded-full bg-black/60 border border-white/25 backdrop-blur-md text-white text-[9px] xs:text-[10px] sm:text-xs font-bold uppercase tracking-[0.12em] sm:tracking-[0.18em] mb-2 sm:mb-4 shadow-md max-w-full">
           <span className="hidden sm:inline">Institute of Town Planners, India • UP Regional Chapter</span>
           <span className="sm:hidden font-semibold">ITPI • UP Regional Chapter</span>
         </div>
 
         {/* Sub-label */}
-        <span className="block text-amber-300 font-extrabold tracking-[0.16em] sm:tracking-[0.2em] uppercase text-[10px] sm:text-xs font-sans mb-3.5 sm:mb-5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+        <span className="block text-amber-300 font-extrabold tracking-[0.14em] sm:tracking-[0.2em] uppercase text-[9px] xs:text-[10px] sm:text-xs font-sans mb-2 sm:mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
           SECOND ITPI NATIONAL SPORTS MEET 2027
         </span>
 
-        {/* Main Hero Headline (Spacious Line Gap) */}
+        {/* Main Hero Headline (Comfortable font scale for phones) */}
         <h1 className="font-serif tracking-tight leading-[1.2] sm:leading-[1.18] text-white max-w-[620px] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] px-1">
-          <span className="block text-[22px] xs:text-2xl sm:text-4xl md:text-[42px] lg:text-[40px] xl:text-[46px] font-black sm:whitespace-nowrap">
+          <span className="block text-[17px] xs:text-[20px] sm:text-3xl md:text-4xl lg:text-[40px] xl:text-[46px] font-black sm:whitespace-nowrap">
             Uniting Urban Planners Across India,
           </span>
-          <span className="block mt-2.5 sm:mt-4 text-base xs:text-lg sm:text-2xl md:text-[26px] lg:text-[27px] xl:text-[30px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-200 to-amber-100 sm:whitespace-nowrap drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+          <span className="block mt-1.5 sm:mt-3 text-[12px] xs:text-[14px] sm:text-xl md:text-[24px] lg:text-[27px] xl:text-[30px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-200 to-amber-100 sm:whitespace-nowrap drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
             Celebrating Athletic Excellence & Heritage
           </span>
         </h1>
 
-        {/* Date & Location: Clean gapping */}
-        <div className="mt-5 sm:mt-8">
+        {/* Date & Location: Scaled for phone screens */}
+        <div className="mt-3.5 sm:mt-6">
           {/* Mobile Single Combined Pill */}
-          <div className="sm:hidden inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/60 border border-white/30 backdrop-blur-md text-white text-[11px] font-medium shadow-md">
-            <div className="flex items-center gap-1.5">
-              <Calendar className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+          <div className="sm:hidden inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 border border-white/30 backdrop-blur-md text-white text-[10px] font-medium shadow-md">
+            <div className="flex items-center gap-1">
+              <Calendar className="w-3 h-3 text-amber-400 shrink-0" />
               <span>8th–10th Jan 2027</span>
             </div>
             <span className="text-white/40">•</span>
@@ -72,10 +72,10 @@ export default function HeroSection() {
               href={LUCKNOW_MAP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-amber-300 transition-colors"
+              className="flex items-center gap-1 hover:text-amber-300 transition-colors"
               aria-label="View Lucknow on Google Maps"
             >
-              <MapPin className="w-3.5 h-3.5 text-[#DC2626] shrink-0" />
+              <MapPin className="w-3 h-3 text-[#DC2626] shrink-0" />
               <span>Lucknow, UP</span>
             </a>
           </div>
@@ -99,26 +99,24 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Action CTA Buttons (Strictly Single Line & Side-by-Side) */}
-        <div className="mt-5 sm:mt-8 flex flex-row flex-nowrap items-center justify-center lg:justify-start gap-2 sm:gap-4 w-full">
+        {/* Action CTA Buttons (Properly Scaled Single Line Side-by-Side) */}
+        <div className="mt-4 sm:mt-7 flex flex-row flex-nowrap items-center justify-center lg:justify-start gap-2 sm:gap-4 w-full">
+          <Link
+            to="/register"
+            className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-[10px] xs:text-[11px] sm:text-sm uppercase tracking-wider px-3 xs:px-4 sm:px-8 py-2 sm:py-3.5 rounded-full shadow-xl shadow-black/80 hover:shadow-red-600/50 hover:-translate-y-0.5 transition-all text-center whitespace-nowrap shrink-0"
+          >
+            <span>Register State Contingent</span>
+            <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
+          </Link>
 
-  <Link
-    to="/register"
-    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-[10px] sm:text-sm uppercase tracking-wider px-3 sm:px-8 py-3 sm:py-3.5 rounded-full shadow-xl shadow-black/80 hover:shadow-red-600/50 hover:-translate-y-0.5 transition-all text-center whitespace-nowrap shrink-0"
-  >
-    <span>Register State Contingent</span>
-    <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
-  </Link>
-
-  <Link
-    to="/invitation"
-    className="inline-flex items-center justify-center gap-2 bg-black/60 hover:bg-white hover:text-neutral-950 text-white border border-white/40 hover:border-white font-bold text-[10px] sm:text-sm uppercase tracking-wider px-3 sm:px-8 py-3 sm:py-3.5 rounded-full backdrop-blur-md shadow-xl shadow-black/80 hover:-translate-y-0.5 transition-all text-center whitespace-nowrap shrink-0"
-  >
-    <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300 shrink-0" />
-    <span>Official Invitation</span>
-  </Link>
-
-</div>
+          <Link
+            to="/invitation"
+            className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-black/60 hover:bg-white hover:text-neutral-950 text-white border border-white/40 hover:border-white font-bold text-[10px] xs:text-[11px] sm:text-sm uppercase tracking-wider px-3 xs:px-4 sm:px-8 py-2 sm:py-3.5 rounded-full backdrop-blur-md shadow-xl shadow-black/80 hover:-translate-y-0.5 transition-all text-center whitespace-nowrap shrink-0"
+          >
+            <FileText className="w-3 h-3 sm:w-4 sm:h-4 text-amber-300 shrink-0" />
+            <span>Official Invitation</span>
+          </Link>
+        </div>
       </div>
       </div>
 

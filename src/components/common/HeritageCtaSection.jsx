@@ -7,7 +7,7 @@ export default function HeritageCtaSection() {
     <section className="w-full bg-white pt-2 sm:pt-3 pb-6 sm:pb-8">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14">
         {/* Floating CTA Card in Royal Navy with Red & Blue Glows */}
-        <div className="relative rounded-2xl sm:rounded-3xl bg-[#081A3A] border-2 border-blue-900/60 p-5 sm:p-7 md:p-8 text-center shadow-xl overflow-hidden">
+        <div className="relative rounded-2xl sm:rounded-3xl bg-[#081A3A] border-2 border-blue-900/60 p-5 sm:p-7 md:p-8 text-left sm:text-center shadow-xl overflow-hidden">
           
           {/* Subtle Ambient Red on Left & Royal Blue on Right (Poster Track Theme) */}
           <div className="absolute top-0 left-0 w-72 h-72 bg-[#DC2626]/20 rounded-full blur-3xl pointer-events-none" />
@@ -26,12 +26,12 @@ export default function HeritageCtaSection() {
             </h2>
 
             {/* Subtitle Description */}
-            <p className="text-xs sm:text-sm text-blue-100/90 leading-relaxed font-normal max-w-2xl mx-auto">
+            <p className="text-xs sm:text-sm text-blue-100/90 leading-relaxed font-normal max-w-2xl mx-0 sm:mx-auto">
               Join fellow town planners, architects, and administrators from across India in Lucknow for 3 days of athletic excitement, cultural camaraderie, and unforgettable Nawabi hospitality.
             </p>
 
             {/* Action Buttons (Red & Blue Combination) */}
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-center gap-3 sm:gap-4">
               <Link
                 to="/register"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-7 py-2.5 sm:py-3 rounded-xl shadow-lg shadow-red-950/40 hover:-translate-y-0.5 transition-all"

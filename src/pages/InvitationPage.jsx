@@ -49,20 +49,20 @@ export default function InvitationPage() {
             </a>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
             <button
               onClick={() => window.print()}
-              className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-800 flex items-center gap-1.5 transition cursor-pointer"
+              className="flex-1 sm:flex-none whitespace-nowrap px-3 sm:px-4 py-2.5 sm:py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-[11px] sm:text-xs font-bold text-slate-800 flex items-center justify-center gap-1.5 transition cursor-pointer"
             >
-              <Printer className="w-3.5 h-3.5" />
-              <span>Print Letter</span>
+              <Printer className="w-3.5 h-3.5 shrink-0" />
+              <span className="whitespace-nowrap">Print Letter</span>
             </button>
             <Link
               to="/register"
-              className="px-5 py-2 rounded-xl bg-[#DC2626] hover:bg-red-700 text-xs font-extrabold uppercase tracking-wider text-white flex items-center gap-1.5 transition shadow-sm"
+              className="flex-1 sm:flex-none whitespace-nowrap px-3 sm:px-5 py-2.5 sm:py-2 rounded-xl bg-[#DC2626] hover:bg-red-700 text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-1.5 transition shadow-sm"
             >
-              <span>Nominate Contingent</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <span className="whitespace-nowrap">Nominate Contingent</span>
+              <ArrowRight className="w-3.5 h-3.5 shrink-0" />
             </Link>
           </div>
         </div>

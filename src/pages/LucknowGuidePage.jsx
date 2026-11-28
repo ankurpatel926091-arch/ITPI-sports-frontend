@@ -4,28 +4,30 @@ import { LUCKNOW_MAP_URL } from '../constants/contactLinks';
 import chikankariImg from '../assets/images/lucknow_chikankari.webp';
 import monumentsImg from '../assets/images/lucknow_monuments.webp';
 import kathakImg from '../assets/images/lucknow_kathak.webp';
+import ExperienceLucknowSection from '../components/home/ExperienceLucknowSection';
 
 export default function LucknowGuidePage() {
   return (
-    <div className="py-10 sm:py-16 bg-slate-50 text-slate-900">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14">
-        
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-100 border border-blue-200 text-[#0F3D8C] text-xs font-bold uppercase tracking-widest">
-            The Host City Experience
-          </div>
-          <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
-            Discover Lucknow, Uttar Pradesh
-          </h1>
-          <div className="h-1.5 w-24 bg-gradient-to-r from-[#DC2626] to-[#0F3D8C] rounded-full mx-auto" />
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            "Muskuraiye, Aap Lucknow Mein Hain!" — Experience grand architectural heritage, the historic Lucknow Gharana, timeless Chikankari, and royal Awadhi culinary traditions.
-          </p>
+    <div className="pt-8 sm:pt-12 pb-8 sm:pb-12 bg-slate-50 text-slate-900">
+      {/* Header */}
+      <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-3">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-100 border border-blue-200 text-[#0F3D8C] text-xs font-bold uppercase tracking-widest">
+          The Host City Experience
         </div>
+        <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
+          Discover Lucknow, Uttar Pradesh
+        </h1>
+        <div className="h-1.5 w-24 bg-gradient-to-r from-[#DC2626] to-[#0F3D8C] rounded-full mx-auto" />
+        <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+          "Muskuraiye, Aap Lucknow Mein Hain!" — Experience grand architectural heritage, the historic Lucknow Gharana, timeless Chikankari, and royal Awadhi culinary traditions.
+        </p>
+      </div>
+      <ExperienceLucknowSection />
+
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14">
 
         {/* 4 Cultural Pillars Detailed */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 mt-8 sm:mt-10 mb-10 sm:mb-12">
           
           {/* 1. Heritage & Architecture */}
           <div className="rounded-3xl bg-white border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
@@ -149,7 +151,7 @@ export default function LucknowGuidePage() {
         </div>
 
         {/* Travel & Connectivity Guide */}
-        <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-10 shadow-sm space-y-8">
+        <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6 sm:space-y-8">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-[#DC2626]">
               Travel & Logistics
@@ -162,7 +164,7 @@ export default function LucknowGuidePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             
             {/* Air */}
             <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-3">

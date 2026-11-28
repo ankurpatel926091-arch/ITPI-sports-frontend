@@ -6,6 +6,7 @@ import LeadershipMessagesSection from '../components/home/LeadershipMessagesSect
 import SportsGridSection from '../components/home/SportsGridSection';
 import ScheduleTimelineSection from '../components/home/ScheduleTimelineSection';
 import ExperienceLucknowSection from '../components/home/ExperienceLucknowSection';
+import LatestBlogSection from '../components/home/LatestBlogSection';
 import ChampionshipGuidelinesSection from '../components/home/ChampionshipGuidelinesSection';
 import ContingentsCounterSection from '../components/home/ContingentsCounterSection';
 import RegistrationCtaSection from '../components/home/RegistrationCtaSection';
@@ -35,16 +36,20 @@ export default function HomePage() {
       {/* 7. EXPERIENCE LUCKNOW (HERITAGE, KATHAK & AWADHI CUISINE) */}
       <ExperienceLucknowSection />
 
-      {/* 8. CHAMPIONSHIP GUIDELINES, FEES & BANK DETAILS */}
+      
+      {/* 9. CHAMPIONSHIP GUIDELINES, FEES & BANK DETAILS */}
       {/* <ChampionshipGuidelinesSection /> */}
 
-      {/* 9. 16 STATE CONTINGENTS COUNTER */}
+      {/* 10. 16 STATE CONTINGENTS COUNTER */}
       {/* <ContingentsCounterSection /> */}
 
-      {/* 10. QUICK REGISTRATION & NOMINATION HUB CTA */}
+      {/* 11. QUICK REGISTRATION & NOMINATION HUB CTA */}
       <RegistrationCtaSection />
+      {/* 8. LATEST NEWS & BLOG ARTICLES */}
+      <LatestBlogSection />
 
-      {/* 11. HERITAGE SKYLINE CTA SECTION */}
+
+      {/* 12. HERITAGE SKYLINE CTA SECTION */}
       <HeritageCtaSection />
     </div>
   );

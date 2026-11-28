@@ -59,20 +59,20 @@ export default function MeetInvitationSection() {
               </div>
 
               {/* Action Buttons Under Letter */}
-              <div className="mt-3 sm:mt-4 flex gap-2.5 sm:gap-3">
+              <div className="mt-3 sm:mt-4 flex gap-2 sm:gap-3">
                 <button
                   onClick={() => window.print()}
-                  className="flex-1 flex items-center justify-center gap-1.5 text-center bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs uppercase tracking-wider py-2.5 sm:py-3 rounded-lg border border-slate-300 transition"
+                  className="flex-1 whitespace-nowrap flex items-center justify-center gap-1.5 text-center bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-[11px] sm:text-xs uppercase tracking-wider py-2.5 sm:py-3 px-2 sm:px-3 rounded-lg border border-slate-300 transition"
                 >
-                  <Printer className="w-3.5 h-3.5 text-[#0F3D8C]" />
-                  <span>Print Letter</span>
+                  <Printer className="w-3.5 h-3.5 text-[#0F3D8C] shrink-0" />
+                  <span className="whitespace-nowrap">Print Letter</span>
                 </button>
-                <a
-                  href="register"
-                  className="flex-1 text-center bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-xs uppercase tracking-wider py-2.5 sm:py-3 rounded-lg shadow-md transition"
+                <Link
+                  to="/register"
+                  className="flex-1 whitespace-nowrap flex items-center justify-center text-center bg-gradient-to-r from-[#DC2626] to-[#B70D2B] hover:from-red-600 hover:to-red-700 text-white font-extrabold text-[11px] sm:text-xs uppercase tracking-wider py-2.5 sm:py-3 px-2 sm:px-3 rounded-lg shadow-md transition"
                 >
-                  Nominate Team
-                </a>
+                  <span className="whitespace-nowrap">Nominate Team</span>
+                </Link>
               </div>
             </div>
           </div>

@@ -58,6 +58,7 @@ export default function Footer() {
               <li><Link to="/sports" className="hover:text-amber-300 transition-colors flex items-center gap-1.5"><ChevronRight className="w-3.5 h-3.5 text-slate-500" /><span>Sports &amp; Rules</span></Link></li>
               <li><Link to="/experience-lucknow" className="hover:text-amber-300 transition-colors flex items-center gap-1.5"><ChevronRight className="w-3.5 h-3.5 text-slate-500" /><span>Experience Lucknow</span></Link></li>
               <li><Link to="/contingents" className="hover:text-amber-300 transition-colors flex items-center gap-1.5"><ChevronRight className="w-3.5 h-3.5 text-slate-500" /><span>State Contingents</span></Link></li>
+              <li><Link to="/gallery" className="hover:text-amber-300 transition-colors flex items-center gap-1.5"><ChevronRight className="w-3.5 h-3.5 text-slate-500" /><span>Photo Gallery</span></Link></li>
               <li><Link to="/timeline" className="hover:text-amber-300 transition-colors flex items-center gap-1.5"><ChevronRight className="w-3.5 h-3.5 text-slate-500" /><span>Timeline</span></Link></li>
               <li><Link to="/guidelines" className="hover:text-amber-300 transition-colors flex items-center gap-1.5"><ChevronRight className="w-3.5 h-3.5 text-slate-500" /><span>Championship Guidelines</span></Link></li>
               <li><Link to="/contact" className="hover:text-amber-300 transition-colors flex items-center gap-1.5"><ChevronRight className="w-3.5 h-3.5 text-slate-500" /><span>Contact Secretariat</span></Link></li>

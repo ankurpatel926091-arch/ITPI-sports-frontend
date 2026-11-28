@@ -54,25 +54,25 @@ export default function EventOverviewSection() {
 
         {/* Key Event Metrics / Highlights Strip */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 mb-6 sm:mb-8">
-          <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-blue-300 transition-all">
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-left sm:text-center shadow-xs hover:border-blue-300 transition-all">
             <span className="block text-xl sm:text-3xl font-black text-[#0F3D8C]">16+</span>
             <span className="text-[11px] sm:text-xs font-bold text-slate-800">State Chapters</span>
             <span className="block text-[10px] text-slate-500 mt-0.5">Across India</span>
           </div>
 
-          <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-red-300 transition-all">
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-left sm:text-center shadow-xs hover:border-red-300 transition-all">
             <span className="block text-xl sm:text-3xl font-black text-[#DC2626]">9</span>
             <span className="text-[11px] sm:text-xs font-bold text-slate-800">Sports & Games</span>
             <span className="block text-[10px] text-slate-500 mt-0.5">Formal & Informal</span>
           </div>
 
-          <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-blue-300 transition-all">
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-left sm:text-center shadow-xs hover:border-blue-300 transition-all">
             <span className="block text-xl sm:text-3xl font-black text-[#0F3D8C]">3 Days</span>
             <span className="text-[11px] sm:text-xs font-bold text-slate-800">Sports & Culture</span>
             <span className="block text-[10px] text-slate-500 mt-0.5">8th – 10th Jan 2027</span>
           </div>
 
-          <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-center shadow-xs hover:border-red-300 transition-all">
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 text-left sm:text-center shadow-xs hover:border-red-300 transition-all">
             <span className="block text-xl sm:text-3xl font-black text-[#DC2626]">Pan-India</span>
             <span className="text-[11px] sm:text-xs font-bold text-slate-800">Town Planners</span>
             <span className="block text-[10px] text-slate-500 mt-0.5">Fellowship & Unity</span>
@@ -90,12 +90,14 @@ export default function EventOverviewSection() {
                 className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 hover:border-blue-300 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between"
               >
                 <div className="space-y-2.5 sm:space-y-3">
-                  <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl flex items-center justify-center border ${
+                  <div className="flex items-center gap-3 sm:block">
+                    <div className={`w-9 h-9 sm:w-11 sm:h-11 shrink-0 sm:mb-3 rounded-lg sm:rounded-xl flex items-center justify-center border ${
                     isRed ? 'bg-red-50 border-red-200 text-[#DC2626]' : 'bg-blue-50 border-blue-200 text-[#0F3D8C]'
                   }`}>
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                      <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                    </div>
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900">{item.title}</h3>
                   </div>
-                  <h3 className="text-sm sm:text-base font-bold text-slate-900">{item.title}</h3>
                   <p className="text-xs text-slate-600 leading-relaxed line-clamp-2 sm:line-clamp-none">{item.desc}</p>
                 </div>
               </div>
@@ -104,7 +106,7 @@ export default function EventOverviewSection() {
         </div>
 
         {/* Minimal Action Strip */}
-        <div className="mt-6 sm:mt-8 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-red-50/60 via-white to-blue-50/60 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="mt-6 sm:mt-8 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-red-50/60 via-white to-blue-50/60 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-left sm:text-left">
           <div className="space-y-0.5">
             <span className="text-xs font-bold text-[#DC2626] uppercase tracking-wider">
               "Muskuraiye, Aap Lucknow Mein Hain!"

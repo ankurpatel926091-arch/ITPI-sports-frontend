@@ -21,7 +21,7 @@ import {
   Activity,
   Footprints,
   Building2,
-  Sparkles,
+  Camera,
 } from "lucide-react";
 import { LUCKNOW_MAP_URL } from "../../constants/contactLinks";
 import logo from "../../assets/images/logo.png";
@@ -100,21 +100,16 @@ export default function Navbar() {
         {
           name: "Official Invitation Letter",
           path: "/invitation",
-          desc: "Welcome letter from ITPI UP Chapter Chairman",
           icon: FileText,
-          badge: "Official",
         },
         {
           name: "3-Day Program Timeline",
           path: "/timeline",
-          desc: "Day-wise match schedule & grand ceremonies",
           icon: Clock,
-          badge: "8-10 Jan",
         },
         {
           name: "Championship Guidelines",
           path: "/guidelines",
-          desc: "Eligibility, brochure rules, age quotas & fees",
           icon: ShieldCheck,
         },
       ],
@@ -127,23 +122,17 @@ export default function Navbar() {
         {
           name: "All 9 Disciplines Rulebook",
           path: "/sports",
-          desc: "Master tournament overview, age quotas & comparison matrix",
           icon: Trophy,
-          badge: "Rulebook",
         },
         {
           name: "Flagship & Racket Sports",
           path: "/sports#cricket",
-          desc: "Cricket (T20), Badminton & Table Tennis at BBD Complex",
           icon: Award,
-          badge: "Team Games",
         },
         {
           name: "Mind Games & Community Events",
           path: "/sports#chess",
-          desc: "Chess, Carrom, Golf, Tug of War & 5K Heritage Marathon",
           icon: Activity,
-          badge: "Mind & Fun",
         },
       ],
     },
@@ -155,18 +144,20 @@ export default function Navbar() {
         {
           name: "16 State Chapters Directory",
           path: "/contingents",
-          desc: "Participating regional chapters & managers",
           icon: Users,
-          badge: "16 States",
         },
         {
           name: "Nominate State Squad",
           path: "/register",
-          desc: "Submit official chapter roster & delegation entries",
           icon: UserPlus,
-          badge: "Register",
         },
       ],
+    },
+    {
+      key: "gallery",
+      name: "Gallery",
+      path: "/gallery",
+      icon: Camera,
     },
     {
       key: "experience",
@@ -174,12 +165,7 @@ export default function Navbar() {
       path: "/experience-lucknow",
       icon: Compass,
     },
-    {
-      key: "contact",
-      name: "Contact",
-      path: "/contact",
-      icon: Mail,
-    },
+   
   ];
 
   return (
@@ -239,19 +225,19 @@ export default function Navbar() {
       >
         {/* MIDDLE BRANDING BAR */}
         <div className="bg-white border-b border-slate-200 py-2 sm:py-2.5">
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14 flex items-center justify-between gap-4">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-14 flex items-center justify-between gap-2 sm:gap-4">
             {/* Logo & Institute Branding */}
-            <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group">
-              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-white p-1.5 flex items-center justify-center shadow-md shrink-0 border border-slate-200/80 group-hover:shadow-lg group-hover:border-slate-300 transition-all">
+            <Link to="/" className="flex min-w-0 items-center gap-2 sm:gap-3 group">
+              <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-white p-1.5 flex items-center justify-center shadow-md shrink-0 border border-slate-200/80 group-hover:shadow-lg group-hover:border-slate-300 transition-all">
                 <img
                   src={logo}
                   alt="ITPI Logo"
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <span className="font-black text-[#0F3D8C] tracking-tight leading-tight uppercase text-base sm:text-xl">
+              <div className="flex min-w-0 flex-col">
+                <div className="flex min-w-0 items-center gap-2">
+                  <span className="whitespace-nowrap font-black text-[#0F3D8C] tracking-tight leading-tight uppercase text-[13px] sm:text-xl">
                     ITPI SPORTS MEET{" "}
                     <span className="text-[#DC2626]">2027</span>
                   </span>
@@ -291,7 +277,7 @@ export default function Navbar() {
             {/* Mobile Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-1.5 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none cursor-pointer"
+              className="lg:hidden shrink-0 p-1.5 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none cursor-pointer"
               aria-label="Toggle navigation"
             >
               {mobileMenuOpen ? (
@@ -368,7 +354,7 @@ export default function Navbar() {
                     {/* Desktop Dropdown Panel */}
                     {isDropdownOpen && (
                       <div
-                        className="absolute left-0 top-full mt-0 w-80 bg-[#081A3A] border border-blue-900/80 rounded-b-2xl shadow-2xl p-2 z-50 backdrop-blur-md animate-in fade-in slide-in-from-top-1 duration-150"
+                        className="absolute left-0 top-full mt-0 w-64 bg-[#081A3A] border border-blue-900/80 rounded-b-2xl shadow-2xl p-2 z-50 backdrop-blur-md animate-in fade-in slide-in-from-top-1 duration-150"
                         onMouseEnter={() => handleMouseEnter(item.key)}
                         onMouseLeave={handleMouseLeave}
                       >
@@ -385,14 +371,14 @@ export default function Navbar() {
                                 key={sub.name}
                                 to={sub.path}
                                 onClick={() => setActiveDropdown(null)}
-                                className={`group flex items-start gap-3 p-2.5 rounded-xl transition-all ${
+                                className={`group flex items-center gap-3 p-2.5 rounded-xl transition-all ${
                                   isSubActive
                                     ? "bg-blue-900/70 border border-blue-800/80"
                                     : "hover:bg-blue-900/60 border border-transparent"
                                 }`}
                               >
                                 <div
-                                  className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 transition-all bg-[#DC2626] text-white shadow-md shadow-red-950/40 ${
+                                  className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-all bg-[#DC2626] text-white shadow-md shadow-red-950/40 ${
                                     isSubActive
                                       ? "ring-2 ring-white/40"
                                       : "group-hover:bg-red-500 group-hover:scale-105"
@@ -401,19 +387,11 @@ export default function Navbar() {
                                   <SubIcon className="w-4 h-4" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                  <div className="flex items-center justify-between gap-1">
+                                  <div className="flex items-center">
                                     <span className="text-xs font-bold text-white transition-colors">
                                       {sub.name}
                                     </span>
-                                    {sub.badge && (
-                                      <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.2 rounded bg-red-600/30 text-red-300 border border-red-500/40">
-                                        {sub.badge}
-                                      </span>
-                                    )}
                                   </div>
-                                  <p className="text-[11px] text-slate-300 leading-tight mt-0.5 line-clamp-2 font-normal">
-                                    {sub.desc}
-                                  </p>
                                 </div>
                               </Link>
                             );
@@ -426,14 +404,13 @@ export default function Navbar() {
               })}
             </nav>
 
-            {/* Right Badge */}
-            <div className="hidden lg:flex items-center gap-3 py-1.5 text-xs">
+            {/* Right Contact CTA */}
+            <div className="hidden lg:flex items-center">
               <Link
-                to="/contingents"
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/40 border border-blue-800 text-amber-300 font-bold hover:bg-blue-900/70 transition text-[11px]"
+                to="/contact"
+                className="inline-flex min-w-[136px] items-center justify-center rounded-lg bg-[#DC2626] px-6 py-2 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#B70D2B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                <span>16 State Contingents</span>
+                Contact Us
               </Link>
             </div>
           </div>
@@ -571,11 +548,6 @@ export default function Navbar() {
                             </div>
                             <span className="truncate">{sub.name}</span>
                           </div>
-                          {sub.badge && (
-                            <span className="text-[9px] font-extrabold px-1.5 py-0.2 rounded bg-white/20 text-white shrink-0 ml-1">
-                              {sub.badge}
-                            </span>
-                          )}
                         </Link>
                       );
                     })}

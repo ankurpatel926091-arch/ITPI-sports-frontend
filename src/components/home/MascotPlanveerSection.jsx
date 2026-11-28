@@ -54,7 +54,7 @@ export default function MascotPlanveerSection() {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30 text-slate-900 py-12 sm:py-16 lg:py-20 border-b border-slate-200 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30 text-slate-900 py-8 sm:py-16 lg:py-20 border-b border-slate-200 overflow-hidden">
 
       {/* Decorative Background Blobs */}
       <div className="pointer-events-none absolute -top-24 -left-24 w-80 h-80 bg-blue-200/25 rounded-full blur-3xl" />
@@ -64,32 +64,32 @@ export default function MascotPlanveerSection() {
       <div className="relative max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-10">
 
         {/* Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-4 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-stretch">
 
           {/* Left Column: Mascot Image */}
-          <div className="lg:col-span-5 flex justify-start items-stretch">
+          <div className="lg:col-span-5 flex justify-center lg:justify-start items-stretch">
 
-            <div className="relative w-full max-w-[410px] group h-full">
+            <div className="relative w-full max-w-[340px] sm:max-w-[410px] group h-full">
 
               {/* Glow Ring */}
               <div className="absolute -inset-2 bg-gradient-to-tr from-[#0F3D8C]/20 via-amber-300/20 to-[#DC2626]/20 rounded-3xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Mascot Card */}
-              <div className="relative h-full bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 shadow-xl group-hover:shadow-2xl transition-all duration-500 flex flex-col">
+              <div className="relative h-full bg-white p-3 sm:p-4 rounded-2xl border border-slate-200/80 shadow-xl group-hover:shadow-2xl transition-all duration-500 flex flex-col justify-between">
 
-                {/* Image */}
-                <div className="relative rounded-xl overflow-hidden bg-slate-900 shadow-inner shrink-0">
+                {/* Image (Whole Mascot visible with zero clipping) */}
+                <div className="relative rounded-xl overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100 shadow-inner shrink-0 p-1">
 
                   <img
                     src={mascotPoster}
                     alt="Planveer - The Urban Planner Athlete Mascot"
-                    className="w-full h-[440px] sm:h-[480px] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className="w-full h-[280px] xs:h-[320px] sm:h-[440px] md:h-[480px] object-contain object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-40 pointer-events-none" />
 
                   {/* Corner Badge */}
-                  <div className="absolute top-3 left-3 bg-[#DC2626] text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md flex items-center gap-1.5">
+                  <div className="absolute top-2.5 left-2.5 bg-[#DC2626] text-white text-[9px] sm:text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 sm:py-1 rounded-full shadow-md flex items-center gap-1.5">
                     <Sparkles className="w-3 h-3 text-amber-300" />
                     <span>Official Mascot</span>
                   </div>
@@ -97,37 +97,37 @@ export default function MascotPlanveerSection() {
                 </div>
 
                 {/* Mascot Name Banner */}
-                <div className="mt-3 p-3 rounded-xl bg-gradient-to-r from-slate-50 via-blue-50/40 to-slate-50 border border-slate-200 text-center shadow-sm">
+                <div className="mt-2.5 sm:mt-3 p-2.5 sm:p-3 rounded-xl bg-gradient-to-r from-slate-50 via-blue-50/40 to-slate-50 border border-slate-200 text-center shadow-sm">
 
-                  <p className="text-[12px] sm:text-[13px] font-black text-[#0F3D8C] uppercase tracking-tight whitespace-nowrap">
+                  <p className="text-[11px] sm:text-[13px] font-black text-[#0F3D8C] uppercase tracking-tight whitespace-nowrap">
                     {mascot.name}
                     <span className="text-slate-400 mx-1">•</span>
                     {mascot.title}
                   </p>
 
-                  <p className="text-[11px] text-[#DC2626] font-bold italic mt-1">
+                  <p className="text-[10px] sm:text-[11px] text-[#DC2626] font-bold italic mt-0.5 sm:mt-1">
                     "{mascot.concept}"
                   </p>
 
                 </div>
 
                 {/* Quick Attributes */}
-                <div className="mt-2.5 grid grid-cols-2 gap-2 text-center">
+                <div className="mt-2 sm:mt-2.5 grid grid-cols-2 gap-2 text-left sm:text-center">
 
-                  <div className="bg-slate-50 rounded-lg py-1.5 px-2 border border-slate-100">
-                    <span className="text-[10px] text-slate-500 block">
+                  <div className="bg-slate-50 rounded-lg py-1 sm:py-1.5 px-2 border border-slate-100">
+                    <span className="text-[9px] sm:text-[10px] text-slate-500 block">
                       Symbolism
                     </span>
-                    <span className="text-[11px] font-bold text-slate-800">
+                    <span className="text-[10px] sm:text-[11px] font-bold text-slate-800">
                       The Peacock (Mayura)
                     </span>
                   </div>
 
-                  <div className="bg-slate-50 rounded-lg py-1.5 px-2 border border-slate-100">
-                    <span className="text-[10px] text-slate-500 block">
+                  <div className="bg-slate-50 rounded-lg py-1 sm:py-1.5 px-2 border border-slate-100">
+                    <span className="text-[9px] sm:text-[10px] text-slate-500 block">
                       Host Edition
                     </span>
-                    <span className="text-[11px] font-bold text-[#0F3D8C]">
+                    <span className="text-[10px] sm:text-[11px] font-bold text-[#0F3D8C]">
                       Lucknow 2027
                     </span>
                   </div>
@@ -139,24 +139,25 @@ export default function MascotPlanveerSection() {
           </div>
 
           {/* Right Column: Content */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-5 sm:space-y-6">
+          <div className="lg:col-span-7 flex flex-col justify-between space-y-4 sm:space-y-6">
 
             {/* Header */}
-            <div className="space-y-2.5">
+            <div className="space-y-2">
 
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-100/80 border border-red-200 text-[#DC2626] text-[11px] font-bold uppercase tracking-widest shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-[#DC2626]" />
-                <span>Meet The Mascot • 2nd National Sports Meet</span>
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-red-100/80 border border-red-200 text-[#DC2626] text-[10px] sm:text-[11px] font-bold uppercase tracking-wider sm:tracking-widest shadow-sm whitespace-nowrap">
+                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#DC2626] shrink-0" />
+                <span className="hidden sm:inline">Meet The Mascot • 2nd National Sports Meet</span>
+                <span className="sm:hidden">Meet The Mascot • Lucknow 2027</span>
               </div>
 
-              <h2 className="text-2xl sm:text-4xl lg:text-[2.5rem] font-extrabold text-slate-900 leading-tight">
+              <h2 className="text-xl sm:text-3xl lg:text-[2.5rem] font-extrabold text-slate-900 leading-tight">
                 Meet <span className="text-[#0F3D8C]">“Planveer”</span>{' '}
-                <span className="block sm:inline text-base sm:text-xl font-medium text-slate-500 sm:ml-2">
+                <span className="block sm:inline text-xs sm:text-lg font-medium text-slate-500 sm:ml-2">
                   (The Urban Planner Athlete)
                 </span>
               </h2>
 
-              <div className="h-1.5 w-24 bg-gradient-to-r from-[#DC2626] via-amber-500 to-[#0F3D8C] rounded-full" />
+              <div className="h-1.5 w-20 sm:w-24 bg-gradient-to-r from-[#DC2626] via-amber-500 to-[#0F3D8C] rounded-full" />
 
             </div>
 
